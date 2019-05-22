@@ -1,3 +1,4 @@
 tmp_data
 *.py~
 *.sh~
+out_tmp*

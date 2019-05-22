@@ -1,15 +1,15 @@
 from set_seed import random_ctl
-random_ctl()
+seed = random_ctl()
 
 from fastai.text import *
 from fastai.callbacks import SaveModelCallback
 from fastai.layers import LabelSmoothingCrossEntropy
 
-import os
 import sentencepiece as spm #https://github.com/google/sentencepiece
 import fire
 
 from sp_tok import *
+from bin_metrics import Fbeta_binary
 
 def split_rebal_data(all_texts_df:DataFrame, clas_col:str='is_humor', split_seed:int=None):
     ## rebalance cases
@@ -44,10 +44,9 @@ def split_rebal_data(all_texts_df:DataFrame, clas_col:str='is_humor', split_seed
 
     return df_train, df_valid, df_test
     
-def fit_clas(model_path:str, sp_model:str, gpu_id:int=0,
+def fit_clas(model_path:str, sp_model:str,
              flat_loss:bool=True, qrnn:bool=True, n_hid:int=2304, load_enc:str=None, split_seed:int=None):
     PATH = Path(model_path)
-    os.environ["CUDA_VISIBLE_DEVICES"]=str(gpu_id)
     
     defaults.text_spec_tok.append(NL) #add a New Line special char
     sp_vocab = Vocab( get_itos(sp_model) )    
@@ -70,20 +69,21 @@ def fit_clas(model_path:str, sp_model:str, gpu_id:int=0,
     config['n_hid'] = n_hid
     print(config)
     learn = text_classifier_learner(data, AWD_LSTM, drop_mult=0.7,pretrained=False,config=config)
+    learn.metrics += [Fbeta_binary(beta2=1,clas=1)]
     if load_enc : learn.load_encoder(load_enc)
     if flat_loss: learn.loss_func = FlattenedLoss(LabelSmoothingCrossEntropy)
     learn.unfreeze()
-    learn.fit_one_cycle(3, slice(1e-2/(2.6**4),1e-2), moms=(0.7,0.4), pct_start=0.25, div_factor=8.,
+
+    learn.fit_one_cycle(20, slice(1e-2/(2.6**4),1e-2), moms=(0.7,0.4), pct_start=0.25, div_factor=8.,
                         callbacks=[SaveModelCallback(learn,every='improvement',mode='max',
                                                      monitor='accuracy',name='best_acc_model_Q')])
-    # learn.fit_one_cycle(20, slice(1e-2/(2.6**4),1e-2), moms=(0.7,0.4), pct_start=0.25, div_factor=8.,
-    #                     callbacks=[SaveModelCallback(learn,every='improvement',mode='max',
-    #                                                  monitor='accuracy',name='best_acc_model_Q')])
     # learn.fit(20, slice(1e-2/(2.6**5), 1e-2/8.),
     #           callbacks=[SaveModelCallback(learn,every='improvement',mode='max',
     #                                        monitor='accuracy',name='best_acc_model_Q')])
-    # learn.save('__rnn_trained_unfreezeAll_labelsmoothing_lmAndclas')
-
+    learn.save(f'haha_clas_{seed}')
+    df_metrics = pd.DataFrame(np.array(learn.recorder.metrics),columns=learn.recorder.metrics_names)
+    print(f"Clas RndSeed: {seed},{df_metrics['accuracy'].max()}")
+    
 if __name__ == "__main__":
     fire.Fire(fit_clas)
 
