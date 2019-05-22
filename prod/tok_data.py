@@ -33,8 +33,7 @@ def build_sp_data(model_path:str, corpus_fname:str, out_pkl_name:str, sp_model:s
     raw_text = all_texts_df.loc[:,'tweet_text']
 
     print("Default Rules:\n",[x.__name__ for x in default_rules],"\n\n")
-    for rule in default_rules:
-        raw_text = raw_text.apply(lambda x: rule(str(x)))    
+    for rule in default_rules: raw_text = raw_text.apply(lambda x: rule(str(x)))
     all_texts_df['new_text'] = 'xxbos ' + raw_text
 
     if verbose:
@@ -69,7 +68,6 @@ def build_sp_data(model_path:str, corpus_fname:str, out_pkl_name:str, sp_model:s
     cut = int(0.1 * len(idx))
     train_df = pd.DataFrame({'text':all_texts[idx[cut:]], 'labels':[0] * (len(all_texts)-cut)}, columns=['labels','text'])
     valid_df = pd.DataFrame({'text':all_texts[idx[:cut]], 'labels':[0] * cut}, columns=['labels','text'])
-
     print(f'Train:{train_df.shape}, valid:{valid_df.shape}')
 
     keyword_args = {'bs':batch_size}
