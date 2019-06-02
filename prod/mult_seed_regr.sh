@@ -14,7 +14,7 @@ for n in {1..100};do \
     python regr.py \
 	   --model-path '../data/rnn/' \
 	   --sp-model '../__all_tweets_es_0521' \
-	   --load_enc 'twitter_es_enc_QRNN_0520_seed0' \
+	   --load_enc 'twitter_es_enc_QRNN_0520_seed1' \
 	   --split-seed 20190313 \
 	   --qrnn 1\
     ;
