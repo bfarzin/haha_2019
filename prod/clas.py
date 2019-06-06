@@ -50,7 +50,7 @@ def fit_clas(model_path:str, sp_model:str, flat_loss:bool=True, qrnn:bool=True,
     
     defaults.text_spec_tok.append(NL) #add a New Line special char
     sp_vocab = Vocab( get_itos(sp_model) )
-    mycust_tok = CustomTokenizer(SPTokenizer, sp_model, pre_rules=default_rules, backward=backward)
+    mycust_tok = CustomTokenizer(SPTokenizer, sp_model, pre_rules=default_rules)
     
     all_texts_df = pd.read_csv('../data/haha_2019_train.csv')
     raw_text = all_texts_df.loc[:,'text']
@@ -63,7 +63,7 @@ def fit_clas(model_path:str, sp_model:str, flat_loss:bool=True, qrnn:bool=True,
     
     data = TextClasDataBunch.from_df(PATH,df_train,df_valid,df_test,
                                    tokenizer=mycust_tok, vocab=sp_vocab,
-                                   text_cols='new_text', label_cols='is_humor')
+                                   text_cols='new_text', label_cols='is_humor', backwards=backward)
     config = awd_lstm_clas_config.copy()
     config['qrnn'] = qrnn
     config['n_hid'] = n_hid
@@ -80,7 +80,7 @@ def fit_clas(model_path:str, sp_model:str, flat_loss:bool=True, qrnn:bool=True,
     # learn.fit(20, slice(1e-2/(2.6**5), 1e-2/8.),
     #           callbacks=[SaveModelCallback(learn,every='improvement',mode='max',
     #                                        monitor='accuracy',name='best_acc_model_Q')])
-    learn.save(f'haha_clas_{seed}')
+    learn.save(f"haha_clas{seed}{'_bwd' if backward else ''}")
     df_metrics = pd.DataFrame(np.array(learn.recorder.metrics),columns=learn.recorder.metrics_names)
     print(f"Clas RndSeed: {seed},{df_metrics['accuracy'].max()},{df_metrics['fbeta_binary'].max()}")
     
