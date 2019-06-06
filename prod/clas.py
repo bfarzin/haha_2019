@@ -44,14 +44,14 @@ def split_rebal_data(all_texts_df:DataFrame, clas_col:str='is_humor', split_seed
 
     return df_train, df_valid, df_test
     
-def fit_clas(model_path:str, sp_model:str,
-             flat_loss:bool=True, qrnn:bool=True, n_hid:int=2304, load_enc:str=None, split_seed:int=None):
+def fit_clas(model_path:str, sp_model:str, flat_loss:bool=True, qrnn:bool=True,
+             n_hid:int=2304, load_enc:str=None, split_seed:int=None, backward:bool=False):
     PATH = Path(model_path)
     
     defaults.text_spec_tok.append(NL) #add a New Line special char
-    sp_vocab = Vocab( get_itos(sp_model) )    
-    mycust_tok = CustomTokenizer(SPTokenizer,sp_model,pre_rules=default_rules)
-
+    sp_vocab = Vocab( get_itos(sp_model) )
+    mycust_tok = CustomTokenizer(SPTokenizer, sp_model, pre_rules=default_rules, backward=backward)
+    
     all_texts_df = pd.read_csv('../data/haha_2019_train.csv')
     raw_text = all_texts_df.loc[:,'text']
 

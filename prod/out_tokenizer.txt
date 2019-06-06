@@ -1,0 +1,18 @@
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Example of cleaned up text (original, then cleaned up)
+@RaulB2005 raúl te quiero muchísimo y aunque no te haya visto en la puta vida eres una de las personas más importantes que he conocido, muchas gracias por todo uwu
+xxbos  @ raulb2005 raúl te quiero muchísimo y aunque no te haya visto en la puta vida eres una de las personas más importantes que he conocido , muchas gracias por todo uwu
+---------------
+@piopiotwit @CristoReySpain @veronicafumanal @vox_es @monasterioR No opinó ,que si no sube el pan y como lo vea pedro Sánchez es capaz de hacerlo y ahora que ha bajado que no me culpen
+xxbos  @ piopiotwit @ cristoreyspain @ veronicafumanal @ vox_es @ monasterior no opinó , que si no sube el pan y como lo vea pedro sánchez es capaz de hacerlo y ahora que ha bajado que no me culpen
+---------------
+Saber, entender y estar convencides que la frase #LaESILaDefendemosEntreTodes es nuestra linea es nuestro eje.
+#AlertaESI!!!!
+Vamos por mas!!! e invitamos a todas aquellas personas que quieran se parte.
+xxbos saber , entender y estar convencides que la frase # laesiladefendemosentretodes es nuestra linea es nuestro eje.xxnl  # alertaesi xxrep 4 ! xxnl vamos por mas ! ! ! e invitamos a todas aquellas personas que quieran se parte.
+---------------
+['xxpad', 'xxbos', 'xxeos', 'xxfld', 'xxmaj', 'xxup', 'xxrep', 'xxwrep']
+Train:(427631, 2), valid:(47514, 2)

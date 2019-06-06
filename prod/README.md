@@ -1,6 +1,12 @@
 # haha_2019 production scripts
 
-`CUDA_VISIBLE_DEVICES=0 ./mult_seed_run.sh | tee --append out_tmp10.txt`
+Check if you want to run forward or backward on tokenization (run both and average results)
+1. `./tokenize.sh | tee out_tokenizer.txt`
+2. `CUDA_VISIBLE_DEVICES=0 ./mult_seed_run_bwd.sh | tee --append out_bwd_tmp10.txt`
+3. Change the seed from `seed0` -> `seed1`, and re-run above script
+
+Original:
+*. `CUDA_VISIBLE_DEVICES=0 ./mult_seed_run.sh | tee --append out_tmp10.txt`
 
 
 ## Paper Outline
@@ -17,6 +23,7 @@
   * use of sentence piece to reduce the out of vocab (OOV) lanugage
   * Two random seeds for LM fit
   * Random seeds on each of the classifier fits (100 each LM rand seed)
+    * This was originally a test, done with a single epoch on LM (so not the best) and then 100 runs to test if there was variation
   * Average outputs for classifer softmax before making choice (single seeds might be better, but not many possible entries)
   * [SMOTE to balance classes](https://jair.org/index.php/jair/article/view/10302)
 

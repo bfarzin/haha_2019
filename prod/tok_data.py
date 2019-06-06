@@ -24,7 +24,8 @@ def get_corpus_txt(corpus_fname = './data/all_file.txt'):
     return corpus_txt
 
 def build_sp_data(model_path:str, corpus_fname:str, out_pkl_name:str, sp_model:str,
-                  vocab_size:int=60000, batch_size:int=64, verbose:bool=False, tmp_file_name:str="tmp_data"):
+                  vocab_size:int=60000, batch_size:int=64, verbose:bool=False,
+                  tmp_file_name:str="tmp_data", backward:bool=False):
     PATH = Path(model_path)
     # corpus_fname = '../data/all_file.txt'
     # model_prefix = 'all_tweets_es_0509'
@@ -45,8 +46,7 @@ def build_sp_data(model_path:str, corpus_fname:str, out_pkl_name:str, sp_model:s
 
     #tmp file for SP tokenizer
     formatted_text_file = tmp_file_name
-    all_texts_df['new_text'].to_frame().to_csv(formatted_text_file, header=False,index=False,quotechar=' ')
-
+    all_texts_df['new_text'].to_frame().to_csv(formatted_text_file, header=False, index=False, quotechar=' ')
 
     #user defined symbols for SP
     uds = [x for x in defaults.text_spec_tok if x != UNK]
@@ -59,7 +59,7 @@ def build_sp_data(model_path:str, corpus_fname:str, out_pkl_name:str, sp_model:s
                                    f" --user_defined_symbols={','.join(uds)}"
                                    f' --unk_piece={UNK} --bos_id=-1 --eos_id=-1 --pad_id=-1')
 
-    mycust_tok = CustomTokenizer(SPTokenizer,sp_model,pre_rules=default_rules)
+    mycust_tok = CustomTokenizer(SPTokenizer, sp_model, pre_rules=default_rules, backward=backward)
     sp_vocab = Vocab( get_itos(sp_model) )    
 
     #train/valid split
