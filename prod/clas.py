@@ -76,13 +76,13 @@ def fit_clas(model_path:str, sp_model:str, flat_loss:bool=True, qrnn:bool=True,
 
     learn.fit_one_cycle(20, slice(1e-2/(2.6**4),1e-2), moms=(0.7,0.4), pct_start=0.25, div_factor=8.,
                         callbacks=[SaveModelCallback(learn,every='improvement',mode='max',
-                                                     monitor='accuracy',name='best_acc_model_Q')])
+                                                     monitor='accuracy',name=f'best_acc_model_Q_{seed}')])
     # learn.fit(20, slice(1e-2/(2.6**5), 1e-2/8.),
     #           callbacks=[SaveModelCallback(learn,every='improvement',mode='max',
     #                                        monitor='accuracy',name='best_acc_model_Q')])
     learn.save(f'haha_clas_{seed}')
     df_metrics = pd.DataFrame(np.array(learn.recorder.metrics),columns=learn.recorder.metrics_names)
-    print(f"Clas RndSeed: {seed},{df_metrics['accuracy'].max()}")
+    print(f"Clas RndSeed: {seed},{df_metrics['accuracy'].max()},{df_metrics['fbeta_binary'].max()}")
     
 if __name__ == "__main__":
     fire.Fire(fit_clas)

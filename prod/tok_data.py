@@ -25,7 +25,7 @@ def get_corpus_txt(corpus_fname = './data/all_file.txt'):
 
 def build_sp_data(model_path:str, corpus_fname:str, out_pkl_name:str, sp_model:str,
                   vocab_size:int=60000, batch_size:int=64, verbose:bool=False,
-                  tmp_file_name:str="tmp_data", backward:bool=False):
+                  tmp_file_name:str="tmp_data", backward:bool=False, model_type:str='bpe'):
     PATH = Path(model_path)
     # corpus_fname = '../data/all_file.txt'
     # model_prefix = 'all_tweets_es_0509'
@@ -55,11 +55,11 @@ def build_sp_data(model_path:str, corpus_fname:str, out_pkl_name:str, sp_model:s
     spm.SentencePieceTrainer.Train(f'--input={formatted_text_file}'
                                    f' --model_prefix={sp_model}'
                                    f' --vocab_size={vocab_size}'
-                                   f' --model_type=bpe'
+                                   f' --model_type={model_type}'
                                    f" --user_defined_symbols={','.join(uds)}"
                                    f' --unk_piece={UNK} --bos_id=-1 --eos_id=-1 --pad_id=-1')
 
-    mycust_tok = CustomTokenizer(SPTokenizer, sp_model, pre_rules=default_rules, backward=backward)
+    mycust_tok = CustomTokenizer(SPTokenizer, sp_model, pre_rules=default_rules)
     sp_vocab = Vocab( get_itos(sp_model) )    
 
     #train/valid split
@@ -73,7 +73,8 @@ def build_sp_data(model_path:str, corpus_fname:str, out_pkl_name:str, sp_model:s
     keyword_args = {'bs':batch_size}
     data = TextLMDataBunch.from_df(PATH, train_df, valid_df, 
                                    tokenizer=mycust_tok, vocab=sp_vocab,
-                                   text_cols='text', label_cols='labels',**keyword_args)
+                                   text_cols='text', label_cols='labels', backwards=backward,
+                                   **keyword_args)
     data.save(out_pkl_name)
     
 if __name__ == "__main__":

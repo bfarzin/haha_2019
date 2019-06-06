@@ -58,20 +58,19 @@ default_rules = [fixup, replace_rep, replace_wrep, deal_caps, spec_add_spaces,
 
 class SPTokenizer(BaseTokenizer):
     "Wrapper around a SentncePiece tokenizer to make it a `BaseTokenizer`."
-    def __init__(self, model_prefix:str, backward:bool=False):
-        self.backward = backward
+    def __init__(self, model_prefix:str):
         self.tok = spm.SentencePieceProcessor()
         self.tok.load(f'{model_prefix}.model')
 
     def tokenizer(self, t:str) -> List[str]:
-        #first two toks are ["_", "xxbos"] so reverse after those
-        toked = self.tok.EncodeAsPieces(t) 
-        return toked[:2]+toked[2:][::-1] if self.backward else toked
+        return self.tok.EncodeAsPieces(t)
+        # #first two toks are ["_", "xxbos"] so reverse after those
+        # toked = 
+        # return toked[:2]+toked[2:][::-1] if self.backward else toked
     
 class CustomTokenizer():
     '''Wrapper for SentencePiece toeknizer to fit into Fast.ai V1'''
-    def __init__(self,tok_func:Callable,model_prefix:str, pre_rules:ListRules=None, backward:bool=False):
-        self.backward = backward
+    def __init__(self,tok_func:Callable,model_prefix:str, pre_rules:ListRules=None):
         self.tok_func,self.model_prefix = tok_func,model_prefix
         self.pre_rules  = ifnone(pre_rules,  defaults.text_pre_rules )
         
@@ -89,7 +88,7 @@ class CustomTokenizer():
     
     def _process_all_1(self,texts:Collection[str]) -> List[List[str]]:
         'Process a list of `texts` in one process'
-        tok = self.tok_func(self.model_prefix, self.backward)
+        tok = self.tok_func(self.model_prefix)
         return [self.process_text(t,tok) for t in texts]
                                                                      
     def process_all(self, texts:Collection[str]) -> List[List[str]]: 

@@ -7,12 +7,12 @@ from fastai.layers import LabelSmoothingCrossEntropy
 import fire
 from sp_tok import *
     
-def build_lm(model_path:str, sp_model:str, data_pkl_name:str, enc_name:str,
-             gpu_id:int=0, flat_loss:bool=True, qrnn:bool=True, n_hid:int=2304, n_epochs:int=25, backward:bool=False):
+def build_lm(model_path:str, sp_model:str, data_pkl_name:str, enc_name:str, flat_loss:bool=True,
+             qrnn:bool=True, n_hid:int=2304, n_epochs:int=25, dropmult:float=0.5, backward:bool=False):
     PATH = Path(model_path)
     defaults.text_spec_tok.append(NL) #add a New Line special char
     sp_vocab = Vocab( get_itos(sp_model) )    
-    mycust_tok = CustomTokenizer(SPTokenizer, sp_model, pre_rules=default_rules, backward=backward)
+    mycust_tok = CustomTokenizer(SPTokenizer, sp_model, pre_rules=default_rules)
 
     data = load_data(PATH,data_pkl_name)
 
@@ -20,7 +20,7 @@ def build_lm(model_path:str, sp_model:str, data_pkl_name:str, enc_name:str,
     config['qrnn'] = qrnn
     config['n_hid'] = n_hid
     print(config)
-    learn = language_model_learner(data, AWD_LSTM,drop_mult=0.5,pretrained=False,config=config)
+    learn = language_model_learner(data, AWD_LSTM, drop_mult=dropmult, pretrained=False, config=config)
     if flat_loss: learn.loss_func = FlattenedLoss(LabelSmoothingCrossEntropy)
     print(learn.model)
     learn.unfreeze()
