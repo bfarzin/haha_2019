@@ -47,6 +47,7 @@ def split_rebal_data(all_texts_df:DataFrame, clas_col:str='is_humor', split_seed
 def fit_clas(model_path:str, sp_model:str, flat_loss:bool=True, qrnn:bool=True,
              n_hid:int=2304, load_enc:str=None, split_seed:int=None, backward:bool=False):
     PATH = Path(model_path)
+    torch.backends.cudnn.enabled=False
     
     defaults.text_spec_tok.append(NL) #add a New Line special char
     sp_vocab = Vocab( get_itos(sp_model) )
