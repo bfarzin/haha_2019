@@ -36,3 +36,5 @@ Original:
   * Backward and averaging?
   * Back Translate ES-EN-ES to get new version (And at test time)
   * Higher Dropmult for LM (closer to 1.) and train for 4 epochs?
+  * Select on F1 rather than Accuracy?  (becuase that is comp metric)
+  * Does the top-half of models in the acc distribution land in the top-half of the test distribution?  Or it is all over the place?
