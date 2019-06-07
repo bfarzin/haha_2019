@@ -6,7 +6,7 @@ from pdb import set_trace
 '''
 grep Clas out_tmp1?.txt > seed_class_data
 '''
-df = pd.read_csv('seed_class_data',names=['id','acc'])
+df = pd.read_csv('seed_class_data',names=['id','acc','f1'])
 print(df.describe())
 df['group'] = df.id.apply(lambda x: 0 if '10' in x else 1)
 print(df.groupby('group').describe().transpose())
