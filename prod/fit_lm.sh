@@ -22,5 +22,5 @@ python main.py \
        --flat_loss 1 \
        --qrnn 1 \
        --n-epochs 5 \
-       --dropout 0.75 \
+       --dropmult 1.0 \
        --backward 0

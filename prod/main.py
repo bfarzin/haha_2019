@@ -7,14 +7,15 @@ from fastai.layers import LabelSmoothingCrossEntropy
 import fire
 from sp_tok import *
     
-def build_lm(model_path:str, sp_model:str, data_pkl_name:str, enc_name:str, flat_loss:bool=True,
-             qrnn:bool=True, n_hid:int=2304, n_epochs:int=25, dropmult:float=0.5, backward:bool=False):
+def build_lm(model_path:str, sp_model:str, data_pkl_name:str, enc_name:str, flat_loss:bool=True, batch_size:int=64,
+             qrnn:bool=True, n_hid:int=2304, n_epochs:int=25, dropmult:float=0.5, wd:float=0.02, backward:bool=False):
     PATH = Path(model_path)
     defaults.text_spec_tok.append(NL) #add a New Line special char
     sp_vocab = Vocab( get_itos(sp_model) )    
     mycust_tok = CustomTokenizer(SPTokenizer, sp_model, pre_rules=default_rules)
 
     data = load_data(PATH,data_pkl_name)
+    data.batch_size = batch_size #Titan RTX
 
     config = awd_lstm_lm_config.copy()
     config['qrnn'] = qrnn
@@ -24,7 +25,7 @@ def build_lm(model_path:str, sp_model:str, data_pkl_name:str, enc_name:str, flat
     if flat_loss: learn.loss_func = FlattenedLoss(LabelSmoothingCrossEntropy)
     print(learn.model)
     learn.unfreeze()
-    learn.fit_one_cycle(n_epochs, 4e-3, moms=(0.6,0.4), wd=0.02, pct_start=0.2)
+    learn.fit_one_cycle(n_epochs, 4e-3, moms=(0.6,0.4), wd=wd, pct_start=0.2)
     learn.save_encoder(enc_name)
     learn.save(f"twitter_es_{seed}{'_bwd' if backward else ''}")
     df_metrics = pd.DataFrame(np.array(learn.recorder.metrics),columns=learn.recorder.metrics_names)
