@@ -52,9 +52,9 @@ def fit_clas(model_path:str, sp_model:str,
     if load_enc : learn.load_encoder(load_enc)
     learn.unfreeze()
 
-    learn.fit_one_cycle(20, slice(1e-2/(2.6**4),1e-2), moms=(0.7,0.4), pct_start=0.25, div_factor=8.,
+    learn.fit_one_cycle(10, slice(1e-2/(2.6**4),1e-2), moms=(0.7,0.4), pct_start=0.25, div_factor=8.,
                         callbacks=[SaveModelCallback(learn,every='improvement',mode='min',
-                                                     monitor='valid_loss',name='best_vloss_model_Q')])
+                                                    name='best_vloss_model_Q')])
     learn.save(f'haha_regr_bd_{seed}')
     print(f"Reg RndSeed: {seed},{min(learn.recorder.val_losses)}")
     
