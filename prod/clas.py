@@ -78,7 +78,7 @@ def fit_clas(model_path:str, sp_model:str, flat_loss:bool=True, qrnn:bool=True,
     # learn.fit_one_cycle(20, slice(1e-2/(2.6**4),1e-2), moms=(0.7,0.4), pct_start=0.25, div_factor=8.,
     #                     callbacks=[SaveModelCallback(learn,every='improvement',mode='max',
     #                                                  monitor='accuracy',name=f'best_acc_model_Q_{seed}')])
-    learn.fit_one_cycle(20, slice(1e-2/(2.6**4),1e-2), moms=(0.7,0.4), pct_start=0.25, div_factor=8.,
+    learn.fit_one_cycle(10, slice(1e-2/(2.6**4),1e-2), moms=(0.7,0.4), pct_start=0.25, div_factor=8.,
                         callbacks=[SaveModelCallback(learn,every='improvement',mode='max',
                                                      monitor='fbeta_binary',name=f'best_acc_model_Q_{seed}')])
     learn.save(f"haha_clas_bd_{seed}{'_bwd' if backward else ''}")
