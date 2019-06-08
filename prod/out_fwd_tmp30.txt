@@ -1,0 +1,918 @@
+Using seed: 974110
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.517812    0.474995    0.792500  0.772048      00:15     
+Better model found at epoch 0 with fbeta_binary value: 0.7720476388931274.
+1         0.488749    0.446786    0.850000  0.804348      00:15     
+Better model found at epoch 1 with fbeta_binary value: 0.8043478727340698.
+2         0.430383    0.443728    0.845278  0.808393      00:16     
+Better model found at epoch 2 with fbeta_binary value: 0.8083934783935547.
+3         0.446489    0.439239    0.848611  0.790465      00:15     
+4         0.374694    0.475809    0.853889  0.801958      00:15     
+5         0.345494    0.455945    0.851667  0.804967      00:15     
+6         0.303231    0.469940    0.851667  0.808465      00:16     
+Better model found at epoch 6 with fbeta_binary value: 0.8084648251533508.
+7         0.297288    0.465056    0.854167  0.805771      00:15     
+8         0.301818    0.491261    0.855833  0.807135      00:15     
+9         0.282067    0.478405    0.855000  0.807095      00:17     
+Total time: 02:44
+Clas RndSeed: 974110,0.8558333516120911,0.8084648251533508
+Using seed: 625561
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.517858    0.459705    0.810833  0.784289      00:15     
+Better model found at epoch 0 with fbeta_binary value: 0.7842889428138733.
+1         0.487655    0.446153    0.842222  0.805346      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.8053461313247681.
+2         0.426521    0.426887    0.847778  0.806497      00:16     
+Better model found at epoch 2 with fbeta_binary value: 0.8064972162246704.
+3         0.448437    0.451551    0.853333  0.797235      00:15     
+4         0.372755    0.479503    0.851667  0.797727      00:15     
+5         0.347360    0.468960    0.853333  0.797079      00:15     
+6         0.302810    0.473602    0.844444  0.804606      00:17     
+7         0.300244    0.472019    0.850833  0.800446      00:16     
+8         0.307890    0.489290    0.850278  0.801473      00:15     
+9         0.281781    0.487338    0.848056  0.802027      00:17     
+Total time: 02:46
+Clas RndSeed: 625561,0.8533333539962769,0.8064972162246704
+Using seed: 903002
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.516676    0.454816    0.808889  0.781031      00:15     
+Better model found at epoch 0 with fbeta_binary value: 0.7810312509536743.
+1         0.490877    0.456146    0.828889  0.801418      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.8014184236526489.
+2         0.427691    0.434866    0.845556  0.808408      00:16     
+Better model found at epoch 2 with fbeta_binary value: 0.8084080219268799.
+3         0.441151    0.448095    0.845556  0.804087      00:15     
+4         0.376335    0.497980    0.849722  0.788919      00:16     
+5         0.352413    0.490021    0.853056  0.794403      00:16     
+6         0.303644    0.477964    0.843889  0.806474      00:17     
+7         0.297991    0.473291    0.851944  0.805261      00:16     
+8         0.299631    0.494305    0.853056  0.807846      00:16     
+9         0.282961    0.485345    0.855556  0.811046      00:17     
+Better model found at epoch 9 with fbeta_binary value: 0.8110464811325073.
+Total time: 02:50
+Clas RndSeed: 903002,0.855555534362793,0.8110464811325073
+Using seed: 813876
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.519856    0.457990    0.813056  0.785464      00:15     
+Better model found at epoch 0 with fbeta_binary value: 0.7854638695716858.
+1         0.491338    0.445745    0.845000  0.811741      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.8117409348487854.
+2         0.431294    0.441965    0.844444  0.808088      00:16     
+3         0.448279    0.459557    0.859167  0.807590      00:15     
+4         0.381485    0.492314    0.856667  0.805576      00:16     
+5         0.353893    0.455236    0.854167  0.806772      00:15     
+6         0.305939    0.463485    0.852222  0.801493      00:17     
+7         0.302933    0.460396    0.851667  0.803242      00:16     
+8         0.304391    0.495111    0.856111  0.808574      00:15     
+9         0.283978    0.481185    0.851667  0.805110      00:17     
+Total time: 02:47
+Clas RndSeed: 813876,0.85916668176651,0.8117409348487854
+Using seed: 64525
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.518144    0.454135    0.817500  0.790163      00:16     
+Better model found at epoch 0 with fbeta_binary value: 0.7901629209518433.
+1         0.485507    0.453866    0.847500  0.808243      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.8082430362701416.
+2         0.423647    0.445912    0.845000  0.805981      00:16     
+3         0.449355    0.454784    0.850000  0.794207      00:15     
+4         0.366879    0.510654    0.851111  0.786624      00:16     
+5         0.352775    0.471745    0.852500  0.794743      00:16     
+6         0.299184    0.457908    0.851944  0.812522      00:17     
+Better model found at epoch 6 with fbeta_binary value: 0.8125219345092773.
+7         0.298409    0.468984    0.855833  0.806704      00:16     
+8         0.299367    0.490115    0.854444  0.810145      00:15     
+9         0.278795    0.473012    0.856667  0.813043      00:17     
+Better model found at epoch 9 with fbeta_binary value: 0.813043475151062.
+Total time: 02:52
+Clas RndSeed: 64525,0.8566666841506958,0.813043475151062
+Using seed: 491285
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.515225    0.460396    0.807222  0.781624      00:15     
+Better model found at epoch 0 with fbeta_binary value: 0.7816236615180969.
+1         0.488741    0.462288    0.854722  0.814605      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.8146047592163086.
+2         0.427983    0.423759    0.849167  0.808870      00:17     
+3         0.447831    0.447714    0.852222  0.812279      00:15     
+4         0.367958    0.493778    0.853889  0.797224      00:16     
+5         0.346902    0.450040    0.851111  0.799851      00:16     
+6         0.306511    0.462765    0.854722  0.810576      00:17     
+7         0.298405    0.462138    0.860833  0.814100      00:16     
+8         0.302532    0.483955    0.859722  0.817228      00:15     
+Better model found at epoch 8 with fbeta_binary value: 0.8172276020050049.
+9         0.281600    0.484641    0.859444  0.815328      00:17     
+Total time: 02:51
+Clas RndSeed: 491285,0.8608333468437195,0.8172276020050049
+Using seed: 781588
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.517018    0.460022    0.803611  0.778022      00:16     
+Better model found at epoch 0 with fbeta_binary value: 0.7780219912528992.
+1         0.489518    0.443043    0.843056  0.800846      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.8008459806442261.
+2         0.423805    0.440094    0.850000  0.809993      00:17     
+Better model found at epoch 2 with fbeta_binary value: 0.8099929690361023.
+3         0.444018    0.454445    0.854722  0.809333      00:15     
+4         0.375522    0.473635    0.853333  0.794872      00:16     
+5         0.350067    0.441887    0.856111  0.811224      00:16     
+Better model found at epoch 5 with fbeta_binary value: 0.8112244606018066.
+6         0.302371    0.472878    0.852222  0.812412      00:17     
+Better model found at epoch 6 with fbeta_binary value: 0.812411904335022.
+7         0.298569    0.468425    0.851667  0.806662      00:16     
+8         0.300114    0.495469    0.853333  0.805310      00:15     
+9         0.280031    0.484942    0.852500  0.805138      00:17     
+Total time: 02:55
+Clas RndSeed: 781588,0.8561111092567444,0.812411904335022
+Using seed: 830123
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.517749    0.468518    0.802500  0.778436      00:15     
+Better model found at epoch 0 with fbeta_binary value: 0.7784356474876404.
+1         0.488690    0.453968    0.845556  0.801994      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.8019943237304688.
+2         0.424835    0.436857    0.846667  0.807263      00:17     
+Better model found at epoch 2 with fbeta_binary value: 0.8072625398635864.
+3         0.444258    0.469054    0.846944  0.789935      00:15     
+4         0.375716    0.469445    0.850556  0.801476      00:16     
+5         0.349850    0.456271    0.856111  0.808715      00:16     
+Better model found at epoch 5 with fbeta_binary value: 0.8087149262428284.
+6         0.305915    0.466422    0.850833  0.805927      00:17     
+7         0.295055    0.474473    0.850278  0.804781      00:16     
+8         0.295365    0.490606    0.850000  0.806174      00:16     
+9         0.281137    0.478635    0.851667  0.807220      00:17     
+Total time: 02:52
+Clas RndSeed: 830123,0.8561111092567444,0.8087149262428284
+Using seed: 485113
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.519923    0.460006    0.808333  0.781784      00:16     
+Better model found at epoch 0 with fbeta_binary value: 0.7817836403846741.
+1         0.487667    0.446667    0.847222  0.801301      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.8013005256652832.
+2         0.430694    0.429061    0.844722  0.804203      00:17     
+Better model found at epoch 2 with fbeta_binary value: 0.8042031526565552.
+3         0.441786    0.440520    0.852222  0.803545      00:15     
+4         0.375565    0.451589    0.854167  0.806772      00:16     
+Better model found at epoch 4 with fbeta_binary value: 0.8067721724510193.
+5         0.348362    0.458808    0.848333  0.801020      00:16     
+6         0.306740    0.473263    0.848333  0.806657      00:17     
+7         0.296363    0.479260    0.852500  0.804851      00:16     
+8         0.300856    0.500177    0.851111  0.803231      00:15     
+9         0.281511    0.487456    0.849722  0.801904      00:17     
+Total time: 02:52
+Clas RndSeed: 485113,0.8541666865348816,0.8067721724510193
+Using seed: 577045
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.518888    0.459985    0.806111  0.778413      00:15     
+Better model found at epoch 0 with fbeta_binary value: 0.7784126400947571.
+1         0.488169    0.446384    0.844444  0.805556      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.8055555820465088.
+2         0.432571    0.426004    0.850833  0.802501      00:16     
+3         0.445504    0.449268    0.850556  0.793712      00:15     
+4         0.375827    0.478642    0.855278  0.797827      00:16     
+5         0.349564    0.484125    0.852778  0.792807      00:16     
+6         0.305620    0.463001    0.849722  0.810905      00:17     
+Better model found at epoch 6 with fbeta_binary value: 0.8109052777290344.
+7         0.294354    0.466593    0.853889  0.805329      00:16     
+8         0.294440    0.493620    0.855000  0.806953      00:15     
+9         0.282470    0.477934    0.856389  0.810692      00:17     
+Total time: 02:49
+Clas RndSeed: 577045,0.8563888669013977,0.8109052777290344
+Using seed: 34239
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.519212    0.461875    0.804722  0.777602      00:16     
+Better model found at epoch 0 with fbeta_binary value: 0.777601957321167.
+1         0.489028    0.457411    0.843333  0.799431      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.7994310259819031.
+2         0.426611    0.443657    0.839167  0.798749      00:16     
+3         0.450912    0.445376    0.851667  0.803821      00:15     
+Better model found at epoch 3 with fbeta_binary value: 0.8038207292556763.
+4         0.374179    0.490409    0.848611  0.797322      00:16     
+5         0.352867    0.461270    0.850556  0.800888      00:16     
+6         0.302194    0.475479    0.847222  0.804688      00:17     
+Better model found at epoch 6 with fbeta_binary value: 0.8046875.
+7         0.300801    0.471445    0.846667  0.800722      00:16     
+8         0.304447    0.498916    0.849444  0.801611      00:15     
+9         0.281609    0.488347    0.847500  0.801303      00:17     
+Total time: 02:52
+Clas RndSeed: 34239,0.8516666889190674,0.8046875
+Using seed: 96759
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.517996    0.465844    0.804444  0.780958      00:15     
+Better model found at epoch 0 with fbeta_binary value: 0.7809582948684692.
+1         0.491001    0.433521    0.855556  0.814020      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.814020037651062.
+2         0.426695    0.440560    0.843611  0.807258      00:16     
+3         0.440068    0.494930    0.852778  0.790348      00:15     
+4         0.376352    0.473518    0.855000  0.804494      00:16     
+5         0.350321    0.457102    0.858056  0.811648      00:15     
+6         0.300793    0.474102    0.856389  0.810692      00:17     
+7         0.297806    0.473648    0.851389  0.808312      00:16     
+8         0.298826    0.490404    0.855000  0.806523      00:16     
+9         0.279767    0.483785    0.853889  0.809834      00:17     
+Total time: 02:47
+Clas RndSeed: 96759,0.8580555319786072,0.814020037651062
+Using seed: 299206
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.520004    0.454690    0.819444  0.787720      00:15     
+Better model found at epoch 0 with fbeta_binary value: 0.7877204418182373.
+1         0.490776    0.449013    0.850833  0.806486      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.8064864873886108.
+2         0.426302    0.434822    0.843056  0.807888      00:16     
+Better model found at epoch 2 with fbeta_binary value: 0.8078884482383728.
+3         0.446373    0.473001    0.855278  0.804356      00:15     
+4         0.375514    0.495886    0.853611  0.801357      00:16     
+5         0.347196    0.483078    0.851944  0.798335      00:16     
+6         0.309389    0.467885    0.847778  0.808659      00:17     
+Better model found at epoch 6 with fbeta_binary value: 0.8086591958999634.
+7         0.301970    0.458953    0.850833  0.807871      00:16     
+8         0.297370    0.483275    0.854722  0.808775      00:15     
+Better model found at epoch 8 with fbeta_binary value: 0.8087751269340515.
+9         0.287735    0.470361    0.853889  0.810519      00:17     
+Better model found at epoch 9 with fbeta_binary value: 0.8105186820030212.
+Total time: 02:58
+Clas RndSeed: 299206,0.8552777767181396,0.8105186820030212
+Using seed: 286259
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.519417    0.470570    0.797778  0.774194      00:15     
+Better model found at epoch 0 with fbeta_binary value: 0.7741935849189758.
+1         0.486794    0.454997    0.848889  0.809923      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.8099231719970703.
+2         0.423176    0.446423    0.843611  0.808046      00:16     
+3         0.451101    0.494083    0.844444  0.771615      00:15     
+4         0.379351    0.460036    0.850556  0.790661      00:16     
+5         0.346084    0.458354    0.856944  0.812931      00:16     
+Better model found at epoch 5 with fbeta_binary value: 0.8129313588142395.
+6         0.299635    0.471615    0.849444  0.807665      00:17     
+7         0.296789    0.469893    0.852500  0.807260      00:16     
+8         0.299443    0.498211    0.855000  0.810732      00:16     
+9         0.285453    0.486855    0.851111  0.806916      00:17     
+Total time: 02:52
+Clas RndSeed: 286259,0.8569444417953491,0.8129313588142395
+Using seed: 271984
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.516242    0.448935    0.820833  0.788871      00:16     
+Better model found at epoch 0 with fbeta_binary value: 0.7888706922531128.
+1         0.486478    0.446439    0.849722  0.805466      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.8054656386375427.
+2         0.427019    0.431917    0.851111  0.813500      00:17     
+Better model found at epoch 2 with fbeta_binary value: 0.8135003447532654.
+3         0.441391    0.458761    0.852500  0.797096      00:15     
+4         0.369604    0.497285    0.846944  0.785353      00:16     
+5         0.344091    0.505020    0.847222  0.781919      00:16     
+6         0.302686    0.478124    0.846667  0.804671      00:17     
+7         0.294197    0.474445    0.853056  0.809232      00:16     
+8         0.301800    0.511505    0.851111  0.798799      00:16     
+9         0.281010    0.501471    0.853056  0.806156      00:17     
+Total time: 02:52
+Clas RndSeed: 271984,0.8530555367469788,0.8135003447532654
+Using seed: 898232
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.518034    0.463838    0.808889  0.783648      00:16     
+Better model found at epoch 0 with fbeta_binary value: 0.7836477756500244.
+1         0.488170    0.437569    0.846944  0.807275      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.8072752356529236.
+2         0.429276    0.429981    0.845833  0.809475      00:16     
+Better model found at epoch 2 with fbeta_binary value: 0.8094747066497803.
+3         0.445909    0.456347    0.851111  0.799851      00:15     
+4         0.373527    0.491660    0.851944  0.794921      00:16     
+5         0.352476    0.470262    0.856944  0.800774      00:16     
+6         0.302486    0.464614    0.850278  0.806463      00:17     
+7         0.291502    0.479224    0.852222  0.805413      00:16     
+8         0.302119    0.501478    0.852500  0.804851      00:16     
+9         0.283737    0.482003    0.851667  0.806381      00:17     
+Total time: 02:50
+Clas RndSeed: 898232,0.8569444417953491,0.8094747066497803
+Using seed: 821055
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.516527    0.458305    0.807778  0.780596      00:15     
+Better model found at epoch 0 with fbeta_binary value: 0.780596137046814.
+1         0.489272    0.462649    0.808611  0.786885      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.7868852615356445.
+2         0.426873    0.438655    0.841111  0.804378      00:16     
+Better model found at epoch 2 with fbeta_binary value: 0.8043776154518127.
+3         0.443115    0.459168    0.848056  0.798229      00:15     
+4         0.376035    0.462210    0.851111  0.808435      00:16     
+Better model found at epoch 4 with fbeta_binary value: 0.8084346055984497.
+5         0.351014    0.464328    0.855556  0.799228      00:15     
+6         0.306527    0.466426    0.851389  0.812741      00:17     
+Better model found at epoch 6 with fbeta_binary value: 0.8127406239509583.
+7         0.298494    0.468815    0.857222  0.814172      00:15     
+Better model found at epoch 7 with fbeta_binary value: 0.8141720294952393.
+8         0.299683    0.492120    0.856111  0.813131      00:15     
+9         0.281360    0.480443    0.853056  0.808818      00:17     
+Total time: 02:57
+Clas RndSeed: 821055,0.8572221994400024,0.8141720294952393
+Using seed: 320694
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.521112    0.480123    0.786944  0.767364      00:16     
+Better model found at epoch 0 with fbeta_binary value: 0.7673643231391907.
+1         0.490031    0.461063    0.834167  0.802775      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.8027750253677368.
+2         0.428515    0.453425    0.827778  0.797914      00:16     
+3         0.448498    0.463726    0.854444  0.797056      00:15     
+4         0.377587    0.439465    0.854444  0.806642      00:16     
+Better model found at epoch 4 with fbeta_binary value: 0.8066419959068298.
+5         0.344778    0.468956    0.856111  0.796863      00:16     
+6         0.301553    0.465210    0.848611  0.805704      00:17     
+7         0.296535    0.467131    0.856111  0.813535      00:16     
+Better model found at epoch 7 with fbeta_binary value: 0.8135348558425903.
+8         0.296630    0.490071    0.854167  0.809576      00:15     
+9         0.279680    0.479466    0.857778  0.812179      00:17     
+Total time: 02:52
+Clas RndSeed: 320694,0.8577777743339539,0.8135348558425903
+Using seed: 9551
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.516390    0.460363    0.807500  0.781181      00:15     
+Better model found at epoch 0 with fbeta_binary value: 0.7811809182167053.
+1         0.488516    0.432950    0.850278  0.812130      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.8121297359466553.
+2         0.426152    0.433566    0.845278  0.809573      00:16     
+3         0.439009    0.452540    0.854444  0.805638      00:15     
+4         0.375048    0.460855    0.854444  0.794992      00:16     
+5         0.345255    0.444346    0.860556  0.813244      00:16     
+Better model found at epoch 5 with fbeta_binary value: 0.8132440447807312.
+6         0.302812    0.455976    0.847778  0.806497      00:17     
+7         0.292808    0.467501    0.853056  0.806864      00:16     
+8         0.301194    0.482844    0.851667  0.804396      00:15     
+9         0.281052    0.483205    0.850000  0.802053      00:17     
+Total time: 02:49
+Clas RndSeed: 9551,0.8605555295944214,0.8132440447807312
+Using seed: 204081
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.516646    0.461785    0.810000  0.782027      00:15     
+Better model found at epoch 0 with fbeta_binary value: 0.7820267677307129.
+1         0.490056    0.437962    0.848056  0.810530      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.8105299472808838.
+2         0.426865    0.431752    0.840556  0.805819      00:16     
+3         0.442760    0.446181    0.853889  0.799543      00:15     
+4         0.375774    0.453817    0.855278  0.808526      00:16     
+5         0.351237    0.461227    0.855278  0.807820      00:16     
+6         0.311169    0.462309    0.850278  0.810545      00:17     
+Better model found at epoch 6 with fbeta_binary value: 0.8105447888374329.
+7         0.305811    0.467490    0.850000  0.804348      00:16     
+8         0.303042    0.476562    0.851111  0.805656      00:15     
+9         0.288297    0.476076    0.850278  0.806602      00:17     
+Total time: 02:49
+Clas RndSeed: 204081,0.8552777767181396,0.8105447888374329
+Using seed: 938836
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.518129    0.453396    0.813056  0.783810      00:16     
+Better model found at epoch 0 with fbeta_binary value: 0.7838098406791687.
+1         0.488517    0.458108    0.827222  0.800000      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.800000011920929.
+2         0.428252    0.423210    0.846667  0.808067      00:16     
+Better model found at epoch 2 with fbeta_binary value: 0.8080667853355408.
+3         0.444683    0.451504    0.853333  0.808000      00:15     
+4         0.376977    0.461961    0.850278  0.804498      00:16     
+5         0.349729    0.472671    0.851944  0.798640      00:15     
+6         0.301837    0.481282    0.847222  0.802016      00:17     
+7         0.299830    0.478933    0.848333  0.805278      00:16     
+8         0.298851    0.500747    0.851944  0.806111      00:15     
+9         0.282721    0.488303    0.851944  0.806111      00:17     
+Total time: 02:49
+Clas RndSeed: 938836,0.8533333539962769,0.8080667853355408
+Using seed: 958733
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.518994    0.480049    0.781389  0.765145      00:15     
+Better model found at epoch 0 with fbeta_binary value: 0.7651447653770447.
+1         0.484533    0.476385    0.850278  0.803643      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.803642988204956.
+2         0.426668    0.423524    0.856389  0.808021      00:16     
+Better model found at epoch 2 with fbeta_binary value: 0.8080207705497742.
+3         0.444908    0.444829    0.857500  0.803071      00:15     
+4         0.373132    0.473952    0.856111  0.807148      00:16     
+5         0.344723    0.493266    0.856111  0.801684      00:16     
+6         0.308661    0.469444    0.850556  0.809625      00:17     
+Better model found at epoch 6 with fbeta_binary value: 0.809624969959259.
+7         0.296607    0.475990    0.854167  0.811625      00:16     
+Better model found at epoch 7 with fbeta_binary value: 0.8116253614425659.
+8         0.297798    0.500406    0.856944  0.811009      00:15     
+9         0.281990    0.490105    0.856111  0.812590      00:17     
+Better model found at epoch 9 with fbeta_binary value: 0.8125904202461243.
+Total time: 02:57
+Clas RndSeed: 958733,0.8575000166893005,0.8125904202461243
+Using seed: 315055
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.517064    0.463216    0.806667  0.782907      00:15     
+Better model found at epoch 0 with fbeta_binary value: 0.7829070687294006.
+1         0.488877    0.465801    0.816111  0.793769      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.7937694787979126.
+2         0.430633    0.442270    0.847222  0.811385      00:17     
+Better model found at epoch 2 with fbeta_binary value: 0.811385452747345.
+3         0.447214    0.478092    0.851667  0.795088      00:15     
+4         0.378846    0.484397    0.853889  0.796282      00:16     
+5         0.348667    0.454618    0.855556  0.807692      00:16     
+6         0.306489    0.466318    0.852222  0.806686      00:17     
+7         0.299384    0.460878    0.851944  0.807789      00:16     
+8         0.300339    0.473678    0.853889  0.807467      00:15     
+9         0.281093    0.469465    0.854167  0.810127      00:17     
+Total time: 02:50
+Clas RndSeed: 315055,0.855555534362793,0.811385452747345
+Using seed: 796153
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.517446    0.474292    0.791111  0.770871      00:16     
+Better model found at epoch 0 with fbeta_binary value: 0.7708714008331299.
+1         0.487866    0.450904    0.850278  0.810278      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.810278058052063.
+2         0.429069    0.425885    0.853611  0.807030      00:16     
+3         0.448886    0.436784    0.854167  0.809299      00:15     
+4         0.372292    0.496409    0.859722  0.797919      00:16     
+5         0.345748    0.474177    0.855833  0.795266      00:16     
+6         0.304285    0.472228    0.856944  0.808621      00:17     
+7         0.293261    0.467229    0.858889  0.812408      00:16     
+Better model found at epoch 7 with fbeta_binary value: 0.8124077320098877.
+8         0.299286    0.483797    0.860278  0.814048      00:15     
+Better model found at epoch 8 with fbeta_binary value: 0.8140481114387512.
+9         0.282536    0.477393    0.858056  0.813843      00:17     
+Total time: 02:52
+Clas RndSeed: 796153,0.8602777719497681,0.8140481114387512
+Using seed: 444955
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.520484    0.467755    0.799167  0.777607      00:16     
+Better model found at epoch 0 with fbeta_binary value: 0.7776068449020386.
+1         0.485414    0.454492    0.848611  0.812522      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.8125215172767639.
+2         0.426650    0.430308    0.850000  0.805895      00:17     
+3         0.449670    0.440030    0.849167  0.803759      00:15     
+4         0.381315    0.485391    0.851944  0.793970      00:16     
+5         0.350302    0.455116    0.855278  0.806535      00:16     
+6         0.300555    0.470890    0.851667  0.810369      00:17     
+7         0.300964    0.470338    0.855833  0.811888      00:16     
+8         0.302196    0.491289    0.855278  0.810062      00:16     
+9         0.282528    0.484849    0.857500  0.813793      00:17     
+Better model found at epoch 9 with fbeta_binary value: 0.8137930631637573.
+Total time: 02:51
+Clas RndSeed: 444955,0.8575000166893005,0.8137930631637573
+Using seed: 350366
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.516666    0.464306    0.805278  0.779073      00:15     
+Better model found at epoch 0 with fbeta_binary value: 0.7790734767913818.
+1         0.486749    0.451806    0.846111  0.797515      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.7975146174430847.
+2         0.432070    0.427546    0.851667  0.809286      00:17     
+Better model found at epoch 2 with fbeta_binary value: 0.8092857003211975.
+3         0.444684    0.498943    0.852500  0.787345      00:15     
+4         0.371113    0.485153    0.852778  0.794574      00:16     
+5         0.353670    0.461308    0.851944  0.798488      00:16     
+6         0.306330    0.458773    0.853889  0.812678      00:17     
+Better model found at epoch 6 with fbeta_binary value: 0.8126780390739441.
+7         0.299633    0.468423    0.859722  0.811215      00:15     
+8         0.299508    0.488442    0.855278  0.808385      00:15     
+9         0.285177    0.476869    0.856389  0.810969      00:17     
+Total time: 02:51
+Clas RndSeed: 350366,0.8597221970558167,0.8126780390739441
+Using seed: 825709
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.519910    0.459164    0.810278  0.783243      00:15     
+Better model found at epoch 0 with fbeta_binary value: 0.7832433581352234.
+1         0.490477    0.461846    0.850833  0.800149      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.8001488447189331.
+2         0.425947    0.423329    0.850833  0.808146      00:17     
+Better model found at epoch 2 with fbeta_binary value: 0.8081457018852234.
+3         0.445358    0.451196    0.851944  0.795707      00:15     
+4         0.371755    0.492959    0.852222  0.791699      00:16     
+5         0.346917    0.485183    0.850833  0.796359      00:16     
+6         0.307255    0.477157    0.842500  0.803602      00:17     
+7         0.292269    0.486619    0.852500  0.800451      00:16     
+8         0.299640    0.511996    0.850833  0.800297      00:15     
+9         0.283230    0.493914    0.850556  0.805072      00:17     
+Total time: 02:49
+Clas RndSeed: 825709,0.8525000214576721,0.8081457018852234
+Using seed: 245080
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.517839    0.463188    0.811667  0.784625      00:16     
+Better model found at epoch 0 with fbeta_binary value: 0.7846251726150513.
+1         0.485510    0.458313    0.840000  0.806452      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.8064516186714172.
+2         0.433391    0.419225    0.852222  0.811881      00:16     
+Better model found at epoch 2 with fbeta_binary value: 0.8118812441825867.
+3         0.447815    0.445253    0.851389  0.805667      00:15     
+4         0.370143    0.491595    0.858611  0.802637      00:16     
+5         0.348839    0.475181    0.854167  0.797532      00:16     
+6         0.307162    0.464469    0.845278  0.804904      00:17     
+7         0.297758    0.465538    0.854722  0.807508      00:16     
+8         0.299203    0.485117    0.855278  0.809646      00:15     
+9         0.283087    0.473194    0.852778  0.808526      00:17     
+Total time: 02:50
+Clas RndSeed: 245080,0.8586111068725586,0.8118812441825867
+Using seed: 842725
+Default Rules:
+ ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
+
+
+Number of positive samples: 9253
+Number of negative samples: 14747
+Total samples: 24000
+Test prevalence(n = 3600): 0.3938888888888889
+Valid prevalence(n = 3600): 0.3852777777777778
+Train all prevalence(n = 16800): 0.3838095238095238
+all samples (n = 24000)
+Train Pos Cases:(6448, 11),Train Neg Cases:(10352, 11)
+Train prevalence (n = 20704): 0.5
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5}
+epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
+0         0.518650    0.463071    0.813056  0.789490      00:16     
+Better model found at epoch 0 with fbeta_binary value: 0.7894901037216187.
+1         0.485079    0.458320    0.843611  0.805661      00:16     
+Better model found at epoch 1 with fbeta_binary value: 0.8056610226631165.
+2         0.422990    0.437191    0.839444  0.798325      00:17     
+3         0.444737    0.447332    0.851389  0.805948      00:15     
+Better model found at epoch 3 with fbeta_binary value: 0.8059484958648682.
+4         0.371090    0.478108    0.851667  0.800448      00:16     
+5         0.346379    0.465784    0.858611  0.810710      00:16     
+Better model found at epoch 5 with fbeta_binary value: 0.8107103109359741.
+6         0.307852    0.472533    0.845278  0.802131      00:17     
+7         0.296038    0.474236    0.850833  0.805082      00:16     
+8         0.299918    0.498825    0.850000  0.805475      00:15     
+9         0.280993    0.489481    0.851944  0.807094      00:17     
+Total time: 02:52
+Clas RndSeed: 842725,0.8586111068725586,0.8107103109359741
