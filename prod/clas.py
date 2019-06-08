@@ -47,7 +47,7 @@ def split_rebal_data(all_texts_df:DataFrame, clas_col:str='is_humor', split_seed
 def fit_clas(model_path:str, sp_model:str, flat_loss:bool=True, qrnn:bool=True,
              n_hid:int=2304, load_enc:str=None, split_seed:int=None, backward:bool=False):
     PATH = Path(model_path)
-    torch.backends.cudnn.enabled=False
+    #torch.backends.cudnn.enabled=False
     
     defaults.text_spec_tok.append(NL) #add a New Line special char
     sp_vocab = Vocab( get_itos(sp_model) )
@@ -75,12 +75,12 @@ def fit_clas(model_path:str, sp_model:str, flat_loss:bool=True, qrnn:bool=True,
     if flat_loss: learn.loss_func = FlattenedLoss(LabelSmoothingCrossEntropy)
     learn.unfreeze()
 
+    # learn.fit_one_cycle(20, slice(1e-2/(2.6**4),1e-2), moms=(0.7,0.4), pct_start=0.25, div_factor=8.,
+    #                     callbacks=[SaveModelCallback(learn,every='improvement',mode='max',
+    #                                                  monitor='accuracy',name=f'best_acc_model_Q_{seed}')])
     learn.fit_one_cycle(20, slice(1e-2/(2.6**4),1e-2), moms=(0.7,0.4), pct_start=0.25, div_factor=8.,
                         callbacks=[SaveModelCallback(learn,every='improvement',mode='max',
-                                                     monitor='accuracy',name=f'best_acc_model_Q_{seed}')])
-    # learn.fit(20, slice(1e-2/(2.6**5), 1e-2/8.),
-    #           callbacks=[SaveModelCallback(learn,every='improvement',mode='max',
-    #                                        monitor='accuracy',name='best_acc_model_Q')])
+                                                     monitor='fbeta_binary',name=f'best_acc_model_Q_{seed}')])
     learn.save(f"haha_clas{seed}{'_bwd' if backward else ''}")
     df_metrics = pd.DataFrame(np.array(learn.recorder.metrics),columns=learn.recorder.metrics_names)
     print(f"Clas RndSeed: {seed},{df_metrics['accuracy'].max()},{df_metrics['fbeta_binary'].max()}")

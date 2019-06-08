@@ -30,11 +30,16 @@ Original:
   * Average outputs for classifer softmax before making choice (single seeds might be better, but not many possible entries)
   * [SMOTE to balance classes](https://jair.org/index.php/jair/article/view/10302)
 
+0607/0608 models:
+  * 1.0 drop mult on LM
+  * Select based on `fbeta_binary` metric
+  
 
 3. Ideas:
   ~~* BiDir LSTM for classification?  And for LM?~~
   * Backward and averaging?
   * Back Translate ES-EN-ES to get new version (And at test time)
-  * Higher Dropmult for LM (closer to 1.) and train for 4 epochs?
-  * Select on F1 rather than Accuracy?  (becuase that is comp metric)
-  * Does the top-half of models in the acc distribution land in the top-half of the test distribution?  Or it is all over the place?
+  * ~~Higher Dropmult for LM (closer to 1.) and train for 4 epochs?~~
+  * ~~Select on F1 rather than Accuracy?  (becuase that is comp metric)~~
+  * ~~Does the top-half of models in the acc distribution land in the top-half of the test distribution?  Or it is all over the place?~~
+  * Cross validate for models also?  5-fold across the dataset? Trying with different training./validation splits for variety of model?
