@@ -9,7 +9,6 @@ import sentencepiece as spm #https://github.com/google/sentencepiece
 import fire
 
 from sp_tok import *
-from bin_metrics import Fbeta_binary
 
 def split_data(all_texts_df:DataFrame, split_seed:int=None):
     if split_seed: np.random.seed(split_seed)
@@ -55,7 +54,7 @@ def fit_clas(model_path:str, sp_model:str,
     learn.fit_one_cycle(20, slice(1e-2/(2.6**4),1e-2), moms=(0.7,0.4), pct_start=0.25, div_factor=8.,
                         callbacks=[SaveModelCallback(learn,every='improvement',mode='min',
                                                      monitor='valid_loss',name='best_vloss_model_Q')])
-    learn.save(f'haha_regr_{seed}')
+    learn.save(f'haha_regr_bd_{seed}')
     print(f"Reg RndSeed: {seed},{min(learn.recorder.val_losses)}")
     
 if __name__ == "__main__":
