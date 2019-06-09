@@ -53,7 +53,7 @@ def fit_clas(model_path:str, sp_model:str,
         learn.fit_one_cycle(10, slice(1e-2/(2.6**4),1e-2), moms=(0.7,0.4), pct_start=0.25, div_factor=8.,
                             callbacks=[SaveModelCallback(learn,every='improvement',mode='min',
                                                          name='best_vloss_model_Q')])
-        learn.save(f'haha_regr_fld{n_fold}_{seed}')
+        learn.save(f'haha_regr_0609_fld{n_fold}_{seed}')
         print(f"Reg Fold: {n_fold} RndSeed: {seed},{min(learn.recorder.val_losses)}")
     
 if __name__ == "__main__":
