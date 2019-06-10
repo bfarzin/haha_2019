@@ -9,6 +9,7 @@ import sentencepiece as spm #https://github.com/google/sentencepiece
 import fire
 
 from sp_tok import *
+from nlp_mixup import *
 from bin_metrics import Fbeta_binary
 from sklearn.model_selection import KFold
 
@@ -42,7 +43,7 @@ def split_rebal_data_by_idx(all_texts_df:DataFrame, train_idx, valid_idx,
     
 def fit_clas(model_path:str, sp_model:str, flat_loss:bool=True, qrnn:bool=True,
              n_hid:int=2304, load_enc:str=None, split_seed:int=None, backward:bool=False,
-             wd:float=0.):
+             wd:float=0., mixup:bool=True):
     PATH = Path(model_path)
     # torch.backends.cudnn.enabled=False
     
@@ -67,17 +68,22 @@ def fit_clas(model_path:str, sp_model:str, flat_loss:bool=True, qrnn:bool=True,
         config = awd_lstm_clas_config.copy()
         config['qrnn'] = qrnn
         config['n_hid'] = n_hid
+        config['mixup'] = mixup
         print(config)
         learn = text_classifier_learner(data, AWD_LSTM, drop_mult=0.7,pretrained=False,config=config)
         learn.metrics += [Fbeta_binary(beta2=1,clas=1)]
         if load_enc : learn.load_encoder(load_enc)
         if flat_loss: learn.loss_func = FlattenedLoss(LabelSmoothingCrossEntropy)
-        learn.fit_one_cycle(2, 1e-2, wd=wd )
+        learn.callback_fns.append(partial(NLP_MixUpCallback,alpha=0.4,stack_x=False,stack_y=False))
+        
+        learn.fit_one_cycle(2, 1e-2)
+        learn.freeze_to(-2)
+        learn.fit_one_cycle(3, slice(1e-3/(2.6**4),5e-3), moms=(0.8,0.7))
         learn.unfreeze()
-        learn.fit_one_cycle(15, slice(1e-3/(2.6**4),5e-3), moms=(0.7,0.4), wd=wd, pct_start=0.25, div_factor=8.,
+        learn.fit_one_cycle(15, slice(1e-3/(2.6**4),5e-3), moms=(0.7,0.4), pct_start=0.25, div_factor=10.,
                             callbacks=[SaveModelCallback(learn,every='improvement',mode='max',
                                                          monitor='fbeta_binary',name=f'best_acc_model_Q_{seed}')])
-        learn.save(f"haha_clas_0609_fld{n_fold}_{seed}{'_bwd' if backward else ''}")
+        learn.save(f"haha_clas_0610_mix_fld{n_fold}_{seed}{'_bwd' if backward else ''}")
         df_metrics = pd.DataFrame(np.array(learn.recorder.metrics),columns=learn.recorder.metrics_names)
         print(f"Clas Fold: {n_fold} RndSeed: {seed},{df_metrics['accuracy'].max()},{df_metrics['fbeta_binary'].max()}")
     
