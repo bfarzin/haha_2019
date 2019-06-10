@@ -5,28 +5,160 @@ Default Rules:
 
 {'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5, 'mixup': 1}
 epoch     train_loss  valid_loss  time    
-0         0.756801    0.659489    00:07     
-1         0.711485    0.650215    00:07     
+0         0.769201    0.675920    00:07     
+1         0.731151    0.658281    00:07     
 Total time: 00:14
 epoch     train_loss  valid_loss  time    
-0         0.711729    0.636074    00:08     
-1         0.673229    0.599165    00:08     
-2         0.649758    0.593089    00:07     
-Total time: 00:23
+0         0.723738    0.640506    00:08     
+1         0.695348    0.605668    00:08     
+2         0.685207    0.616684    00:08     
+Total time: 00:24
 epoch     train_loss  valid_loss  time    
-0         0.631942    0.586970    00:16     
-Better model found at epoch 0 with valid_loss value: 0.5869696736335754.
-1         0.653392    0.580639    00:16     
-Better model found at epoch 1 with valid_loss value: 0.5806390643119812.
-2         0.668582    0.571362    00:16     
-Better model found at epoch 2 with valid_loss value: 0.5713620185852051.
-3         0.566169    0.591013    00:16     
-4         0.582715    0.624202    00:16     
-5         0.551546    0.608400    00:16     
-6         0.482970    0.612861    00:16     
-7         0.475075    0.607384    00:16     
-8         0.492797    0.597212    00:16     
-9         0.439924    0.598083    00:16     
-10        0.449651    0.600099    00:16     
-11        0.435795    0.611336    00:16     
-12        0.418595    0.611553    00:16     
+0         0.672075    0.605911    00:16     
+Better model found at epoch 0 with valid_loss value: 0.60591059923172.
+1         0.689148    0.582974    00:16     
+Better model found at epoch 1 with valid_loss value: 0.5829739570617676.
+2         0.701170    0.569293    00:16     
+Better model found at epoch 2 with valid_loss value: 0.5692927241325378.
+3         0.612243    0.571741    00:16     
+4         0.634984    0.610290    00:16     
+5         0.615142    0.575231    00:16     
+6         0.565510    0.578984    00:16     
+7         0.560894    0.588437    00:16     
+8         0.586584    0.577314    00:16     
+9         0.538621    0.566661    00:16     
+Better model found at epoch 9 with valid_loss value: 0.5666607022285461.
+10        0.546837    0.585708    00:16     
+11        0.549397    0.594650    00:16     
+12        0.526512    0.581797    00:16     
+13        0.504961    0.581457    00:16     
+14        0.532405    0.582125    00:16     
+Total time: 04:19
+Reg Fold: 0 RndSeed: 460304,0.5666607022285461
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5, 'mixup': 1}
+epoch     train_loss  valid_loss  time    
+0         0.753910    0.681736    00:07     
+1         0.740531    0.628776    00:07     
+Total time: 00:15
+epoch     train_loss  valid_loss  time    
+0         0.710133    0.611021    00:08     
+1         0.719114    0.606462    00:08     
+2         0.640315    0.610026    00:08     
+Total time: 00:25
+epoch     train_loss  valid_loss  time    
+0         0.640373    0.574404    00:16     
+Better model found at epoch 0 with valid_loss value: 0.5744044184684753.
+1         0.672953    0.588476    00:16     
+2         0.660086    0.568877    00:16     
+Better model found at epoch 2 with valid_loss value: 0.5688773393630981.
+3         0.666727    0.567022    00:16     
+Better model found at epoch 3 with valid_loss value: 0.5670220851898193.
+4         0.649409    0.587592    00:17     
+5         0.639471    0.568261    00:16     
+6         0.591117    0.570999    00:16     
+7         0.558981    0.562210    00:16     
+Better model found at epoch 7 with valid_loss value: 0.5622100234031677.
+8         0.539705    0.549539    00:16     
+Better model found at epoch 8 with valid_loss value: 0.5495392680168152.
+9         0.568701    0.560841    00:16     
+10        0.506891    0.553906    00:16     
+11        0.510993    0.563111    00:16     
+12        0.501939    0.566175    00:16     
+13        0.515497    0.568418    00:16     
+14        0.512377    0.576556    00:16     
+Total time: 04:22
+Reg Fold: 1 RndSeed: 460304,0.5495392680168152
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5, 'mixup': 1}
+epoch     train_loss  valid_loss  time    
+0         0.774992    0.647831    00:07     
+1         0.738022    0.634938    00:07     
+Total time: 00:15
+epoch     train_loss  valid_loss  time    
+0         0.715548    0.590213    00:08     
+1         0.698696    0.564548    00:08     
+2         0.687840    0.564179    00:08     
+Total time: 00:25
+epoch     train_loss  valid_loss  time    
+0         0.663549    0.551710    00:16     
+Better model found at epoch 0 with valid_loss value: 0.5517098307609558.
+1         0.666895    0.570871    00:16     
+2         0.711208    0.556078    00:16     
+3         0.674850    0.556030    00:16     
+4         0.648940    0.518574    00:16     
+Better model found at epoch 4 with valid_loss value: 0.5185738801956177.
+5         0.635202    0.542404    00:16     
+6         0.630092    0.540981    00:16     
+7         0.555682    0.541058    00:16     
+8         0.532694    0.534977    00:16     
+9         0.581535    0.560295    00:16     
+10        0.503239    0.550929    00:16     
+11        0.530082    0.579943    00:16     
+12        0.499440    0.555529    00:16     
+13        0.509377    0.552192    00:16     
+14        0.483828    0.550152    00:16     
+Total time: 04:15
+Reg Fold: 2 RndSeed: 460304,0.5185738801956177
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5, 'mixup': 1}
+epoch     train_loss  valid_loss  time    
+0         0.778295    0.595371    00:07     
+1         0.704654    0.605609    00:07     
+Total time: 00:15
+epoch     train_loss  valid_loss  time    
+0         0.745106    0.612366    00:08     
+1         0.695911    0.563921    00:08     
+2         0.650071    0.567451    00:08     
+Total time: 00:25
+epoch     train_loss  valid_loss  time    
+0         0.674797    0.569967    00:16     
+Better model found at epoch 0 with valid_loss value: 0.5699668526649475.
+1         0.688413    0.566016    00:16     
+Better model found at epoch 1 with valid_loss value: 0.566015899181366.
+2         0.660094    0.561470    00:16     
+Better model found at epoch 2 with valid_loss value: 0.5614699721336365.
+3         0.618792    0.552251    00:16     
+Better model found at epoch 3 with valid_loss value: 0.5522514581680298.
+4         0.625289    0.545235    00:16     
+Better model found at epoch 4 with valid_loss value: 0.5452352166175842.
+5         0.623446    0.569070    00:16     
+6         0.612717    0.550264    00:16     
+7         0.568823    0.547076    00:16     
+8         0.556851    0.566569    00:16     
+9         0.522972    0.546925    00:16     
+10        0.537335    0.559616    00:16     
+11        0.466714    0.575974    00:16     
+12        0.512067    0.570413    00:16     
+13        0.505896    0.573959    00:16     
+14        0.495283    0.580683    00:16     
+Total time: 04:22
+Reg Fold: 3 RndSeed: 460304,0.5452352166175842
+{'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5, 'mixup': 1}
+epoch     train_loss  valid_loss  time    
+0         0.780534    0.650136    00:07     
+1         0.729062    0.617825    00:07     
+Total time: 00:15
+epoch     train_loss  valid_loss  time    
+0         0.746441    0.619817    00:08     
+1         0.677718    0.596413    00:08     
+2         0.669193    0.589143    00:08     
+Total time: 00:24
+epoch     train_loss  valid_loss  time    
+0         0.677181    0.591282    00:16     
+Better model found at epoch 0 with valid_loss value: 0.5912822484970093.
+1         0.668816    0.583758    00:16     
+Better model found at epoch 1 with valid_loss value: 0.5837581753730774.
+2         0.703231    0.604928    00:16     
+3         0.663328    0.556967    00:16     
+Better model found at epoch 3 with valid_loss value: 0.5569671988487244.
+4         0.613932    0.566413    00:16     
+5         0.577884    0.573948    00:16     
+6         0.583376    0.565062    00:16     
+7         0.594218    0.578203    00:16     
+8         0.559525    0.590452    00:16     
+9         0.501140    0.570771    00:16     
+10        0.503851    0.581619    00:16     
+11        0.510295    0.579554    00:16     
+12        0.508753    0.590989    00:16     
+13        0.511055    0.587692    00:16     
+14        0.477204    0.594175    00:16     
+Total time: 04:15
+Reg Fold: 4 RndSeed: 460304,0.5569671988487244
