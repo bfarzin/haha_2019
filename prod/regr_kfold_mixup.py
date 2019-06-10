@@ -1,5 +1,5 @@
 from set_seed import random_ctl
-seed = random_ctl()
+seed = random_ctl(460304) #best seed from 20 seed search without mixup
 
 from fastai.text import *
 from fastai.callbacks import SaveModelCallback

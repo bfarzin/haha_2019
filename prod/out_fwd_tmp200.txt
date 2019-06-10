@@ -1,4 +1,4 @@
-Using seed: 925619
+Using seed: 432286
 Default Rules:
  ['fixup', 'replace_rep', 'replace_wrep', 'deal_caps', 'spec_add_spaces', 'rm_useless_spaces', 'sub_nl'] 
 
@@ -14,19 +14,19 @@ Train Pos Cases:(7392, 11),Train Neg Cases:(11808, 11)
 Train prevalence (n = 23616): 0.5
 {'emb_sz': 400, 'n_hid': 2304, 'n_layers': 3, 'pad_token': 1, 'qrnn': 1, 'bidir': False, 'output_p': 0.4, 'hidden_p': 0.3, 'input_p': 0.4, 'embed_p': 0.05, 'weight_p': 0.5, 'mixup': 1}
 epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
-0         0.618473    0.477330    0.841458  0.801461      00:08     
-1         0.604163    0.452195    0.847083  0.797685      00:08     
+0         0.606948    0.466490    0.811875  0.776761      00:08     
+1         0.599427    0.466110    0.847292  0.802373      00:08     
 Total time: 00:17
 epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
-0         0.592367    0.474326    0.831875  0.795437      00:09     
-1         0.574060    0.456376    0.840625  0.805887      00:09     
-2         0.550664    0.447334    0.853125  0.810535      00:09     
+0         0.594437    0.466301    0.833750  0.797565      00:09     
+1         0.580527    0.440020    0.852917  0.811934      00:09     
+2         0.555576    0.445369    0.848958  0.807947      00:09     
 Total time: 00:29
 epoch     train_loss  valid_loss  accuracy  fbeta_binary  time    
-0         0.552598    0.446714    0.851667  0.812533      00:19     
-Better model found at epoch 0 with fbeta_binary value: 0.812532901763916.
-1         0.539082    0.454687    0.850625  0.810568      00:19     
-2         0.543633    0.463052    0.851875  0.803754      00:19     
-3         0.534089    0.453293    0.852708  0.804318      00:19     
-4         0.510541    0.486597    0.848125  0.799780      00:19     
-5         0.505788    0.481453    0.841250  0.797985      00:19     
+0         0.552410    0.447619    0.855833  0.811341      00:19     
+Better model found at epoch 0 with fbeta_binary value: 0.811341404914856.
+1         0.536361    0.447234    0.847500  0.804383      00:19     
+2         0.540589    0.454262    0.842917  0.808240      00:19     
+3         0.544017    0.449589    0.858542  0.813205      00:19     
+Better model found at epoch 3 with fbeta_binary value: 0.8132050037384033.
+4         0.514202    0.461703    0.856250  0.808864      00:19     

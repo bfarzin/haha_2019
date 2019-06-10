@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for n in {1..20};do \
+for n in {1..1};do \
     python clas_kfold_mixup.py \
 	   --model-path '../data/rnn/' \
 	   --sp-model '../all_tweets_es_0609' \
