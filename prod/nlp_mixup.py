@@ -4,7 +4,7 @@ from fastai.torch_core import *
 from fastai.callback import *
 from fastai.basic_train import Learner, LearnerCallback
 
-__all__ = ['NLP_MixUpCallback', 'MixUpLoss', 'AWD_LSTM_mixup', 'text_classifier_learner', '_model_meta']
+__all__ = ['NLP_MixUpCallback',  'AWD_LSTM_mixup', 'text_classifier_learner', '_model_meta']
 
 class NLP_MixUpCallback(LearnerCallback):
     "Callback that creates the mixed-up input and target."
@@ -13,7 +13,7 @@ class NLP_MixUpCallback(LearnerCallback):
         self.alpha,self.stack_x,self.stack_y = alpha,stack_x,stack_y
 
     def on_train_begin(self, **kwargs):
-        if self.stack_y: self.learn.loss_func = MixUpLoss(self.learn.loss_func)
+        if self.stack_y: self.learn.loss_func = m_MixUpLoss(self.learn.loss_func)
 
     def on_batch_begin(self, last_input, last_target, train, **kwargs):
         "Applies mixup to `last_input` and `last_target` if `train`."
@@ -41,7 +41,7 @@ class NLP_MixUpCallback(LearnerCallback):
         if self.stack_y: self.learn.loss_func = self.learn.loss_func.get_old()
 
 
-class MixUpLoss(nn.Module):
+class m_MixUpLoss(nn.Module):
     "Adapt the loss function `crit` to go with mixup."
 
     def __init__(self, crit, reduction='mean'):
@@ -80,7 +80,7 @@ class AWD_LSTM_mixup(nn.Module):
 
     def __init__(self, vocab_sz:int, emb_sz:int, n_hid:int, n_layers:int, pad_token:int=1, hidden_p:float=0.2,
                  input_p:float=0.6, embed_p:float=0.1, weight_p:float=0.5, qrnn:bool=False, bidir:bool=False,
-                mixup:bool=False):
+                 mixup:bool=False):
         super().__init__()
         self.bs,self.qrnn,self.emb_sz,self.n_hid,self.n_layers = 1,qrnn,emb_sz,n_hid,n_layers
         self.mixup = mixup

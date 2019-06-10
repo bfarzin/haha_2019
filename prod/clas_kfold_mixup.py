@@ -70,11 +70,11 @@ def fit_clas(model_path:str, sp_model:str, flat_loss:bool=True, qrnn:bool=True,
         config['n_hid'] = n_hid
         config['mixup'] = mixup
         print(config)
-        learn = text_classifier_learner(data, AWD_LSTM, drop_mult=0.7,pretrained=False,config=config)
+        learn = text_classifier_learner(data, AWD_LSTM_mixup, drop_mult=0.5,pretrained=False,config=config)
         learn.metrics += [Fbeta_binary(beta2=1,clas=1)]
         if load_enc : learn.load_encoder(load_enc)
         if flat_loss: learn.loss_func = FlattenedLoss(LabelSmoothingCrossEntropy)
-        learn.callback_fns.append(partial(NLP_MixUpCallback,alpha=0.4,stack_x=False,stack_y=False))
+        learn.callback_fns.append(partial(NLP_MixUpCallback,alpha=0.4,stack_x=False,stack_y=True))
         
         learn.fit_one_cycle(2, 1e-2)
         learn.freeze_to(-2)
