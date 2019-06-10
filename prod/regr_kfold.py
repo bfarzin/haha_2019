@@ -18,7 +18,7 @@ def split_data_by_idx(all_texts_df:DataFrame, train_idx, valid_idx):
     return df_train, df_valid
     
     
-def fit_clas(model_path:str, sp_model:str,
+def fit_clas(model_path:str, sp_model:str, wd:float=0.,
              qrnn:bool=True, n_hid:int=2304, load_enc:str=None, split_seed:int=None):
     PATH = Path(model_path)
     # torch.backends.cudnn.enabled=False
@@ -48,9 +48,9 @@ def fit_clas(model_path:str, sp_model:str,
         print(config)
         learn = text_classifier_learner(data, AWD_LSTM, drop_mult=0.7,pretrained=False,config=config)
         if load_enc : learn.load_encoder(load_enc)
+        learn.fit_one_cycle(2, 1e-2, wd=wd )
         learn.unfreeze()
-
-        learn.fit_one_cycle(10, slice(1e-2/(2.6**4),1e-2), moms=(0.7,0.4), pct_start=0.25, div_factor=8.,
+        learn.fit_one_cycle(15, slice(1e-3/(2.6**4),5e-3), moms=(0.7,0.4), wd=wd, pct_start=0.25, div_factor=8.,
                             callbacks=[SaveModelCallback(learn,every='improvement',mode='min',
                                                          name='best_vloss_model_Q')])
         learn.save(f'haha_regr_0609_fld{n_fold}_{seed}')

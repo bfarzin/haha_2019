@@ -8,6 +8,7 @@ for n in {1..20};do \
 	   --split-seed 20190313 \
 	   --flat-loss 1 \
 	   --qrnn 1\
+	   --wd 0.1\
 	   --backward 0\
     ;
 done

@@ -41,7 +41,8 @@ def split_rebal_data_by_idx(all_texts_df:DataFrame, train_idx, valid_idx,
         
     
 def fit_clas(model_path:str, sp_model:str, flat_loss:bool=True, qrnn:bool=True,
-             n_hid:int=2304, load_enc:str=None, split_seed:int=None, backward:bool=False):
+             n_hid:int=2304, load_enc:str=None, split_seed:int=None, backward:bool=False,
+             wd:float=0.):
     PATH = Path(model_path)
     # torch.backends.cudnn.enabled=False
     
@@ -62,7 +63,7 @@ def fit_clas(model_path:str, sp_model:str, flat_loss:bool=True, qrnn:bool=True,
         df_train,df_valid = split_rebal_data_by_idx(all_texts_df,train_idx,valid_idx,clas_col='is_humor')    
         data = TextClasDataBunch.from_df(PATH,df_train,df_valid,
                                        tokenizer=mycust_tok, vocab=sp_vocab,
-                                       text_cols='new_text', label_cols='is_humor', backwards=backward)
+                                         text_cols='new_text', label_cols='is_humor', backwards=backward)
         config = awd_lstm_clas_config.copy()
         config['qrnn'] = qrnn
         config['n_hid'] = n_hid
@@ -71,8 +72,9 @@ def fit_clas(model_path:str, sp_model:str, flat_loss:bool=True, qrnn:bool=True,
         learn.metrics += [Fbeta_binary(beta2=1,clas=1)]
         if load_enc : learn.load_encoder(load_enc)
         if flat_loss: learn.loss_func = FlattenedLoss(LabelSmoothingCrossEntropy)
+        learn.fit_one_cycle(2, 1e-2, wd=wd )
         learn.unfreeze()
-        learn.fit_one_cycle(10, slice(1e-2/(2.6**4),1e-2), moms=(0.7,0.4), pct_start=0.25, div_factor=8.,
+        learn.fit_one_cycle(15, slice(1e-3/(2.6**4),5e-3), moms=(0.7,0.4), wd=wd, pct_start=0.25, div_factor=8.,
                             callbacks=[SaveModelCallback(learn,every='improvement',mode='max',
                                                          monitor='fbeta_binary',name=f'best_acc_model_Q_{seed}')])
         learn.save(f"haha_clas_0609_fld{n_fold}_{seed}{'_bwd' if backward else ''}")
