@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: paper_draft.aux
+The style file: spbasic.bst
+Database file #1: local.bib
+Warning--I didn't find a database entry for "tweepy"
+Warning--I didn't find a database entry for "RefB"
+Warning--I didn't find a database entry for "RefJ"
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+You've used 5 entries,
+            3269 wiz_defined-function locations,
+            708 strings with 5881 characters,
+and the built_in function-call counts, 4384 in all, are:
+= -- 390
+> -- 135
+< -- 4
++ -- 49
+- -- 42
+* -- 369
+:= -- 625
+add.period$ -- 4
+call.type$ -- 5
+change.case$ -- 41
+chr.to.int$ -- 5
+cite$ -- 5
+duplicate$ -- 377
+empty$ -- 385
+format.name$ -- 59
+if$ -- 907
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 47
+newline$ -- 25
+num.names$ -- 20
+pop$ -- 111
+preamble$ -- 1
+purify$ -- 34
+quote$ -- 0
+skip$ -- 93
+stack$ -- 0
+substring$ -- 397
+swap$ -- 102
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 45
+warning$ -- 0
+while$ -- 37
+width$ -- 0
+write$ -- 67
+(There were 3 warnings)
