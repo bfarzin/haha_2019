@@ -103,6 +103,8 @@ subject classification numbers as needed.
 \section{Introduction}
 \label{intro}
 Included citations as necessary: ~\cite{Nobody06}
+\paragraph{Contribution} Our contribution with this work is..
+
 \section{Task and Dataset Description}
 \label{sec:task}
 The \textit{Humor Analysis based on Humor Annotation (HAHA)} competition asked for analysis of two tasks in the Spanish language based on a coprpus of publicly collected data ~\cite{castro2018crowd}:
@@ -114,48 +116,66 @@ HAHA dataset includes labeled data for 24,000 tweets and a test set of 6,000 twe
 
 \section{System Description}
 \label{sec:system}
-We follow the method of ULMFiT ~\cite{DBLP:journals/corr/abs-1801-06146} and train a language model based on a larger corpus.
 
-Since we are working with Twitter data, we collected 475,143 tweets in the spanish lanugage using tweepy ~\cite{tweepy}.
-Text with citations \cite{RefB} and \cite{RefJ}.
-\subsection{Data and Cleanup}
-\label{sec:cleaning}
+We generally follow the method of ULMFiT ~\cite{DBLP:journals/corr/abs-1801-06146}
+\begin{enumerate}
+	\item Train a language model (LM) on a large corpus of data
+	\item Fine-tune the LM based on the target task language data
+	\item Replace the final layer of the LM with a softmax or linear output layer and then fine-tune on the particular task at hand (classification or regression)
+\end{enumerate}
+Below we will give more detail on each step and the parameters used to generate our system.
+\subsection{Data, Cleanup \& Tokenization}
+\label{sec:datacleaning}
+\subsection{Additional Data}
+For our initial training, we  collected 475,143 tweets in the Spanish language using tweepy ~\cite{tweepy}.  The vocabulary and frequency of terms, punctuation and vocabulary can be quite different from the standard Wikipedia corpus that is used to train.
 
-Using sentencepiece~\cite{DBLP:journals/corr/abs-1808-06226} to parte into sub-word units,
+We combined the labeled and un-labeled text data so that we have the largest corpus of language for our fine-tuning step. 
 
-Clean by removing the new-line character \verb|\n| in each of the tweets and replacing with \verb|xxnl|.
+\subsection{Cleaning}
+We applied a list of default cleanup functions included in Fastai and added an additional one for this Twitter dataset.
+\begin{itemize}
+	\item Add spaces between special chars (ie. \verb|!!!| to \verb|! ! !|)
+	\item Remove useless spaces (remove more than 2 spaces in sequence)
+	\item Replace repetition at the character level (ie. \verb|grrrreat| becomes \verb|g xxrep r 3 eat|)
+	\item Replace repition at the word level (similar to above)
+	\item Deal with ALL CAPS words replacing with a token and converting to lower case.
+	\item \textbf{NEW:} Move all text onto a single line by replacing new-lines inside a tweet with a reserved word (ie. \verb|\n| to \verb|xxnl|)
+\end{itemize} 
 
-Use standard pre-processing rules (show example of cleaned up text):
+\pagebreak  %move as needed to keep tweet text together
+Here is an example of replacing the original tweet with our parsed version.
 
 Original:
 \begin{verbatim} 
-Saber, entender y estar convencides que la frase 
-#LaESILaDefendemosEntreTodes es nuestra linea es nuestro eje.
+Saber, entender y estar convencides que la frase \
+#LaESILaDefendemosEntreTodes es nuestra linea es nuestro eje.\
 #AlertaESI!!!!
-Vamos por mas!!! e invitamos a todas aquellas personas que quieran 
+Vamos por mas!!! e invitamos a todas aquellas personas que quieran \
 se parte.
 \end{verbatim}
 
 Cleaned up:
 \begin{verbatim} 
-xxbos saber , entender y estar convencides que la frase 
-# laesiladefendemosentretodes es nuestra linea es nuestro eje.
-xxnl  # alertaesi xxrep 4 ! xxnl vamos por mas ! ! ! e invitamos a 
+xxbos saber , entender y estar convencides que la frase \
+# laesiladefendemosentretodes es nuestra linea es nuestro eje.\
+xxnl  # alertaesi xxrep 4 ! xxnl vamos por mas ! ! ! e invitamos a \
 todas aquellas personas que quieran se parte.
 \end{verbatim}
 
+\subsection{Tokenization}
+We used sentencepiece~\cite{DBLP:journals/corr/abs-1808-06226} to parse into sub-word units and reduce the possible out-of-vocabulary (OOV) terms in the data set.  We selected a vocab size of 30,000 sub-word units and got 99.95\% character coverage including emojis.
+
+\section{Training and Results}
+\label{sec:4}
+LM: 10\% validation set for training
+
+
 oversample minority class to balance for better training using SMOTE \cite{Chawla:2002:SSM:1622407.1622416}
 
-\paragraph{Paragraph headings} Use paragraph headings as needed.
-\begin{equation}
-a^2+b^2=c^2
-\end{equation}
-
-\section{Experiments and Results}
-\label{sec:4}
+\subsection{Random Seed as a Hyperparamter}
 
 \section{Conclusion}
-\label{sec:4}
+\label{sec:5}
 
 \section*{Acknowlegements}
 % For one-column wide figures use
@@ -215,21 +235,6 @@ number & number & number \\
 %\bibliographystyle{spmpsci}      % mathematics and physical sciences
 %\bibliographystyle{spphys}       % APS-like style for physics
 \bibliography{local}   % name your BibTeX data base
-
-% Non-BibTeX users please use
-%\begin{thebibliography}{}
-%
-% and use \bibitem to create references. Consult the Instructions
-% for authors for reference list style.
-%
-%\bibitem{RefJ}
-% Format for Journal Reference
-%Author, Article title, Journal, Volume, page numbers (year)
-% Format for books
-%\bibitem{RefB}
-%Author, Book title, page numbers. Publisher, place (year)
-% etc
-%\end{thebibliography}
 
 \end{document}
 % end of file template.tex
