@@ -9,16 +9,16 @@ I was expecting a `,' or a `}'---line 73 of file local.bib
  :  url = {http://github.com/tweepy/tweepy}
  :                                         .
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "DBLP:journals/corr/abs-1801-06146"
 Warning--I didn't find a database entry for ""
 Warning--I didn't find a database entry for "labelsmooth"
 Warning--I didn't find a database entry for "smith"
+Warning--I didn't find a database entry for "HowarRuder:DBLP:journals/corr/abs-1801-06146"
 Warning--I didn't find a database entry for "poleval"
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Warning--to sort, need author or key in Tweepy
 You've used 6 entries,
             3269 wiz_defined-function locations,
-            713 strings with 6072 characters,
+            713 strings with 6096 characters,
 and the built_in function-call counts, 4686 in all, are:
 = -- 419
 > -- 135
