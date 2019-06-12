@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.11)  11 JUN 2019 19:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.11)  11 JUN 2019 20:19
 entering extended mode
 **./paper_draft.tex
 (paper_draft.tex
@@ -283,38 +283,55 @@ G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
 SVJour3 warning: Missing \journalname
+SVJour3 warning: Missing \institute
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 93.
+(Font)              <7> on input line 99.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 93.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 93.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 93.
+(Font)              <5> on input line 99.
 
-Overfull \hbox (20.82005pt too wide) in paragraph at lines 110--111
+Underfull \hbox (badness 2617) in paragraph at lines 99--99
+ 
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 99.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 99.
+
+SVJour3 Warning: Author name(s) too long for running head. 
+Please supply a shorter form with \authorrunning prior to \maketitle
+
+Overfull \hbox (20.82005pt too wide) in paragraph at lines 116--117
 \OT1/cmr/m/n/10 col-lected data  [[]]: 
  []
 
 [1{C:/Users/Bobak Farzin/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 
-LaTeX Warning: Citation `tweepy' on page 2 undefined on input line 130.
+LaTeX Warning: Citation `tweepy' on page 2 undefined on input line 136.
 
 
-Overfull \hbox (31.08258pt too wide) in paragraph at lines 139--140
+Overfull \hbox (31.08258pt too wide) in paragraph at lines 145--146
 []\OT1/cmr/m/n/10 Replace rep-e-ti-tion at the char-ac-ter level (ie. [][]\OT1/
 cmtt/m/n/10 grrrreat []\OT1/cmr/m/n/10 be-comes [][]\OT1/cmtt/m/n/10 g xxrep r 
 3 eat[]\OT1/cmr/m/n/10 ) 
  []
 
+
+Underfull \vbox (badness 3724) has occurred while \output is active []
+
+
+Overfull \hbox (13.14255pt too wide) has occurred while \output is active
+[][] []
+ []
+
 [2]
-Overfull \hbox (18.99689pt too wide) in paragraph at lines 155--155
+Overfull \hbox (18.99689pt too wide) in paragraph at lines 161--161
 []\OT1/cmtt/m/n/10 Vamos por mas!!! e invitamos a todas aquellas personas que q
 uieran \[] 
  []
 
 
-Overfull \hbox (18.99689pt too wide) in paragraph at lines 163--163
+Overfull \hbox (18.99689pt too wide) in paragraph at lines 169--169
 []\OT1/cmtt/m/n/10 xxnl  # alertaesi xxrep 4 ! xxnl vamos por mas ! ! ! e invit
 amos a \[] 
  []
@@ -327,7 +344,7 @@ Package epstopdf Info: Source file: <example.eps>
 (epstopdf)                    size: 2431 bytes
 (epstopdf)             Command: <epstopdf --outfile=example-eps-converted-to.pd
 f example.eps>
-(epstopdf)             \includegraphics on input line 185.
+(epstopdf)             \includegraphics on input line 191.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -336,7 +353,7 @@ on: found PDF version <1.7>, but at most version <1.5> allowed
 <example-eps-converted-to.pdf, id=18, 202.7575pt x 202.7575pt>
 File: example-eps-converted-to.pdf Graphic file (type pdf)
 <use example-eps-converted-to.pdf>
-Package pdftex.def Info: example-eps-converted-to.pdf  used on input line 185.
+Package pdftex.def Info: example-eps-converted-to.pdf  used on input line 191.
 (pdftex.def)             Requested size: 202.757pt x 202.757pt.
 Package epstopdf Info: Source file: <example.eps>
 (epstopdf)                    date: 2019-06-11 18:44:50
@@ -346,42 +363,47 @@ Package epstopdf Info: Source file: <example.eps>
 (epstopdf)                    size: 2431 bytes
 (epstopdf)             Command: <epstopdf --outfile=example-eps-converted-to.pd
 f example.eps>
-(epstopdf)             \includegraphics on input line 195.
+(epstopdf)             \includegraphics on input line 201.
 Package epstopdf Info: Output file is already uptodate.
 File: example-eps-converted-to.pdf Graphic file (type pdf)
 <use example-eps-converted-to.pdf>
-Package pdftex.def Info: example-eps-converted-to.pdf  used on input line 195.
+Package pdftex.def Info: example-eps-converted-to.pdf  used on input line 201.
 (pdftex.def)             Requested size: 253.5pt x 253.50812pt.
 (paper_draft.bbl
 Underfull \hbox (badness 3088) in paragraph at lines 19--22
 []\OT1/cmr/m/n/8 Chawla NV, Bowyer KW,
  []
 
-[3] [4 <./example-eps-converted-to.pdf>]) [5] (paper_draft.aux) ) 
+[3]
+Overfull \hbox (13.14255pt too wide) has occurred while \output is active
+[][] []
+ []
+
+[4 <./example-eps-converted-to.pdf>]) [5] (paper_draft.aux) ) 
 Here is how much of TeX's memory you used:
- 2212 strings out of 492895
- 34202 string characters out of 3120464
+ 2198 strings out of 492895
+ 34059 string characters out of 3120464
  94816 words of memory out of 3000000
- 6118 multiletter control sequences out of 15000+200000
- 10256 words of font info for 36 fonts, out of 3000000 for 9000
+ 6111 multiletter control sequences out of 15000+200000
+ 7975 words of font info for 29 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,8n,25p,463b,316s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/Boba
-k Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbsy
-10.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmbx10.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Bobak Farzin/AppData/L
-ocal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/Bob
-ak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr1
-0.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
-ic/amsfonts/cm/cmr6.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Bobak Farzin/AppData/Local/
-Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Bobak Far
-zin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmti10.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on paper_draft.pdf (5 pages, 150669 bytes).
+<C:/Users/Bobak Fa
+rzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pf
+b><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmbx12.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/Bobak Farzin/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Bobak Far
+zin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><
+C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmr7.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Bobak Farzin/AppData/Local/Program
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Bobak Farzin/A
+ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/
+Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmtt10.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on paper_draft.pdf (5 pages, 148964 bytes).
 PDF statistics:
  65 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
