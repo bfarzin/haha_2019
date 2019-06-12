@@ -1,4 +1,4 @@
-\begin{thebibliography}{5}
+\begin{thebibliography}{6}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
@@ -7,6 +7,10 @@
   \providecommand{\doi}{DOI~\discretionary{}{}{}\begingroup
   \urlstyle{rm}\Url}\fi
 \providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem[{Twe(2019)}]{Tweepy}
+ (2019) Tweepy: Twitter for python!
+  \urlprefix\url{http://github.com/tweepy/tweepy}
 
 \bibitem[{Castro et~al.(2018)Castro, Chiruzzo, Ros{\'a}, Garat, and
   Moncecchi}]{castro2018crowd}
@@ -20,7 +24,8 @@ Chawla NV, Bowyer KW, Hall LO, Kegelmeyer WP (2002) Smote: Synthetic minority
   over-sampling technique. J Artif Int Res 16(1):321--357,
   \urlprefix\url{http://dl.acm.org/citation.cfm?id=1622407.1622416}
 
-\bibitem[{Howard and Ruder(2018)}]{DBLP:journals/corr/abs-1801-06146}
+\bibitem[{Howard and
+  Ruder(2018)}]{HowarRuder:DBLP:journals/corr/abs-1801-06146}
 Howard J, Ruder S (2018) Fine-tuned language models for text classification.
   CoRR abs/1801.06146, \urlprefix\url{http://arxiv.org/abs/1801.06146},
   \eprint{1801.06146}
@@ -28,7 +33,8 @@ Howard J, Ruder S (2018) Fine-tuned language models for text classification.
 \bibitem[{Jr(2006)}]{Nobody06}
 Jr N (2006) My article
 
-\bibitem[{Kudo and Richardson(2018)}]{DBLP:journals/corr/abs-1808-06226}
+\bibitem[{Kudo and
+  Richardson(2018)}]{SentencePiece:DBLP:journals/corr/abs-1808-06226}
 Kudo T, Richardson J (2018) Sentencepiece: {A} simple and language independent
   subword tokenizer and detokenizer for neural text processing. CoRR
   abs/1808.06226, \urlprefix\url{http://arxiv.org/abs/1808.06226},

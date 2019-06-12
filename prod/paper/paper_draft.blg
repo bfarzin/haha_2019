@@ -1,5 +1,60 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: paper_draft.aux
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: paper_draft.aux
 The style file: spbasic.bst
 Database file #1: local.bib
-Warning--I didn't find a database entry for "tweepy"
-(There was 1 warning)
+Warning--entry type for "Tweepy" isn't style-file defined
+--line 70 of file local.bib
+I was expecting a `,' or a `}'---line 73 of file local.bib
+ :  url = {http://github.com/tweepy/tweepy}
+ :                                         .
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "DBLP:journals/corr/abs-1801-06146"
+Warning--I didn't find a database entry for ""
+Warning--I didn't find a database entry for "labelsmooth"
+Warning--I didn't find a database entry for "smith"
+Warning--I didn't find a database entry for "poleval"
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Warning--to sort, need author or key in Tweepy
+You've used 6 entries,
+            3269 wiz_defined-function locations,
+            713 strings with 6072 characters,
+and the built_in function-call counts, 4686 in all, are:
+= -- 419
+> -- 135
+< -- 4
++ -- 50
+- -- 42
+* -- 389
+:= -- 663
+add.period$ -- 5
+call.type$ -- 6
+change.case$ -- 46
+chr.to.int$ -- 6
+cite$ -- 9
+duplicate$ -- 405
+empty$ -- 417
+format.name$ -- 59
+if$ -- 972
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 51
+newline$ -- 28
+num.names$ -- 20
+pop$ -- 125
+preamble$ -- 1
+purify$ -- 38
+quote$ -- 0
+skip$ -- 106
+stack$ -- 0
+substring$ -- 410
+swap$ -- 109
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 54
+warning$ -- 1
+while$ -- 37
+width$ -- 0
+write$ -- 76
+(There was 1 error message)

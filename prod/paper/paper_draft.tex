@@ -12,35 +12,13 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% First comes an example EPS file -- just ignore it and
-% proceed on the \documentclass line
-% your LaTeX will extract the file if required
-\begin{filecontents*}{example.eps}
-%!PS-Adobe-3.0 EPSF-3.0
-%%BoundingBox: 19 19 221 221
-%%CreationDate: Mon Sep 29 1997
-%%Creator: programmed by hand (JK)
-%%EndComments
-gsave
-newpath
-  20 20 moveto
-  20 220 lineto
-  220 220 lineto
-  220 20 lineto
-closepath
-2 setlinewidth
-gsave
-  .4 setgray fill
-grestore
-stroke
-grestore
-\end{filecontents*}
+
 %
 \RequirePackage{fix-cm}
 %
 %\documentclass{svjour3}                     % onecolumn (standard format)
-%\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
-\documentclass[smallextended]{svjour3}       % onecolumn (second format)
+\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
+%\documentclass[smallextended]{svjour3}       % onecolumn (second format)
 %\documentclass[twocolumn]{svjour3}          % twocolumn
 %
 \smartqed  % flush right qed marks, e.g. at end of proof
@@ -67,19 +45,18 @@ grestore
 }
 \subtitle{Do you have a subtitle?\\ If so, write it here}
 
-%\titlerunning{Short form of title}        % if too long for running head
+\titlerunning{Short form of title}        % if too long for running head
 
 \author {\textbf{Bobak Farzin$^1$}, \textbf{Nombre Apellidos2$^2$}\\
-	$^1$Universidad o lugar de trabajo\\
+	$^1$bfarzin@gmail.com\\
 	$^2$Universidad o lugar de trabajo\\
-	bfarzin@gmail.com\\
 }
 
 %\author{Bobak Farzin         \and
 %        Second Author %etc.
 %}
 
-%\authorrunning{Short form of author list} % if too long for running head
+\authorrunning{Short form of author list} % if too long for running head
 
 %\institute{F. Author \at
 %              first address \\
@@ -122,7 +99,6 @@ HAHA dataset includes labeled data for 24,000 tweets and a test set of 6,000 twe
 
 \section{System Description}
 \label{sec:system}
-
 We generally follow the method of ULMFiT ~\cite{DBLP:journals/corr/abs-1801-06146}
 \begin{enumerate}
 	\item Train a language model (LM) on a large corpus of data
@@ -133,10 +109,9 @@ Below we will give more detail on each step and the parameters used to generate 
 \subsection{Data, Cleanup \& Tokenization}
 \label{sec:datacleaning}
 \subsection{Additional Data}
-For our initial training, we  collected 475,143 tweets in the Spanish language using tweepy ~\cite{tweepy}.  The vocabulary and frequency of terms, punctuation and vocabulary can be quite different from the standard Wikipedia corpus that is used to train.
+For our initial training, we  collected 475,143 tweets in the Spanish language using tweepy ~\cite{Tweepy}.  The frequency of terms, punctuation and vocabulary can be quite different from the standard Wikipedia corpus that is used to train.
 
 We combined the labeled and un-labeled text data so that we have the largest corpus of language for our fine-tuning step. 
-
 \subsection{Cleaning}
 We applied a list of default cleanup functions included in Fastai and added an additional one for this Twitter dataset.
 \begin{itemize}
@@ -145,13 +120,10 @@ We applied a list of default cleanup functions included in Fastai and added an a
 	\item Replace repetition at the character level (ie. \verb|grrrreat| becomes \verb|g xxrep r 3 eat|)
 	\item Replace repition at the word level (similar to above)
 	\item Deal with ALL CAPS words replacing with a token and converting to lower case.
-	\item \textbf{NEW:} Move all text onto a single line by replacing new-lines inside a tweet with a reserved word (ie. \verb|\n| to \verb|xxnl|)
+	\item \textbf{Addition:} Move all text onto a single line by replacing new-lines inside a tweet with a reserved word (ie. \verb|\n| to \verb|xxnl|)
 \end{itemize} 
-
 \pagebreak  %move as needed to keep tweet text together
-Here is an example of replacing the original tweet with our parsed version.
-
-Original:
+The following example shows the application of this data cleaning to a single tweet:
 \begin{verbatim} 
 Saber, entender y estar convencides que la frase \
 #LaESILaDefendemosEntreTodes es nuestra linea es nuestro eje.\
@@ -160,7 +132,6 @@ Vamos por mas!!! e invitamos a todas aquellas personas que quieran \
 se parte.
 \end{verbatim}
 
-Cleaned up:
 \begin{verbatim} 
 xxbos saber , entender y estar convencides que la frase \
 # laesiladefendemosentretodes es nuestra linea es nuestro eje.\
@@ -169,62 +140,81 @@ todas aquellas personas que quieran se parte.
 \end{verbatim}
 
 \subsection{Tokenization}
-We used sentencepiece~\cite{DBLP:journals/corr/abs-1808-06226} to parse into sub-word units and reduce the possible out-of-vocabulary (OOV) terms in the data set.  We selected a vocab size of 30,000 sub-word units and got 99.95\% character coverage including emojis.
+We used sentencepiece~\cite{SentencePiece:DBLP:journals/corr/abs-1808-06226} to parse into sub-word units and reduce the possible out-of-vocabulary (OOV) terms in the data set.  We selected a vocab size of 30,000 and used the byte-pair encoding (bpe) model. 
 
 \section{Training and Results}
 \label{sec:4}
-LM: 10\% validation set for training
 
+\subsection{LM Training and Fine-tuning}
+With our data cleaned and tokenized we move to training the LM using a 90/10 training/validation split.  For the LM, we selected a AWD\_LSTM \cite{} model included in Fastai with QRNN units, 2304 hidden-states, 3 layers and a softmax layer on the end to predict the next-word.  We tied the embedding weights on the encoder and decoder for training.  We performed some simple tests with LSTM units and with a Transformer Language model and found all the models were similar in performance during LM training.  We chose the QRNN units to speed up training. The model has about 60 million trainable parameters.  
 
-oversample minority class to balance for better training using SMOTE \cite{Chawla:2002:SSM:1622407.1622416}
+Both the LM and the Classifer models used label smoothing \cite{labelsmooth} of the flattened cross-entropy loss.  With the classifier, this allowed us to train without gradual unfreezing of the layers as discussed in \cite{HowarRuder:DBLP:journals/corr/abs-1801-06146}
+Parameters used for training all networks can be found in \ref{tab:tab_training}.
+For all the networks we applied a dropout multiplier that scales the dropout used throughout the network.  We used the Adam optimizer with weight decay as indicated in the table.  
+
+Following the work of \cite{smith}  we found the largest learning-rate that we could apply and then ran a one-cycle policy \cite{} for a single epoch. We then ran subsequent training with lower learning rates, again indicated in \ref{tab:tab_training}.
+
+\begin{table}[ht]
+	% table caption is above the table
+	\caption{LM Training Parameters}
+	\label{tab:tab_training}       % Give a unique label
+\begin{tabular}{lll}
+	\hline\noalign{\smallskip}
+	Param & LM & Fine-Tune LM \\
+	\noalign{\smallskip}\hline\noalign{\smallskip}
+	Weight Decay & 0.1 & 0.1 \\
+	Dropout Mult & 1.0 & 1.0 \\
+	Learning Rate & 1 epoch at $5*10^{-3}$ & 5 epochs at $3*10^{-3}$ \\
+    Cont. Training & 15 epochs at $1*10^{-3}$ & 10 epochs at $1*10^{-4}$\\
+	\noalign{\smallskip}\hline
+\end{tabular}
+\end{table}
+
+\subsection{Classification and Regression Fitting}
+The process and training parameters for both classification and regression are very similar. We build a model with either a classifer or regression head and the appropriate output and initialize those head weights randomly.  We load the LM weights for the layers below and then train the head first before unfreezing the rest of the layers and training further. We used differential learning rates as explained in \cite{HowarRuder:DBLP:journals/corr/abs-1801-06146} for the layers so as not to lose the pre-training already done.  
+
+With the same learning rate and weight decay we apply a 5-fold cross-validation on the outputs and take the mean across the folds.  We sample 20 random seeds \ref{sec:rand_seeds} to find the best init for our gradient descent search and select the best validation F1 metric or MSE for use in our test submission.
+\subsubsection{Classifier setup}  For the classifier, we have a softmax head and label smoothing loss.  We oversample the minority class to 50\% 0 and 1 for better training using SMOTE \cite{Chawla:2002:SSM:1622407.1622416}.  
+\subsubsection{Regression setup}  For the regression, we fill all N/A labels with scores of 0.  We add a linear head output and mean-squared-error (MSE) loss function. 
+
+\begin{table}[ht]
+	% table caption is above the table
+	\caption{Classificaiton and Regression Training Parameters}
+	\label{tab:clas_training}       % Give a unique label
+	\begin{tabular}{ll}
+		\hline\noalign{\smallskip}
+		Param & Value \\
+		\noalign{\smallskip}\hline\noalign{\smallskip}
+		Weight Decay & 0.1  \\
+		Dropout Mult &  0.7 \\
+		Learning Rate (Head)& 2 epochs at $1*10^{-2}$\\
+		Cont. Training & 15 epochs with diff lr:($1*10^{-3}/(2.6^4)$, $5*10^{-3}$)\\
+		\noalign{\smallskip}\hline
+	\end{tabular}
+\end{table}
 
 \subsection{Random Seed as a Hyperparamter}
+\label{sec:rand_seeds}
+The random seed sets the initial random weights of the head layer. This initialization determines where on the optimization surface you start your gradient descent and effects the final F1 metric you can achieve with your model.  
+Across each of the 20 random seeds, we average the 5-folds and get a single F1 metric on the validation set.  The histogram of outcomes is shown in \ref{fig1} and covers a range  from 0.820 to 0.825 in the validation set. We selected our single best random seed for the test submission. With more exploration, a better seed could likely be found.  We only tried a single seed for the LM training but one could do a similar search with random seeds there and select the best down-stream seed similar to \cite{poleval}
+
+\begin{figure}[h]
+	% Use the relevant command to insert your figure file.
+	% For example, with the graphicx package use
+	\includegraphics[width=0.75\textwidth]{seed_hist_f1}
+	\caption{Histogram of F1 metric averaged across 5-fold metric}
+	\label{fig:random_seed_hist}
+\end{figure}
+
 
 \section{Conclusion}
 \label{sec:5}
 
-\section*{Acknowlegements}
-% For one-column wide figures use
-\begin{figure}
-% Use the relevant command to insert your figure file.
-% For example, with the graphicx package use
-  \includegraphics{example.eps}
-% figure caption is below the figure
-\caption{Please write your figure caption here}
-\label{fig:1}       % Give a unique label
-\end{figure}
-%
-% For two-column wide figures use
-\begin{figure*}
-% Use the relevant command to insert your figure file.
-% For example, with the graphicx package use
-  \includegraphics[width=0.75\textwidth]{example.eps}
-% figure caption is below the figure
-\caption{Please write your figure caption here}
-\label{fig:2}       % Give a unique label
-\end{figure*}
-%
-% For tables use
-\begin{table}
-% table caption is above the table
-\caption{Please write your table caption here}
-\label{tab:1}       % Give a unique label
-% For LaTeX tables use
-\begin{tabular}{llll}
-\hline\noalign{\smallskip}
-first & second & third & fourth \\
-\noalign{\smallskip}\hline\noalign{\smallskip}
-number & number & number \\
-number & number & number \\
-\noalign{\smallskip}\hline
-\end{tabular}
-\end{table}
 
-
-%\begin{acknowledgements}
-%If you'd like to thank anyone, place your comments here
-%and remove the percent signs.
-%\end{acknowledgements}
+\begin{acknowledgements}
+If you'd like to thank anyone, place your comments here
+and remove the percent signs.
+\end{acknowledgements}
 
 
 % Authors must disclose all relationships or interests that 
