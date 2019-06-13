@@ -1,43 +1,66 @@
-\begin{thebibliography}{6}
-\providecommand{\natexlab}[1]{#1}
+\begin{thebibliography}{10}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{DOI~\discretionary{}{}{}#1}\else
   \providecommand{\doi}{DOI~\discretionary{}{}{}\begingroup
   \urlstyle{rm}\Url}\fi
-\providecommand{\eprint}[2][]{\url{#2}}
 
-\bibitem[{Twe(2019)}]{Tweepy}
- (2019) Tweepy: Twitter for python!
-  \urlprefix\url{http://github.com/tweepy/tweepy}
+\bibitem{Tweepy}
+Tweepy: Twitter for python! (2019).
+\newblock \urlprefix\url{http://github.com/tweepy/tweepy}
 
-\bibitem[{Castro et~al.(2018)Castro, Chiruzzo, Ros{\'a}, Garat, and
-  Moncecchi}]{castro2018crowd}
-Castro S, Chiruzzo L, Ros{\'a} A, Garat D, Moncecchi G (2018) A crowd-annotated
-  spanish corpus for humor analysis. In: Proceedings of the Sixth International
-  Workshop on Natural Language Processing for Social Media, pp 7--11
+\bibitem{Bradbury:DBLP:journals/corr/BradburyMXS16}
+Bradbury, J., Merity, S., Xiong, C., Socher, R.: Quasi-recurrent neural
+  networks.
+\newblock CoRR \textbf{abs/1611.01576} (2016).
+\newblock \urlprefix\url{http://arxiv.org/abs/1611.01576}
 
-\bibitem[{Chawla et~al.(2002)Chawla, Bowyer, Hall, and
-  Kegelmeyer}]{Chawla:2002:SSM:1622407.1622416}
-Chawla NV, Bowyer KW, Hall LO, Kegelmeyer WP (2002) Smote: Synthetic minority
-  over-sampling technique. J Artif Int Res 16(1):321--357,
-  \urlprefix\url{http://dl.acm.org/citation.cfm?id=1622407.1622416}
+\bibitem{castro2018crowd}
+Castro, S., Chiruzzo, L., Ros{\'a}, A., Garat, D., Moncecchi, G.: A
+  crowd-annotated spanish corpus for humor analysis.
+\newblock In: Proceedings of the Sixth International Workshop on Natural
+  Language Processing for Social Media, pp. 7--11 (2018)
 
-\bibitem[{Howard and
-  Ruder(2018)}]{HowardRuder:DBLP:journals/corr/abs-1801-06146}
-Howard J, Ruder S (2018) Fine-tuned language models for text classification.
-  CoRR abs/1801.06146, \urlprefix\url{http://arxiv.org/abs/1801.06146},
-  \eprint{1801.06146}
+\bibitem{Chawla:2002:SSM:1622407.1622416}
+Chawla, N.V., Bowyer, K.W., Hall, L.O., Kegelmeyer, W.P.: Smote: Synthetic
+  minority over-sampling technique.
+\newblock J. Artif. Int. Res. \textbf{16}(1), 321--357 (2002).
+\newblock \urlprefix\url{http://dl.acm.org/citation.cfm?id=1622407.1622416}
 
-\bibitem[{Jr(2006)}]{Nobody06}
-Jr N (2006) My article
+\bibitem{overview_haha2019}
+Chiruzzo, L., Castro, S., Etcheverry, M., Garat, D., Prada, J.J., Ros\'{a}, A.:
+  {Overview of HAHA at IberLEF 2019: Humor Analysis based on Human Annotation}.
+\newblock In: {Proceedings of the Iberian Languages Evaluation Forum (IberLEF
+  2019)}, CEUR Workshop Proceedings. CEUR-WS, Bilbao, Spain (2019)
 
-\bibitem[{Kudo and
-  Richardson(2018)}]{SentencePiece:DBLP:journals/corr/abs-1808-06226}
-Kudo T, Richardson J (2018) Sentencepiece: {A} simple and language independent
-  subword tokenizer and detokenizer for neural text processing. CoRR
-  abs/1808.06226, \urlprefix\url{http://arxiv.org/abs/1808.06226},
-  \eprint{1808.06226}
+\bibitem{HowardRuder:DBLP:journals/corr/abs-1801-06146}
+Howard, J., Ruder, S.: Fine-tuned language models for text classification.
+\newblock CoRR \textbf{abs/1801.06146} (2018).
+\newblock \urlprefix\url{http://arxiv.org/abs/1801.06146}
+
+\bibitem{SentencePiece:DBLP:journals/corr/abs-1808-06226}
+Kudo, T., Richardson, J.: Sentencepiece: {A} simple and language independent
+  subword tokenizer and detokenizer for neural text processing.
+\newblock CoRR \textbf{abs/1808.06226} (2018).
+\newblock \urlprefix\url{http://arxiv.org/abs/1808.06226}
+
+\bibitem{Merity:DBLP:journals/corr/abs-1708-02182}
+Merity, S., Keskar, N.S., Socher, R.: Regularizing and optimizing {LSTM}
+  language models.
+\newblock CoRR \textbf{abs/1708.02182} (2017).
+\newblock \urlprefix\url{http://arxiv.org/abs/1708.02182}
+
+\bibitem{Labelsmoothing:DBLP:journals/corr/PereyraTCKH17}
+Pereyra, G., Tucker, G., Chorowski, J., Kaiser, L., Hinton, G.E.: Regularizing
+  neural networks by penalizing confident output distributions.
+\newblock CoRR \textbf{abs/1701.06548} (2017).
+\newblock \urlprefix\url{http://arxiv.org/abs/1701.06548}
+
+\bibitem{Smith:DBLP:journals/corr/abs-1803-09820}
+Smith, L.N.: A disciplined approach to neural network hyper-parameters: Part 1
+  - learning rate, batch size, momentum, and weight decay.
+\newblock CoRR \textbf{abs/1803.09820} (2018).
+\newblock \urlprefix\url{http://arxiv.org/abs/1803.09820}
 
 \end{thebibliography}

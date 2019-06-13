@@ -86,12 +86,12 @@ All the code for this project is included in a GitHub \cite{} repository for eas
 
 \section{Introduction}
 \label{intro}
-Included citations as necessary: ~\cite{Nobody06}
+
 \paragraph{Contribution} Our contribution with this work is..
 
 \section{Task and Dataset Description}
 \label{sec:task}
-The \textit{Humor Analysis based on Humor Annotation (HAHA)} competition asked for analysis of two tasks in the Spanish language based on a corpus of publicly collected data ~\cite{castro2018crowd}:
+The \textit{Humor Analysis based on Humor Annotation (HAHA) 2019}\cite{overview_haha2019} competition asked for analysis of two tasks in the Spanish language based on a corpus of publicly collected data ~\cite{castro2018crowd}:
 \begin{itemize}
 \item \textbf{Task1: Humor Detection}:Detemine if a tweet is humorous. System ranking is based on F1 score which will balance precision and accuracy.
 \item \textbf{Task2: Funniness Score}:If humorous, what is the average humor rating of the tweet. System ranking is based on RMSE.
@@ -146,13 +146,13 @@ We used sentencepiece~\cite{SentencePiece:DBLP:journals/corr/abs-1808-06226} to 
 \section{Training and Results}
 \label{sec:4}
 \subsection{LM Training and Fine-tuning}
-We train the LM using a 90/10 training/validation split and report the validation loss and accuracy of next-word prediction on the validation set.  For the LM, we selected a AWD\_LSTM \cite{merity?} model included in Fastai with QRNN units, 2304 hidden-states, 3 layers and a softmax layer on the end to predict the next-word.  We tied the embedding weights on the encoder and decoder for training.  We performed some simple tests with LSTM units and with a Transformer Language model and found all the models were similar in performance during LM training.  We chose the QRNN units to speed up training. The model has about 60 million trainable parameters.  
+We train the LM using a 90/10 training/validation split and report the validation loss and accuracy of next-word prediction on the validation set.  For the LM, we selected a AWD\_LSTM \cite{Merity:DBLP:journals/corr/abs-1708-02182} model included in Fastai with QRNN\cite{Bradbury:DBLP:journals/corr/BradburyMXS16} units, 2304 hidden-states, 3 layers and a softmax layer on the end to predict the next-word.  We tied the embedding weights on the encoder and decoder for training.  We performed some simple tests with LSTM units and with a Transformer Language model and found all the models were similar in performance during LM training.  We chose the QRNN units to speed up training. The model has about 60 million trainable parameters.  
 
-Our loss is label smoothing\cite{labelsmooth} of the flattened cross-entropy loss. 
+Our loss is label smoothing\cite{Labelsmoothing:DBLP:journals/corr/PereyraTCKH17} of the flattened cross-entropy loss. 
 Parameters used for training and finetuning are shown in Table \ref{tab:tab_training}.
 For all the networks we applied a dropout multiplier that scales the dropout used throughout the network.  We used the Adam optimizer with weight decay as indicated in the table.  
 
-Following the work of \cite{smith}  we found the largest learning-rate that we could apply and then ran a one-cycle policy \cite{} for a single epoch. We then ran subsequent training with lower learning rates, again indicated in Table \ref{tab:tab_training}.
+Following the work of \cite{Smith:DBLP:journals/corr/abs-1803-09820}  we found the largest learning-rate that we could apply and then ran a one-cycle policy \cite{} for a single epoch. We then ran subsequent training with lower learning rates, again indicated in Table \ref{tab:tab_training}.
 
 \begin{table}[ht]
 	% table caption is above the table
@@ -175,7 +175,7 @@ Again, following the playbook from \cite{HowardRuder:DBLP:journals/corr/abs-1801
 
 With the same learning rate and weight decay we apply a 5-fold cross-validation on the outputs and take the mean across the folds as our ensemble.  We sample 20 random seeds (see more in sec \ref{sec:rand_seeds}) to find the best initialization for our gradient descent search.  From these samples, we select the best validation F1 metric or MSE for use in our test submission.
 \subsubsection{Classifier setup}  For the classifier, we have a softmax head and label smoothing loss.  We oversample the minority class balance the outcomes for better training using SMOTE \cite{Chawla:2002:SSM:1622407.1622416}.  
-\subsubsection{Regression setup}  For the regression, we fill all N/A labels with scores of 0.  We add a linear head output and mean-squared-error (MSE) loss function. 
+\subsubsection{Regression setup}  For the regression, we fill all \verb|#N/A| labels with scores of 0.  We add a linear head output and mean-squared-error (MSE) loss function. 
 
 \begin{table}[ht]
 	% table caption is above the table
@@ -228,8 +228,10 @@ and remove the percent signs.
 
 
 % BibTeX users please use one of
-\bibliographystyle{spbasic}      % basic style, author-year citations
-%\bibliographystyle{spmpsci}      % mathematics and physical sciences
+%\bibliographystyle{fullname}      % basic style, author-year citations
+
+%\bibliographystyle{spbasic}      % basic style, author-year citations
+\bibliographystyle{spmpsci}      % mathematics and physical sciences
 %\bibliographystyle{spphys}       % APS-like style for physics
 \bibliography{local}   % name your BibTeX data base
 
