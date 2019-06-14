@@ -17,8 +17,8 @@
 \RequirePackage{fix-cm}
 %
 %\documentclass{svjour3}                     % onecolumn (standard format)
-\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
-%\documentclass[smallextended]{svjour3}       % onecolumn (second format)
+%\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
+\documentclass[smallextended]{svjour3}       % onecolumn (second format)
 %\documentclass[twocolumn]{svjour3}          % twocolumn
 %
 \smartqed  % flush right qed marks, e.g. at end of proof
@@ -77,7 +77,7 @@
 
 \begin{abstract}
 
-All the code for this project is included in a GitHub \cite{} repository for easy reference.  Some details are omitted below for clarity but can be found in the notebooks, code and execution instructions.
+All the code for this project is included in a GitHub\footnote{https://github.com/bfarzin/haha\_2019\_final} repository for easy reference.  Some details are omitted below for clarity but can be found in the notebooks, code and execution instructions.
 
 \keywords{First keyword \and Second keyword \and More}
 % \PACS{PACS code1 \and PACS code2 \and more}
@@ -110,11 +110,11 @@ Below we will give more detail on each step and the parameters used to generate 
 \subsection{Data, Cleanup \& Tokenization}
 \label{sec:datacleaning}
 \subsection{Additional Data}
-For our initial training, we  collected 475,143 tweets in the Spanish language using tweepy ~\cite{Tweepy}.  The frequency of terms, punctuation and vocabulary can be quite different from the standard Wikipedia corpus that often used to train an LM.
+For our initial training, we  collected 475,143 tweets in the Spanish language using tweepy ~\cite{Tweepy}.  The frequency of terms, punctuation and vocabulary can be quite different from the standard Wikipedia corpus that is often used to train an LM.
 
-For the fine-tuning step, we combined the labeled and un-labeled text data for the LM training.
+In the fine-tuning step, we combined the labeled and un-labeled text data for the LM training.
 \subsection{Cleaning}
-We applied a list of default cleanup functions included in Fastai and added an additional one for this Twitter dataset.
+We applied a list of default cleanup functions included in Fastai\cite{} and added an additional one for this Twitter dataset.
 \begin{itemize}
 	\item Add spaces between special chars (ie. \verb|!!!| to \verb|! ! !|)
 	\item Remove useless spaces (remove more than 2 spaces in sequence)
@@ -152,7 +152,7 @@ Our loss is label smoothing\cite{Labelsmoothing:DBLP:journals/corr/PereyraTCKH17
 Parameters used for training and finetuning are shown in Table \ref{tab:tab_training}.
 For all the networks we applied a dropout multiplier that scales the dropout used throughout the network.  We used the Adam optimizer with weight decay as indicated in the table.  
 
-Following the work of \cite{Smith:DBLP:journals/corr/abs-1803-09820}  we found the largest learning-rate that we could apply and then ran a one-cycle policy \cite{} for a single epoch. We then ran subsequent training with lower learning rates, again indicated in Table \ref{tab:tab_training}.
+Following the work of Smith\cite{Smith:DBLP:journals/corr/abs-1803-09820}  we found the largest learning-rate that we could apply and then ran a one-cycle policy for a single epoch. We then ran subsequent training with one-cycle and lower learning rates indicated in Table \ref{tab:tab_training}.
 
 \begin{table}[ht]
 	% table caption is above the table
@@ -171,10 +171,10 @@ Following the work of \cite{Smith:DBLP:journals/corr/abs-1803-09820}  we found t
 \end{table}
 
 \subsection{Classification and Regression Fitting}
-Again, following the playbook from \cite{HowardRuder:DBLP:journals/corr/abs-1801-06146}, we change out the head of the network to a softmax or linear output layer and then load the LM weights for the layers below.  We train just the new head from the random init, then unfreeze the entire network and train with differential learning rats.  With the classifier, we again used label smoothing which allows us to train without gradual unfreezing.  
+Again, following the play-book from \cite{HowardRuder:DBLP:journals/corr/abs-1801-06146}, we change out the head of the network to a softmax or linear output layer and then load the LM weights for the layers below.  We train just the new head from the random initialization, then unfreeze the entire network and train with differential learning rates.
 
-With the same learning rate and weight decay we apply a 5-fold cross-validation on the outputs and take the mean across the folds as our ensemble.  We sample 20 random seeds (see more in sec \ref{sec:rand_seeds}) to find the best initialization for our gradient descent search.  From these samples, we select the best validation F1 metric or MSE for use in our test submission.
-\subsubsection{Classifier setup}  For the classifier, we have a softmax head and label smoothing loss.  We oversample the minority class balance the outcomes for better training using SMOTE \cite{Chawla:2002:SSM:1622407.1622416}.  
+With the same learning rate and weight decay we apply a 5-fold cross-validation on the outputs and take the mean across the folds as our ensemble.  We sample 20 random seeds (see more in section \ref{sec:rand_seeds}) to find the best initialization for our gradient descent search.  From these samples, we select the best validation F1 metric or MSE for use in our test submission.
+\subsubsection{Classifier setup}  For the classifier, we have a softmax head and label smoothing loss which allows us to train without gradual unfreezing.  We oversample the minority class to balance the outcomes for better training using SMOTE \cite{Chawla:2002:SSM:1622407.1622416}.  
 \subsubsection{Regression setup}  For the regression, we fill all \verb|#N/A| labels with scores of 0.  We add a linear head output and mean-squared-error (MSE) loss function. 
 
 \begin{table}[ht]
@@ -197,7 +197,7 @@ With the same learning rate and weight decay we apply a 5-fold cross-validation 
 \label{sec:rand_seeds}
 For classification and regression, the random seed sets the initial random weights of the head layer. This initialization effects the final F1 metric you can achieve with your model.  
 
-Across each of the 20 random seeds, we average the 5-folds and get a single F1 metric on the validation set.  The histogram of outcomes is shown in Figure \ref{fig:random_seed_hist} and covers a range  from 0.820 to 0.825 in the validation set. We selected our single best random seed for the test submission. With more exploration, a better seed could likely be found.  We only tried a single seed for the LM training but one could do a similar search with random seeds there and select the best down-stream seed similar to \cite{poleval}
+Across each of the 20 random seeds, we average the 5-folds and get a single F1 metric on the validation set.  The histogram of 20-seed outcomes is shown in Figure \ref{fig:random_seed_hist} and covers a range  from 0.820 to 0.825 in the validation set. We selected our single best random seed for the test submission. With more exploration, a better seed could likely be found.  We only tried a single seed for the LM training but one could do a similar search with random seeds there and select the best down-stream seed similar to \cite{poleval}
 
 \begin{figure}[h]
 	% Use the relevant command to insert your figure file.
