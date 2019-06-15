@@ -76,7 +76,7 @@
 \maketitle
 
 \begin{abstract}
-Our entry into the \textit{HAHA 2019 Challenge} came in $3^{rd}$ in the classification task and $2^{nd}$ in the regression task.  We describe our system and innovations and compare our results to a Naive Bayes classifier.  All the code for ourproject is included in a GitHub\footnote{https://github.com/bfarzin/haha\_2019\_final} repository for easy reference and replication by others.
+Our entry into the \textit{HAHA 2019 Challenge} placed $3^{rd}$ in the classification task and $2^{nd}$ in the regression task.  We describe our system and innovations, as well as comparing our results to a Naive Bayes baseline. All the code for our project is included in a GitHub\footnote{https://github.com/bfarzin/haha\_2019\_final} repository for easy reference and to enable replication by others.
 
 \keywords{First keyword \and Second keyword \and More}
 % \PACS{PACS code1 \and PACS code2 \and more}
@@ -98,20 +98,20 @@ Google Translation:
 - Does it charge?\\
 - Not free.
 \end{quote}
-Humor does not translate well because it often relies on double-meaning or a subtle play on the words or context.  Thus, one would imagine building a system to classify the humor of tweets would be difficult.  However, with transfer-learning and the Fastai libray\footnote{https://docs.fast.ai/}, you can quickly get a high quality classifier working in a language you don't even speak which will easily out-pace a Naive Bayes SVM baseline \footnote{https://twitter.com/radamihalcea/status/1119020144389443585}
+Humor does not translate well because it often relies on double-meaning or a subtle play on word choice, pronunciation, or context.  These issues are further exacerbated in areas where space is a premium (as frequent on social media platforms), often leading to usage and development of shorthand, in-jokes, and self-reference. Thus, building a system to classify the humor of tweets is a difficult task.  However, with transfer-learning and the Fastai library\footnote{https://docs.fast.ai/}, we show the power of these tools in order to build a high quality classifier in a foreign language. Our system strongly outperforms a Naive Bayes SVM baseline, which is frequently considered a "strong baseline" for many NLP related tasks \footnote{https://twitter.com/radamihalcea/status/1119020144389443585}.
 
 Rather than hand-crafted language features, we have taken an "end to end" approach building from the raw text to a final model that achieve the tasks as presented.  Our paper lays out the details of the system and our code can be found in a GitHub repo for use by other researchers to extend the state of the art in sentiment analysis. 
 
-\paragraph{Contribution} Our key contributions are three fold.  First, we apply transfer-learning of a lanugage model based on a larger corpus of tweets.  Second, we use a label smoothed loss to allow full training of the final model without gradual unfreezing.  Third, we select the best classifier or regression model based on cross-validation and 20 random-seed initialization in the final network training step.
+\paragraph{Contribution} Our key contributions are three fold.  First, we apply transfer-learning of a language model based on a larger corpus of tweets.  Second, we use a label smoothed loss to allow full training of the final model without gradual unfreezing.  Third, we select the best model for each task based on cross-validation and 20 random-seed initialization in the final network training step.
 
 \section{Task and Dataset Description}
 \label{sec:task}
 The \textit{Humor Analysis based on Humor Annotation (HAHA) 2019}\cite{overview_haha2019} competition asked for analysis of two tasks in the Spanish language based on a corpus of publicly collected data ~\cite{castro2018crowd}:
 \begin{itemize}
-\item \textbf{Task1: Humor Detection}:Detemine if a tweet is humorous. System ranking is based on F1 score which will balance precision and accuracy.
-\item \textbf{Task2: Funniness Score}:If humorous, what is the average humor rating of the tweet. System ranking is based on RMSE.
+\item \textbf{Task1: Humor Detection}:Determine if a tweet is humorous. System ranking is based on F1 score which balances precision and accuracy.
+\item \textbf{Task2: Funniness Score}:If humorous, what is the average humor rating of the tweet? System ranking is based on RMSE.
 \end{itemize}
-The HAHA dataset includes labeled data for 24,000 tweets and a test set of 6,000 tweets (80\%/20\% train/test split.)  Each record includes the raw tweet text (including accents and emoticons), a binary humor label, the number of votes for each of five star ratings and a ``Funninness Score'' that is the average of the 1 to 5 star votes cast.  Examples and data can be found on the CodaLab competition webpage\footnote{http://competitions.codalab.org/competitions/22194/}.
+The HAHA dataset includes labeled data for 24,000 tweets and a test set of 6,000 tweets (80\%/20\% train/test split.)  Each record includes the raw tweet text (including accents and emoticons), a binary humor label, the number of votes for each of five star ratings and a ``Funniness Score'' that is the average of the 1 to 5 star votes cast.  Examples and data can be found on the CodaLab competition webpage\footnote{http://competitions.codalab.org/competitions/22194/}.
 
 \section{System Description}
 \label{sec:system}
@@ -134,7 +134,7 @@ We applied a list of default cleanup functions included in Fastai\cite{} and add
 	\item Add spaces between special chars (ie. \verb|!!!| to \verb|! ! !|)
 	\item Remove useless spaces (remove more than 2 spaces in sequence)
 	\item Replace repetition at the character level (ie. \verb|grrrreat| becomes \verb|g xxrep r 3 eat|)
-	\item Replace repition at the word level (similar to above)
+	\item Replace repetition at the word level (similar to above)
 	\item Deal with ALL CAPS words replacing with a token and converting to lower case.
 	\item \textbf{Addition:} Move all text onto a single line by replacing new-lines inside a tweet with a reserved word (ie. \verb|\n| to \verb|xxnl|)
 \end{itemize} 
@@ -161,11 +161,11 @@ We used sentencepiece~\cite{SentencePiece:DBLP:journals/corr/abs-1808-06226} to 
 \section{Training and Results}
 \label{sec:4}
 \subsection{LM Training and Fine-tuning}
-We train the LM using a 90/10 training/validation split and report the validation loss and accuracy of next-word prediction on the validation set.  For the LM, we selected a AWD\_LSTM \cite{Merity:DBLP:journals/corr/abs-1708-02182} model included in Fastai with QRNN\cite{Bradbury:DBLP:journals/corr/BradburyMXS16} units, 2304 hidden-states, 3 layers and a softmax layer on the end to predict the next-word.  We tied the embedding weights on the encoder and decoder for training.  We performed some simple tests with LSTM units and with a Transformer Language model and found all the models were similar in performance during LM training.  We chose the QRNN units to speed up training. The model has about 60 million trainable parameters.  
+We train the LM using a 90/10 training/validation split, reporting the validation loss and accuracy of next-word prediction on the validation set. For the LM, we selected a AWD\_LSTM \cite{Merity:DBLP:journals/corr/abs-1708-02182} model included in Fastai with QRNN\cite{Bradbury:DBLP:journals/corr/BradburyMXS16} units, 2304 hidden-states, 3 layers and a softmax layer to predict the next-word.  We tied the embedding weights on the encoder and decoder for training.  We performed some simple tests with LSTM units and a Transformer Language model, finding all models were similar in performance during LM training. We thus chose to use QRNN units due to improved training speed compared to the alternatives. This model has about 60 million trainable parameters.  
 
 Our loss is label smoothing\cite{Labelsmoothing:DBLP:journals/corr/PereyraTCKH17} of the flattened cross-entropy loss. 
 Parameters used for training and finetuning are shown in Table \ref{tab:tab_training}.
-For all the networks we applied a dropout multiplier that scales the dropout used throughout the network.  We used the Adam optimizer with weight decay as indicated in the table.  
+For all networks we applied a dropout multiplier which scales the dropout used throughout the network.  We used the Adam optimizer with weight decay as indicated in the table.  
 
 Following the work of Smith\cite{Smith:DBLP:journals/corr/abs-1803-09820}  we found the largest learning-rate that we could apply and then ran a one-cycle policy for a single epoch. We then ran subsequent training with one-cycle and lower learning rates indicated in Table \ref{tab:tab_training}.
 
@@ -186,15 +186,15 @@ Following the work of Smith\cite{Smith:DBLP:journals/corr/abs-1803-09820}  we fo
 \end{table}
 
 \subsection{Classification and Regression Fitting}
-Again, following the play-book from \cite{HowardRuder:DBLP:journals/corr/abs-1801-06146}, we change out the head of the network to a softmax or linear output layer and then load the LM weights for the layers below.  We train just the new head from the random initialization, then unfreeze the entire network and train with differential learning rates.
+Again, following the play-book from \cite{HowardRuder:DBLP:journals/corr/abs-1801-06146}, we change pre-trained network head to a softmax or linear output layer (as appropriate for the transfer task) and then load the LM weights for the layers below.  We train just the new head from random initialization, then unfreeze the entire network and train with differential learning rates.
 
 With the same learning rate and weight decay we apply a 5-fold cross-validation on the outputs and take the mean across the folds as our ensemble.  We sample 20 random seeds (see more in section \ref{sec:rand_seeds}) to find the best initialization for our gradient descent search.  From these samples, we select the best validation F1 metric or MSE for use in our test submission.
 \subsubsection{Classifier setup}  For the classifier, we have a softmax head and label smoothing loss which allows us to train without gradual unfreezing.  We oversample the minority class to balance the outcomes for better training using SMOTE \cite{Chawla:2002:SSM:1622407.1622416}.  
-\subsubsection{Regression setup}  For the regression, we fill all \verb|#N/A| labels with scores of 0.  We add a linear head output and mean-squared-error (MSE) loss function. 
+\subsubsection{Regression setup}  For the regression task, we fill all \verb|#N/A| labels with scores of 0.  We add a linear head output and mean-squared-error (MSE) loss function. 
 
 \begin{table}[ht]
 	% table caption is above the table
-	\caption{Classificaiton and Regression Training Parameters}
+	\caption{Classification and Regression Training Parameters}
 	\label{tab:clas_training}       % Give a unique label
 	\begin{tabular}{ll}
 		\hline\noalign{\smallskip}
@@ -210,9 +210,9 @@ With the same learning rate and weight decay we apply a 5-fold cross-validation 
 
 \subsection{Random Seed as a Hyperparamter}
 \label{sec:rand_seeds}
-For classification and regression, the random seed sets the initial random weights of the head layer. This initialization effects the final F1 metric you can achieve with your model.  
+For classification and regression, the random seed sets the initial random weights of the head layer. This initialization affects the final F1 metric achievable.  
 
-Across each of the 20 random seeds, we average the 5-folds and get a single F1 metric on the validation set.  The histogram of 20-seed outcomes is shown in Figure \ref{fig:random_seed_hist} and covers a range  from 0.820 to 0.825 in the validation set. We selected our single best random seed for the test submission. With more exploration, a better seed could likely be found.  We only tried a single seed for the LM training but one could do a similar search with random seeds there and select the best down-stream seed similar to \cite{poleval}
+Across each of the 20 random seeds, we average the 5-folds and obtain a single F1 metric on the validation set. The histogram of 20-seed outcomes is shown in Figure \ref{fig:random_seed_hist} and covers a range  from 0.820 to 0.825 over the validation set. We selected our single best random seed for the test submission. With more exploration, a better seed could likely be found.  Though we only use a single seed for the LM training, one could do a similar search with random seeds for LM pretraining, and further select the best down-stream seed similar to \cite{poleval}
 
 \begin{figure}[ht]
 	% Use the relevant command to insert your figure file.
@@ -223,7 +223,7 @@ Across each of the 20 random seeds, we average the 5-folds and get a single F1 m
 \end{figure}
 
 \subsection{Results}
-Below in Table \ref{tab:tab_results} we layout three results from our submissions in the competition.  The first is the Naive Bays SVM solution showing an F1 of 0.7548.  Second is our first random seed selected for the classifier which produces a 0.8083 result.  While better than the NBSVM solution, we can do better by picking the best F1 from the 20 seeds that we selected. That result is in the final row and gets our final submission value of 0.8099. Note that in our validation set achieved an F1 of 0.8254 but this is somewhat overfit from the many trials we have run and our final test set is a drop of 0.0155
+Below in Table \ref{tab:tab_results} we layout three results from our submissions in the competition. The first is the baseline Naive Bayes SVM solution, with an F1 of 0.7548.  Second is our first random seed selected for the classifier which produces a 0.8083 result.  While better than the NB-SVM solution, we can do better by picking the best F1 from the 20 seeds that we selected. That result is in the final row and resulting in our final submission value of 0.8099. Note that applying this model over our validation set achieved an F1 of 0.8254 however our final test set is slightly lower, a drop of 0.0155 to the final test F1 of 0.8099.
 
 \begin{table}[ht]
 	% table caption is above the table
@@ -242,7 +242,7 @@ Best Seed &  0.8458 & 0.7806 & 0.8416 & \textbf{0.8099} \\
 
 \section{Conclusion}
 \label{sec:5}
-This paper describes our implementation of a neural net model for classification and regression in the HAHA 2019 challenge.  Our solution placed third in Task 1 and second in task 2 in the final standings.  We describe the data collection, pre-training and final model building steps.  Additionally, we have open-sourced all the code used in this contest so it can be easily duplicate to further research in this task in the future.
+This paper describes our implementation of a neural net model for classification and regression in the HAHA 2019 challenge.  Our solution placed third in Task 1 and second in task 2 in the final competition standings.  We describe the data collection, pre-training, and final model building steps for this contest.  Additionally, we have open-sourced all  code used in this contest to further enable research on this task in the future.
 
 \begin{acknowledgements}
 If you'd like to thank anyone, place your comments here
