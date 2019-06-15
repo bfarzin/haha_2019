@@ -57,6 +57,11 @@ Pereyra, G., Tucker, G., Chorowski, J., Kaiser, L., Hinton, G.E.: Regularizing
 \newblock CoRR \textbf{abs/1701.06548} (2017).
 \newblock \urlprefix\url{http://arxiv.org/abs/1701.06548}
 
+\bibitem{WeightTie:DBLP:journals/corr/PressW16}
+Press, O., Wolf, L.: Using the output embedding to improve language models.
+\newblock CoRR \textbf{abs/1608.05859} (2016).
+\newblock \urlprefix\url{http://arxiv.org/abs/1608.05859}
+
 \bibitem{Smith:DBLP:journals/corr/abs-1803-09820}
 Smith, L.N.: A disciplined approach to neural network hyper-parameters: Part 1
   - learning rate, batch size, momentum, and weight decay.

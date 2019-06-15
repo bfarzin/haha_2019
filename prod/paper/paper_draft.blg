@@ -2,12 +2,8 @@ This is BibTeX, Version 0.99dThe top-level auxiliary file: paper_draft.aux
 The style file: spmpsci.bst
 Database file #1: local.bib
 Warning--entry type for "Tweepy" isn't style-file defined
---line 133 of file local.bib
-I was expecting a `,' or a `}'---line 136 of file local.bib
- :  url = {http://github.com/tweepy/tweepy}
- :                                         .
-I'm skipping whatever remains of this entry
+--line 148 of file local.bib
 Warning--I didn't find a database entry for ""
 Warning--I didn't find a database entry for "poleval"
 Warning--to sort, need author or key in Tweepy
-(There was 1 error message)
+(There were 4 warnings)

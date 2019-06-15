@@ -45,7 +45,7 @@
 }
 %\subtitle{Do you have a subtitle?\\ If so, write it here}
 
-%\titlerunning{Short form of title}        % if too long for running head
+\titlerunning{Short form of title}        % if too long for running head
 
 \author {\textbf{Bobak Farzin$^1$}, \textbf{Nombre Apellidos2$^2$}\\
 	$^1$bfarzin@gmail.com\\
@@ -56,7 +56,7 @@
 %        Second Author %etc.
 %}
 
-%\authorrunning{Short form of author list} % if too long for running head
+\authorrunning{Farzin 2019} % if too long for running head
 \institute{}
 %\institute{F. Author \at
 %              first address \\
@@ -76,7 +76,8 @@
 \maketitle
 
 \begin{abstract}
-Our entry into the \textit{HAHA 2019 Challenge} placed $3^{rd}$ in the classification task and $2^{nd}$ in the regression task.  We describe our system and innovations, as well as comparing our results to a Naive Bayes baseline. All the code for our project is included in a GitHub\footnote{https://github.com/bfarzin/haha\_2019\_final} repository for easy reference and to enable replication by others.
+Our entry into the \textit{HAHA 2019 Challenge} placed $3^{rd}$ in the classification task and $2^{nd}$ in the regression task.  We describe our system and innovations, as well as comparing our results to a Naive Bayes baseline. We found that a large Twitter based corpus allowed us to train a language model from scratch that is focused on Spanish Twitter.  With transfer learning, we moved this embedded information into our competition model and better predict tweets we have never seen but that are consistent with those in Spanish Twitter.  Finally, manually collected labels for the competition inherently have errors.  To overcome this we applied label smoothing to our loss and reduce the confidence in our model for either label in the classification task. 
+All the code for our project is included in a GitHub\footnote{https://github.com/bfarzin/haha\_2019\_final} repository for easy reference and to enable replication by others.
 
 \keywords{First keyword \and Second keyword \and More}
 % \PACS{PACS code1 \and PACS code2 \and more}
@@ -125,9 +126,9 @@ Below we will give more detail on each step and the parameters used to generate 
 \subsection{Data, Cleanup \& Tokenization}
 \label{sec:datacleaning}
 \subsection{Additional Data}
-For our initial training, we  collected 475,143 tweets in the Spanish language using tweepy ~\cite{Tweepy}.  The frequency of terms, punctuation and vocabulary can be quite different from the standard Wikipedia corpus that is often used to train an LM.
+We collected a corpus for our LM based on Spanish Twitter using tweepy~\cite{Tweepy} run for three 4 hours sessions and collecting any tweet with the terms 'el','su','lo','y' or 'en'. We excluded retweets to minimize repeated examples in our language model training.  In total, we collected 475,143 tweets.  This data set is nearly 16 times larger than the text provided by the competition.  The frequency of terms, punctuation and vocabulary can be quite different from the standard Wikipedia corpus that is often used to train an LM.  
 
-In the fine-tuning step, we combined the labeled and un-labeled text data for the LM training.
+In the fine-tuning step, we combined the train and test text data \textit{without labels} from the contest data.
 \subsection{Cleaning}
 We applied a list of default cleanup functions included in Fastai\cite{} and added an additional one for this Twitter dataset.
 \begin{itemize}
@@ -161,7 +162,7 @@ We used sentencepiece~\cite{SentencePiece:DBLP:journals/corr/abs-1808-06226} to 
 \section{Training and Results}
 \label{sec:4}
 \subsection{LM Training and Fine-tuning}
-We train the LM using a 90/10 training/validation split, reporting the validation loss and accuracy of next-word prediction on the validation set. For the LM, we selected a AWD\_LSTM \cite{Merity:DBLP:journals/corr/abs-1708-02182} model included in Fastai with QRNN\cite{Bradbury:DBLP:journals/corr/BradburyMXS16} units, 2304 hidden-states, 3 layers and a softmax layer to predict the next-word.  We tied the embedding weights on the encoder and decoder for training.  We performed some simple tests with LSTM units and a Transformer Language model, finding all models were similar in performance during LM training. We thus chose to use QRNN units due to improved training speed compared to the alternatives. This model has about 60 million trainable parameters.  
+We train the LM using a 90/10 training/validation split, reporting the validation loss and accuracy of next-word prediction on the validation set. For the LM, we selected a AWD\_LSTM \cite{Merity:DBLP:journals/corr/abs-1708-02182} model included in Fastai with QRNN\cite{Bradbury:DBLP:journals/corr/BradburyMXS16} units, 2304 hidden-states, 3 layers and a softmax layer to predict the next-word.  We tied the embedding weights\cite{WeightTie:DBLP:journals/corr/PressW16} on the encoder and decoder for training.  We performed some simple tests with LSTM units and a Transformer Language model, finding all models were similar in performance during LM training. We thus chose to use QRNN units due to improved training speed compared to the alternatives. This model has about 60 million trainable parameters.  
 
 Our loss is label smoothing\cite{Labelsmoothing:DBLP:journals/corr/PereyraTCKH17} of the flattened cross-entropy loss. 
 Parameters used for training and finetuning are shown in Table \ref{tab:tab_training}.
@@ -242,11 +243,30 @@ Best Seed &  0.8458 & 0.7806 & 0.8416 & \textbf{0.8099} \\
 
 \section{Conclusion}
 \label{sec:5}
-This paper describes our implementation of a neural net model for classification and regression in the HAHA 2019 challenge.  Our solution placed third in Task 1 and second in task 2 in the final competition standings.  We describe the data collection, pre-training, and final model building steps for this contest.  Additionally, we have open-sourced all  code used in this contest to further enable research on this task in the future.
+This paper describes our implementation of a neural net model for classification and regression in the HAHA 2019 challenge.  Our solution placed third in Task 1 and second in Task 2 in the final competition standings.  We describe the data collection, pre-training, and final model building steps for this contest.  Twitter has slang and abbreviations that are unique to the short-format as well as generous use of emoticons.  To capture these features, we collected our own dataset based on Spanish Tweets that is 16 times larger than the competition data set and allowed us to pre-train a langauge model.  Humor is subtle and using a label smoothed loss allowed us to not become too overconfident in our predictions and train more quickly without the gradual unfreezing required by ULMFiT. Additionally, we have open-sourced all  code used in this contest to further enable research on this task in the future.
+
+\section{other}
+
+
+%%  Comment from Kyle:
+%%Maybe you have some good advice to give other people related to points one and two of your main contributions, what do you think the primary benefit of transfer learning was - especially the use of tweets for the vocab and so on, versus the "standard" wikipedia? 
+%
+%Pretraining allows the model to get "close" to the right language model
+%Pre-training uses a wider universe of language than just the model training set.  We have a better chance to predict the test-set data by leveraging additional data.
+%
+%%As for the label smoothing, what is your general insight on what settings of label smoothing worked well, why penalizing confident stuff was extra useful here?	
+%%	For example in 4.2.1, why does label smoothing bypass gradual unfreezing? 
+%
+%With so many trainable params models can become focused on refining the prediiction on already correct predictions (going from .85 to .95 in the softmax output).  Gradual unfreezing prevents this kind of over-fitting by regularizing through restricting the params that can be fit.  Label smoothing achieves the same thing by preventing the maximum classification from becoming too large.  
+%
+%Manually built labels always lead to some errors.  there could be some that are only marginally funny, yet classified as "Humorous."  We don't want to be overconfident in our classification of these jokes, 
+%and label smoothing helps us to overcome that noise. 
+%
+%
+%Twitter has slang and abbreviations that are unique to the short-format as well as generous use of emoticons. 
 
 \begin{acknowledgements}
-If you'd like to thank anyone, place your comments here
-and remove the percent signs.
+The author would like to thank Kyle Kastner for his edits, suggestions and recommendations in writing up these results. 
 \end{acknowledgements}
 
 

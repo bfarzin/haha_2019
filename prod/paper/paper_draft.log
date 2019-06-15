@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.11)  15 JUN 2019 13:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.11)  15 JUN 2019 14:40
 entering extended mode
 **./paper_draft.tex
 (paper_draft.tex
@@ -292,87 +292,72 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 76.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 76.
-
-SVJour3 Warning: Author name(s) too long for running head. 
-Please supply a shorter form with \authorrunning prior to \maketitle
 [1{C:/Users/Bobak Farzin/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Overfull \hbox (13.14255pt too wide) has occurred while \output is active
-[][] []
+[2]
+Overfull \hbox (16.97278pt too wide) in paragraph at lines 129--130
+\OT1/cmr/m/n/10 run for three 4 hours ses-sions and col-lect-ing any tweet with
+ the terms 'el','su','lo','y'
  []
 
-[2]
-Overfull \hbox (31.08258pt too wide) in paragraph at lines 136--137
+
+Overfull \hbox (31.08258pt too wide) in paragraph at lines 137--138
 []\OT1/cmr/m/n/10 Replace rep-e-ti-tion at the char-ac-ter level (ie. [][]\OT1/
 cmtt/m/n/10 grrrreat []\OT1/cmr/m/n/10 be-comes [][]\OT1/cmtt/m/n/10 g xxrep r 
 3 eat[]\OT1/cmr/m/n/10 ) 
  []
 
 
-Overfull \hbox (18.99689pt too wide) in paragraph at lines 149--149
+Overfull \hbox (18.99689pt too wide) in paragraph at lines 150--150
 []\OT1/cmtt/m/n/10 Vamos por mas!!! e invitamos a todas aquellas personas que q
 uieran \[] 
  []
 
-
-Overfull \hbox (18.99689pt too wide) in paragraph at lines 156--156
+[3]
+Overfull \hbox (18.99689pt too wide) in paragraph at lines 157--157
 []\OT1/cmtt/m/n/10 xxnl  # alertaesi xxrep 4 ! xxnl vamos por mas ! ! ! e invit
 amos a \[] 
  []
 
-[3]
-Overfull \hbox (13.14255pt too wide) has occurred while \output is active
-[][] []
- []
-
 [4]
 
-LaTeX Warning: Citation `poleval' on page 5 undefined on input line 215.
+LaTeX Warning: Citation `poleval' on page 5 undefined on input line 216.
 
-<seed_hist_f1.jpg, id=28, 381.67593pt x 274.02374pt>
+<seed_hist_f1.jpg, id=27, 381.67593pt x 274.02374pt>
 File: seed_hist_f1.jpg Graphic file (type jpg)
 <use seed_hist_f1.jpg>
-Package pdftex.def Info: seed_hist_f1.jpg  used on input line 220.
+Package pdftex.def Info: seed_hist_f1.jpg  used on input line 221.
 (pdftex.def)             Requested size: 253.5pt x 181.99771pt.
-[5] (paper_draft.bbl
-Underfull \vbox (badness 1281) has occurred while \output is active []
-
-
-Overfull \hbox (13.14255pt too wide) has occurred while \output is active
-[][] []
- []
-
-[6 <./seed_hist_f1.jpg>]) [7] (paper_draft.aux) ) 
+[5] [6 <./seed_hist_f1.jpg>] (paper_draft.bbl) [7] (paper_draft.aux) ) 
 Here is how much of TeX's memory you used:
- 2204 strings out of 492895
- 34265 string characters out of 3120464
- 95675 words of memory out of 3000000
+ 2203 strings out of 492895
+ 34285 string characters out of 3120464
+ 94679 words of memory out of 3000000
  6116 multiletter control sequences out of 15000+200000
- 7367 words of font info for 27 fonts, out of 3000000 for 9000
+ 7199 words of font info for 26 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,9n,25p,839b,289s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/Bobak Farzin/AppData
-/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/
+ 41i,9n,25p,933b,265s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users
+/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmbx10.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmbx12.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/Bobak Farzin/AppDat
+a/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/
 Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
-mbx12.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmbx8.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Bobak Farzin/AppData/
-Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Bo
-bak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
-10.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmr6.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Bobak Farzin/AppData/Local
-/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Bobak Fa
-rzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pf
+mmi8.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmr10.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Bobak Farzin/AppData/Lo
+cal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Bobak
+ Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.p
+fb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmsy10.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Bobak Farzin/AppData/Local/
+Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Bobak Fa
+rzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pf
 b><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmsy6.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Bobak Farzin/AppData/Local/Pr
-ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Bobak Far
-zin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb
-><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmtt8.pfb>
-Output written on paper_draft.pdf (7 pages, 224880 bytes).
+msfonts/cm/cmtt10.pfb>
+Output written on paper_draft.pdf (7 pages, 221323 bytes).
 PDF statistics:
- 87 PDF objects out of 1000 (max. 8388607)
+ 83 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
