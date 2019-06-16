@@ -34,6 +34,12 @@ Chiruzzo, L., Castro, S., Etcheverry, M., Garat, D., Prada, J.J., Ros\'{a}, A.:
 \newblock In: {Proceedings of the Iberian Languages Evaluation Forum (IberLEF
   2019)}, CEUR Workshop Proceedings. CEUR-WS, Bilbao, Spain (2019)
 
+\bibitem{Poleval:DBLP:journals/corr/abs-1810-10222}
+Czapla, P., Howard, J., Kardas, M.: Universal language model fine-tuning with
+  subword tokenization for polish.
+\newblock CoRR \textbf{abs/1810.10222} (2018).
+\newblock \urlprefix\url{http://arxiv.org/abs/1810.10222}
+
 \bibitem{HowardRuder:DBLP:journals/corr/abs-1801-06146}
 Howard, J., Ruder, S.: Fine-tuned language models for text classification.
 \newblock CoRR \textbf{abs/1801.06146} (2018).

@@ -2,8 +2,6 @@ This is BibTeX, Version 0.99dThe top-level auxiliary file: paper_draft.aux
 The style file: spmpsci.bst
 Database file #1: local.bib
 Warning--entry type for "Tweepy" isn't style-file defined
---line 148 of file local.bib
-Warning--I didn't find a database entry for ""
-Warning--I didn't find a database entry for "poleval"
+--line 164 of file local.bib
 Warning--to sort, need author or key in Tweepy
-(There were 4 warnings)
+(There were 2 warnings)
