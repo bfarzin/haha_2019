@@ -1,76 +1,31 @@
-%%%%%%%%%%%%%%%%%%%%%%% file template.tex %%%%%%%%%%%%%%%%%%%%%%%%%
+% This is samplepaper.tex, a sample chapter demonstrating the
+% LLNCS macro package for Springer Computer Science proceedings;
+% Version 2.20 of 2017/10/04
 %
-% This is a general template file for the LaTeX package SVJour3
-% for Springer journals.          Springer Heidelberg 2010/09/16
-%
-% Copy it to a new file with a new name and use it as the basis
-% for your article. Delete % signs as needed.
-%
-% This template includes a few options for different layouts and
-% content for various journals. Please consult a previous issue of
-% your journal as needed.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-
-%
-\RequirePackage{fix-cm}
-%
-%\documentclass{svjour3}                     % onecolumn (standard format)
-%\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
-\documentclass[smallextended]{svjour3}       % onecolumn (second format)
-%\documentclass[twocolumn]{svjour3}          % twocolumn
-%
-\smartqed  % flush right qed marks, e.g. at end of proof
+\documentclass[runningheads]{llncs}
 %
 \usepackage{graphicx}
+% Used for displaying a sample figure. If possible, figure files should
+% be included in EPS format.
 %
-% \usepackage{mathptmx}      % use Times fonts if available on your TeX system
-%
-% insert here the call for the packages your document requires
-%\usepackage{latexsym}
-% etc.
-%
-% please place your own definitions here and don't use \def but
-% \newcommand{}{}
-%
-% Insert the name of "your journal" with
-% \journalname{myjournal}
-%
+% If you use the hyperref package, please uncomment the following line
+% to display URLs in blue roman font according to Springer's eBook style:
+% \renewcommand\UrlFont{\color{blue}\rmfamily}
+
 \begin{document}
 
-\title{ULMFiT for Joke Classification in Spanish%\thanks{Grants or other notes
-%about the article that should go on the front page should be
-%placed here. General acknowledgments should be placed at the end of the article.}
-}
+
+\title{ULMFiT for Joke Classification in Spanish}
+
+\author{Bobak Farzin\inst{1}}
+%
+\authorrunning{Farzin 2019}
+% First names are abbreviated in the running head.
+% If there are more than two authors, 'et al.' is used.
+%
+\institute{	\email{bfarzin@gmail.com}}
+
 %\subtitle{Do you have a subtitle?\\ If so, write it here}
-
-\titlerunning{}        % if too long for running head
-
-\author {\textbf{Bobak Farzin$^1$}\\
-	$^1$bfarzin@gmail.com\\
-}
-
-%\author{Bobak Farzin         \and
-%        Second Author %etc.
-%}
-
-\authorrunning{Farzin 2019} % if too long for running head
-\institute{}
-%\institute{F. Author \at
-%              first address \\
-%              Tel.: +123-45-678910\\
-%              Fax: +123-45-678910\\
-%              \email{bfarzin@gmail.com}           %  \\
-%             \emph{Present address:} of F. Author  %  if needed
-%           \and
-%           S. Author \at
-%              second address
-%}
-
-\date{Received: 17 June 2019 / Accepted: date}
-% The correct dates will be entered by the editor
-
 
 \maketitle
 
@@ -245,46 +200,10 @@ Best Seed &  0.8458 & 0.7806 & 0.8416 & \textbf{0.8099} \\
 \label{sec:5}
 This paper describes our implementation of a neural net model for classification and regression in the HAHA 2019 challenge.  Our solution placed $3^{rd}$ in Task 1 and $2^{nd}$ in Task 2 in the final competition standings.  We describe the data collection, pre-training, and final model building steps for this contest.  Twitter has slang and abbreviations that are unique to the short-format as well as generous use of emoticons.  To capture these features, we collected our own dataset based on Spanish Tweets that is 16 times larger than the competition data set and allowed us to pre-train a language model.  Humor is subtle and using a label smoothed loss allowed us to not become too overconfident in our predictions and train more quickly without the gradual unfreezing required by ULMFiT. We have open-sourced all  code used in this contest to further enable research on this task in the future.
 
-\section{other}
-
-
-%%  Comment from Kyle:
-%%Maybe you have some good advice to give other people related to points one and two of your main contributions, what do you think the primary benefit of transfer learning was - especially the use of tweets for the vocab and so on, versus the "standard" wikipedia? 
-%
-%Pretraining allows the model to get "close" to the right language model
-%Pre-training uses a wider universe of language than just the model training set.  We have a better chance to predict the test-set data by leveraging additional data.
-%
-%%As for the label smoothing, what is your general insight on what settings of label smoothing worked well, why penalizing confident stuff was extra useful here?	
-%%	For example in 4.2.1, why does label smoothing bypass gradual unfreezing? 
-%
-%With so many trainable params models can become focused on refining the prediiction on already correct predictions (going from .85 to .95 in the softmax output).  Gradual unfreezing prevents this kind of over-fitting by regularizing through restricting the params that can be fit.  Label smoothing achieves the same thing by preventing the maximum classification from becoming too large.  
-%
-%Manually built labels always lead to some errors.  there could be some that are only marginally funny, yet classified as "Humorous."  We don't want to be overconfident in our classification of these jokes, 
-%and label smoothing helps us to overcome that noise. 
-%
-%
-%Twitter has slang and abbreviations that are unique to the short-format as well as generous use of emoticons. 
-
-\begin{acknowledgements}
+\section{Acknowledgements}
 The author would like to thank Kyle Kastner for his edits, suggestions and recommendations in writing up these results. 
-\end{acknowledgements}
 
-
-% Authors must disclose all relationships or interests that 
-% could have direct or potential influence or impart bias on 
-% the work: 
-%
-% \section*{Conflict of interest}
-%
-% The authors declare that they have no conflict of interest.
-
-
-% BibTeX users please use one of
-%\bibliographystyle{fullname}      % basic style, author-year citations
-
-%\bibliographystyle{spbasic}      % basic style, author-year citations
-\bibliographystyle{spmpsci}      % mathematics and physical sciences
-%\bibliographystyle{spphys}       % APS-like style for physics
+\bibliographystyle{splncs04}
 \bibliography{local}   % name your BibTeX data base
 
 \end{document}

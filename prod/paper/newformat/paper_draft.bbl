@@ -1,0 +1,64 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{Tweepy}
+Tweepy: Twitter for python! (2019), \url{http://github.com/tweepy/tweepy}
+
+\bibitem{Bradbury:DBLP:journals/corr/BradburyMXS16}
+Bradbury, J., Merity, S., Xiong, C., Socher, R.: Quasi-recurrent neural
+  networks. CoRR  \textbf{abs/1611.01576} (2016),
+  \url{http://arxiv.org/abs/1611.01576}
+
+\bibitem{castro2018crowd}
+Castro, S., Chiruzzo, L., Ros{\'a}, A., Garat, D., Moncecchi, G.: A
+  crowd-annotated spanish corpus for humor analysis. In: Proceedings of the
+  Sixth International Workshop on Natural Language Processing for Social Media.
+  pp. 7--11 (2018)
+
+\bibitem{Chawla:2002:SSM:1622407.1622416}
+Chawla, N.V., Bowyer, K.W., Hall, L.O., Kegelmeyer, W.P.: Smote: Synthetic
+  minority over-sampling technique. J. Artif. Int. Res.  \textbf{16}(1),
+  321--357 (Jun 2002), \url{http://dl.acm.org/citation.cfm?id=1622407.1622416}
+
+\bibitem{overview_haha2019}
+Chiruzzo, L., Castro, S., Etcheverry, M., Garat, D., Prada, J.J., Ros\'{a}, A.:
+  {Overview of HAHA at IberLEF 2019: Humor Analysis based on Human Annotation}.
+  In: {Proceedings of the Iberian Languages Evaluation Forum (IberLEF 2019)}.
+  CEUR Workshop Proceedings, CEUR-WS, Bilbao, Spain (9 2019)
+
+\bibitem{Poleval:DBLP:journals/corr/abs-1810-10222}
+Czapla, P., Howard, J., Kardas, M.: Universal language model fine-tuning with
+  subword tokenization for polish. CoRR  \textbf{abs/1810.10222} (2018),
+  \url{http://arxiv.org/abs/1810.10222}
+
+\bibitem{HowardRuder:DBLP:journals/corr/abs-1801-06146}
+Howard, J., Ruder, S.: Fine-tuned language models for text classification. CoRR
+   \textbf{abs/1801.06146} (2018), \url{http://arxiv.org/abs/1801.06146}
+
+\bibitem{SentencePiece:DBLP:journals/corr/abs-1808-06226}
+Kudo, T., Richardson, J.: Sentencepiece: {A} simple and language independent
+  subword tokenizer and detokenizer for neural text processing. CoRR
+  \textbf{abs/1808.06226} (2018), \url{http://arxiv.org/abs/1808.06226}
+
+\bibitem{Merity:DBLP:journals/corr/abs-1708-02182}
+Merity, S., Keskar, N.S., Socher, R.: Regularizing and optimizing {LSTM}
+  language models. CoRR  \textbf{abs/1708.02182} (2017),
+  \url{http://arxiv.org/abs/1708.02182}
+
+\bibitem{Labelsmoothing:DBLP:journals/corr/PereyraTCKH17}
+Pereyra, G., Tucker, G., Chorowski, J., Kaiser, L., Hinton, G.E.: Regularizing
+  neural networks by penalizing confident output distributions. CoRR
+  \textbf{abs/1701.06548} (2017), \url{http://arxiv.org/abs/1701.06548}
+
+\bibitem{WeightTie:DBLP:journals/corr/PressW16}
+Press, O., Wolf, L.: Using the output embedding to improve language models.
+  CoRR  \textbf{abs/1608.05859} (2016), \url{http://arxiv.org/abs/1608.05859}
+
+\bibitem{Smith:DBLP:journals/corr/abs-1803-09820}
+Smith, L.N.: A disciplined approach to neural network hyper-parameters: Part 1
+  - learning rate, batch size, momentum, and weight decay. CoRR
+  \textbf{abs/1803.09820} (2018), \url{http://arxiv.org/abs/1803.09820}
+
+\end{thebibliography}
