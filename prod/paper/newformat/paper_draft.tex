@@ -17,13 +17,13 @@
 
 %\title{Modified ULMFiT for Joke Classification in Spanish}
 \title{Applying a Pretrained Langague Model to Spanish Twitter Humor Prediction}
-\author{Bobak Farzin\\ June 2019}
+\author{Bobak Farzin \\June 2019}
 %
 \authorrunning{Farzin 2019}
 % First names are abbreviated in the running head.
 % If there are more than two authors, 'et al.' is used.
 %
-\institute{	\email{bfarzin@gmail.com}}
+\institute{USF Data Institue WAMRI Visting Scholar	\email{bfarzin@gmail.com}}
 
 %\subtitle{Do you have a subtitle?\\ If so, write it here}
 
@@ -62,7 +62,7 @@ Rather than hand-crafted language features, we have taken an "end to end" approa
 
 \section{Task and Dataset Description}
 \label{sec:task}
-The \textit{Humor Analysis based on Humor Annotation (HAHA) 2019}\cite{overview_haha2019} competition asked for analysis of two tasks in the Spanish language based on a corpus of publicly collected data described in Castro et al.~\cite{castro2018crowd}:
+The \textit{Humor Analysis based on Human Annotation (HAHA) 2019}\cite{overview_haha2019} competition asked for analysis of two tasks in the Spanish language based on a corpus of publicly collected data described in Castro et al.~\cite{castro2018crowd}:
 \begin{itemize}
 \item \textbf{Task1: Humor Detection}:Determine if a tweet is humorous. System ranking is based on F1 score which balances precision and accuracy.
 \item \textbf{Task2: Funniness Score}:If humorous, what is the average humor rating of the tweet? System ranking is based on root mean-squared error (RMSE).
@@ -141,7 +141,7 @@ Following the work of Smith\cite{Smith:DBLP:journals/corr/abs-1803-09820} we fou
 \end{table}
 
 \subsection{Classification and Regression Fitting}
-Again, following the play-book from Howard and Ruder\cite{HowardRuder:DBLP:journals/corr/abs-1801-06146}, we change pre-trained network head to a softmax or linear output layer (as appropriate for the transfer task) and then load the LM weights for the layers below.  We train just the new head from random initialization, then unfreeze the entire network and train with differential learning rates.
+Again, following the play-book from Howard and Ruder\cite{HowardRuder:DBLP:journals/corr/abs-1801-06146}, we change the pre-trained network head to a softmax or linear output layer (as appropriate for the transfer task) and then load the LM weights for the layers below.  We train just the new head from random initialization, then unfreeze the entire network and train with differential learning rates.
 
 With the same learning rate and weight decay we apply a 5-fold cross-validation on the outputs and take the mean across the folds as our ensemble.  We sample 20 random seeds (see more in section \ref{sec:rand_seeds}) to find the best initialization for our gradient descent search.  From these samples, we select the best validation F1 metric or Mean Squared Error (MSE) for use in our test submission.
 \subsubsection{Classifier setup}  For the classifier, we have a hidden layer and softmax head.  We over-sample the minority class to balance the outcomes for better training using Synthetic Minority Oversampling Technique (SMOTE, described in Chawla et al.\cite{Chawla:2002:SSM:1622407.1622416}).  Our loss is label smoothing as described in Pereyra et al.\cite{Labelsmoothing:DBLP:journals/corr/PereyraTCKH17} of the flattened cross-entropy loss.  Gradual unfreezing allows us to avoid catastropic forgetting, focus each stage of training and preventing over-fitting of the parameters to the training cases.  We take an alternative approach to regularization and in our experiments found that we got similar results with label smoothing but without the separate steps and learning rate refinement required of gradual unfreezing.   
@@ -201,7 +201,7 @@ Best Seed &  0.8458 & 0.7806 & 0.8416 & \textbf{0.8099} \\
 This paper describes our implementation of a neural net model for classification and regression in the HAHA 2019 challenge.  Our solution placed $3^{rd}$ in Task 1 and $2^{nd}$ in Task 2 in the final competition standings.  We describe the data collection, pre-training, and final model building steps for this contest.  Twitter has slang and abbreviations that are unique to the short-format as well as generous use of emoticons.  To capture these features, we collected our own dataset based on Spanish Tweets that is 16 times larger than the competition data set and allowed us to pre-train a language model.  Humor is subtle and using a label smoothed loss prevented us from becoming overconfident in our predictions and train more quickly without the gradual unfreezing required by ULMFiT. We have open-sourced all  code used in this contest to further enable research on this task in the future.
 
 \section{Acknowledgements}
-The author would like to thank Kyle Kastner for his edits, suggestions and recommendations in writing up these results. However, any omissions or errors are those of the authors alone.
+The author would like to thank all the participants on the fast.ai forums \footnote{http://forums.fasta.ai} for their ideas and suggestions and Kyle Kastner for his edits, suggestions and recommendations in writing up these results. 
 
 \bibliographystyle{splncs04}
 \bibliography{local}   % name your BibTeX data base
