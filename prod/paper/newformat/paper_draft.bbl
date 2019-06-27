@@ -3,9 +3,6 @@
 \providecommand{\urlprefix}{URL }
 \providecommand{\doi}[1]{https://doi.org/#1}
 
-\bibitem{Tweepy}
-Tweepy: Twitter for python! (2019), \url{http://github.com/tweepy/tweepy}
-
 \bibitem{Bradbury:DBLP:journals/corr/BradburyMXS16}
 Bradbury, J., Merity, S., Xiong, C., Socher, R.: Quasi-recurrent neural
   networks. CoRR  \textbf{abs/1611.01576} (2016),
@@ -34,8 +31,9 @@ Czapla, P., Howard, J., Kardas, M.: Universal language model fine-tuning with
   \url{http://arxiv.org/abs/1810.10222}
 
 \bibitem{HowardRuder:DBLP:journals/corr/abs-1801-06146}
-Howard, J., Ruder, S.: Fine-tuned language models for text classification. CoRR
-   \textbf{abs/1801.06146} (2018), \url{http://arxiv.org/abs/1801.06146}
+Howard, J., Ruder, S.: Universal language model fine-tuning for text
+  classification. CoRR  \textbf{abs/1801.06146} (2018),
+  \url{http://arxiv.org/abs/1801.06146}
 
 \bibitem{SentencePiece:DBLP:journals/corr/abs-1808-06226}
 Kudo, T., Richardson, J.: Sentencepiece: {A} simple and language independent
@@ -60,5 +58,12 @@ Press, O., Wolf, L.: Using the output embedding to improve language models.
 Smith, L.N.: A disciplined approach to neural network hyper-parameters: Part 1
   - learning rate, batch size, momentum, and weight decay. CoRR
   \textbf{abs/1803.09820} (2018), \url{http://arxiv.org/abs/1803.09820}
+
+\bibitem{Wang:2012:BBS:2390665.2390688}
+Wang, S., Manning, C.D.: Baselines and bigrams: Simple, good sentiment and
+  topic classification. In: Proceedings of the 50th Annual Meeting of the
+  Association for Computational Linguistics: Short Papers - Volume 2. pp.
+  90--94. ACL '12, Association for Computational Linguistics, Stroudsburg, PA,
+  USA (2012), \url{http://dl.acm.org/citation.cfm?id=2390665.2390688}
 
 \end{thebibliography}

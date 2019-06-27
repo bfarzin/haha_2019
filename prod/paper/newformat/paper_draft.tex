@@ -1,30 +1,21 @@
-% This is samplepaper.tex, a sample chapter demonstrating the
-% LLNCS macro package for Springer Computer Science proceedings;
-% Version 2.20 of 2017/10/04
-%
 \documentclass[runningheads]{llncs}
-%
 \usepackage{graphicx}
-% Used for displaying a sample figure. If possible, figure files should
-% be included in EPS format.
-%
-% If you use the hyperref package, please uncomment the following line
-% to display URLs in blue roman font according to Springer's eBook style:
-% \renewcommand\UrlFont{\color{blue}\rmfamily}
 
 \begin{document}
 
 
 %\title{Modified ULMFiT for Joke Classification in Spanish}
 \title{Applying a Pretrained Langague Model to Spanish Twitter Humor Prediction}
-\author{Bobak Farzin \inst{1} Jeremy Howard \inst{2} \\June 2019}
+\author{Bobak Farzin \inst{1} Piotr Czapla \inst{2} and Jeremy Howard \inst{3} \\June 2019}
 %
 \authorrunning{Farzin 2019}
 % First names are abbreviated in the running head.
 % If there are more than two authors, 'et al.' is used.
 %
-\institute{USF Data Institue WAMRI Visting Scholar \\
+\institute{USF Data Institue, WAMRI Visting Scholar \\
 		\email{bfarzin@gmail.com} \\
+		\and
+		n-waves
 \and  
 University of San Francisco \\ \email{j@fast.ai}}
 
@@ -57,7 +48,8 @@ Google Translation:
 - Does it charge?\\
 - Not free.
 \end{quote}
-Humor does not translate well because it often relies on double-meaning or a subtle play on word choice, pronunciation, or context.  These issues are further exacerbated in areas where space is a premium (as frequent on social media platforms), often leading to usage and development of shorthand, in-jokes, and self-reference. Thus, building a system to classify the humor of tweets is a difficult task.  However, with transfer-learning and the Fastai library\footnote{https://docs.fast.ai/, Accessed on 19 June 2019}, we can build a high quality classifier in a foreign language. Our system outperforms a Naive Bayes Support Vector Machine (NBSVM) baseline, which is frequently considered a "strong baseline" for many Natural Language Processing (NLP) related tasks \footnote{https://twitter.com/radamihalcea/status/1119020144389443585, Accessed on 19 June 2019}.
+Humor does not translate well because it often relies on double-meaning or a subtle play on word choice, pronunciation, or context.  These issues are further exacerbated in areas where space is a premium (as frequent on social media platforms), often leading to usage and development of shorthand, in-jokes, and self-reference. Thus, building a system to classify the humor of tweets is a difficult task.  However, with transfer-learning and the Fastai library\footnote{https://docs.fast.ai/, Accessed on 19 June 2019}, we can build a high quality classifier in a foreign language. Our system outperforms a Naive Bayes Support Vector Machine (NBSVM) baseline, which is frequently considered a "strong baseline" for many Natural Language Processing (NLP) related tasks (see 
+Wang et al \cite{Wang:2012:BBS:2390665.2390688}).
 
 Rather than hand-crafted language features, we have taken an "end to end" approach building from the raw text to a final model that achieves the tasks as presented.  Our paper lays out the details of the system and our code can be found in a GitHub repo for use by other researchers to extend the state of the art in sentiment analysis. 
 
@@ -70,7 +62,7 @@ The \textit{Humor Analysis based on Human Annotation (HAHA) 2019}\cite{overview_
 \item \textbf{Task1: Humor Detection}:Determine if a tweet is humorous. System ranking is based on F1 score which balances precision and accuracy.
 \item \textbf{Task2: Funniness Score}:If humorous, what is the average humor rating of the tweet? System ranking is based on root mean-squared error (RMSE).
 \end{itemize}
-The HAHA dataset includes labeled data for 24,000 tweets and a test set of 6,000 tweets (80\%/20\% train/test split.)  Each record includes the raw tweet text (including accents and emoticons), a binary humor label, the number of votes for each of five star ratings and a ``Funniness Score'' that is the average of the 1 to 5 star votes cast.  Examples and data can be found on the CodaLab competition webpage\footnote{http://competitions.codalab.org/competitions/22194/}.
+The HAHA dataset includes labeled data for 24,000 tweets and a test set of 6,000 tweets (80\%/20\% train/test split.)  Each record includes the raw tweet text (including accents and emoticons), a binary humor label, the number of votes for each of five star ratings and a ``Funniness Score'' that is the average of the 1 to 5 star votes cast.  Examples and data can be found on the CodaLab competition webpage\footnote{http://competitions.codalab.org/competitions/22194/ Accessed on 19 June 2019}.
 
 \section{System Description}
 \label{sec:system}
@@ -84,7 +76,7 @@ Below we will give more detail on each step and the parameters used to generate 
 \subsection{Data, Cleanup \& Tokenization}
 \label{sec:datacleaning}
 \subsection{Additional Data}
-We collected a corpus for our LM based on Spanish Twitter using tweepy~\cite{Tweepy} run for three 4-hour sessions and collecting any tweet with the terms 'el','su','lo','y' or 'en'. We excluded retweets to minimize repeated examples in our language model training.  In total, we collected 475,143 tweets.  This data set is nearly 16 times larger than the text provided by the competition alone.  The frequency of terms, punctuation and vocabulary can be quite different from the standard Wikipedia corpus that is often used to train an LM from scratch.  
+We collected a corpus for our LM based on Spanish Twitter using tweepy~\footnote{http://github.com/tweepy/tweepy, Accessed on 19 June 2019} run for three 4-hour sessions and collecting any tweet with the terms 'el','su','lo','y' or 'en'. We excluded retweets to minimize repeated examples in our language model training.  In total, we collected 475,143 tweets.  This data set is nearly 16 times larger than the text provided by the competition alone.  The frequency of terms, punctuation and vocabulary can be quite different from the standard Wikipedia corpus that is often used to train an LM from scratch.  
 
 In the fine-tuning step, we combined the train and test text data \textit{without labels} from the contest data.
 \subsection{Cleaning}
