@@ -5,19 +5,20 @@
 
 
 %\title{Modified ULMFiT for Joke Classification in Spanish}
-\title{Applying a Pretrained Langague Model to Spanish Twitter Humor Prediction}
+\title{Applying a Pre-trained Language Model to Spanish Twitter Humor Prediction}
 \author{Bobak Farzin \inst{1} Piotr Czapla \inst{2} and Jeremy Howard \inst{3} \\June 2019}
 %
-\authorrunning{Farzin 2019}
+\authorrunning{Farzin et al. 2019}
 % First names are abbreviated in the running head.
 % If there are more than two authors, 'et al.' is used.
 %
 \institute{USF Data Institue, WAMRI Visting Scholar \\
 		\email{bfarzin@gmail.com} \\
 		\and
-		n-waves
+		n-waves\\
+		\email{Piotr.Czapla@n-waves.com}
 \and  
-University of San Francisco \\ \email{j@fast.ai}}
+University of San Francisco \& Fast.ai\\ \email{j@fast.ai}}
 
 %\subtitle{Do you have a subtitle?\\ If so, write it here}
 
@@ -28,7 +29,7 @@ Our entry into the \textit{HAHA 2019 Challenge} placed $3^{rd}$ in the classific
 A large Twitter based corpus allowed us to train a language model from scratch focused on Spanish and transfer that knowledge to our competition model.  To overcome the inherent errors in some labels we reduce our class confidence with label smoothing in the loss function.
 All the code for our project is included in a GitHub\footnote{https://github.com/bfarzin/haha\_2019\_final, Accessed on 19 June 2019} repository for easy reference and to enable replication by others.
 
-\keywords{First keyword \and Second keyword \and More}
+\keywords{Natural Language Processing \and Transfer Learning \and Sentiment Analysis \and Humor Classification}
 % \PACS{PACS code1 \and PACS code2 \and more}
 % \subclass{MSC code1 \and MSC code2 \and more}
 \end{abstract}
@@ -48,10 +49,10 @@ Google Translation:
 - Does it charge?\\
 - Not free.
 \end{quote}
-Humor does not translate well because it often relies on double-meaning or a subtle play on word choice, pronunciation, or context.  These issues are further exacerbated in areas where space is a premium (as frequent on social media platforms), often leading to usage and development of shorthand, in-jokes, and self-reference. Thus, building a system to classify the humor of tweets is a difficult task.  However, with transfer-learning and the Fastai library\footnote{https://docs.fast.ai/, Accessed on 19 June 2019}, we can build a high quality classifier in a foreign language. Our system outperforms a Naive Bayes Support Vector Machine (NBSVM) baseline, which is frequently considered a "strong baseline" for many Natural Language Processing (NLP) related tasks (see 
+Humor does not translate well because it often relies on double-meaning or a subtle play on word choice, pronunciation, or context.  These issues are further exacerbated in areas where space is a premium (as frequent on social media platforms), often leading to usage and development of shorthand, in-jokes, and self-reference. Thus, building a system to classify the humor of tweets is a difficult task.  However, with transfer-learning and the Fast.ai library\footnote{https://docs.fast.ai/, Accessed on 19 June 2019}, we can build a high quality classifier in a foreign language. Our system outperforms a Naive Bayes Support Vector Machine (NBSVM) baseline, which is frequently considered a "strong baseline" for many Natural Language Processing (NLP) related tasks (see 
 Wang et al \cite{Wang:2012:BBS:2390665.2390688}).
 
-Rather than hand-crafted language features, we have taken an "end to end" approach building from the raw text to a final model that achieves the tasks as presented.  Our paper lays out the details of the system and our code can be found in a GitHub repo for use by other researchers to extend the state of the art in sentiment analysis. 
+Rather than hand-crafted language features, we have taken an "end to end" approach building from the raw text to a final model that achieves the tasks as presented.  Our paper lays out the details of the system and our code can be found in a GitHub repository for use by other researchers to extend the state of the art in sentiment analysis. 
 
 \paragraph{Contribution} Our contributions are three fold.  First, we apply transfer-learning of a language model based on a larger corpus of tweets.  Second, we use a label smoothed loss, which provides regularization and allows full training of the final model without gradual unfreezing.  Third, we select the best model for each task based on cross-validation and 20 random-seed initialization in the final network training step.
 
@@ -82,7 +83,7 @@ In the fine-tuning step, we combined the train and test text data \textit{withou
 \subsection{Cleaning}
 We applied a list of default cleanup functions in sequence.  They are close to the standard cleanup included in the Fast.ai library with the addition of one for this Twitter dataset. Cleanup of data is key to expressing the data in a compact way so that the LM can keep the relevant current data when trying to predict the next work in a sequence.
 \begin{enumerate}
-	\item Replace repetition at the character level (ie. \verb|grrrreat| becomes \verb|g xxrep r 3 eat|)
+	\item Replace more than 3 repetitions of the same character (ie. \verb|grrrreat| becomes \verb|g xxrep r 4 eat|)
 	\item Replace repetition at the word level (similar to above)
 	\item Deal with ALL CAPS words replacing with a token and converting to lower case.
 	\item Add spaces between special chars (ie. \verb|!!!| to \verb|! ! !|)
@@ -107,12 +108,12 @@ todas aquellas personas que quieran se parte.
 \end{verbatim}
 
 \subsection{Tokenization}
-We used sentencepiece~\cite{SentencePiece:DBLP:journals/corr/abs-1808-06226} to parse into sub-word units and reduce the possible out-of-vocabulary (OOV) terms in the data set.  We selected a vocab size of 30,000 and used the byte-pair encoding (bpe) model. 
+We used sentencepiece~\cite{SentencePiece:DBLP:journals/corr/abs-1808-06226} to parse into sub-word units and reduce the possible out-of-vocabulary terms in the data set.  We selected a vocab size of 30,000 and used the byte-pair encoding (BPE) model. To our knowledge this is the first time that the BPE toenization has been used with ULMFiT in a competition model.
 
 \section{Training and Results}
 \label{sec:4}
 \subsection{LM Training and Fine-tuning}
-We train the LM using a 90/10 training/validation split, reporting the validation loss and accuracy of next-word prediction on the validation set. For the LM, we selected a ASGD Weight-Dropped Long Short Term Memory (AWD\_LSTM, described in Merity et al.\cite{Merity:DBLP:journals/corr/abs-1708-02182}) model included in Fastai. We replaced the typical Long Short Term Memory (LSTM) units with Quasi Recurrent Neural Network (QRNN, described in Bradbury et al.\cite{Bradbury:DBLP:journals/corr/BradburyMXS16}) units.  Our network has 2304 hidden-states, 3 layers and a softmax layer to predict the next-word.  We tied the embedding weights\cite{WeightTie:DBLP:journals/corr/PressW16} on the encoder and decoder for training.  We performed some simple tests with LSTM units and a Transformer Language model, finding all models were similar in performance during LM training. We thus chose to use QRNN units due to improved training speed compared to the alternatives. This model has about 60 million trainable parameters.  
+We train the LM using a 90/10 training/validation split, reporting the validation loss and accuracy of next-word prediction on the validation set. For the LM, we selected a ASGD Weight-Dropped Long Short Term Memory (AWD\_LSTM, described in Merity et al.\cite{Merity:DBLP:journals/corr/abs-1708-02182}) model included in Fast.ai. We replaced the typical Long Short Term Memory (LSTM) units with Quasi Recurrent Neural Network (QRNN, described in Bradbury et al.\cite{Bradbury:DBLP:journals/corr/BradburyMXS16}) units.  Our network has 2304 hidden-states, 3 layers and a softmax layer to predict the next-word.  We tied the embedding weights\cite{WeightTie:DBLP:journals/corr/PressW16} on the encoder and decoder for training.  We performed some simple tests with LSTM units and a Transformer Language model, finding all models were similar in performance during LM training. We thus chose to use QRNN units due to improved training speed compared to the alternatives. This model has about 60 million trainable parameters.  
 
 Parameters used for training and fine-tuning are shown in Table \ref{tab:tab_training}.
 For all networks we applied a dropout multiplier which scales the dropout used throughout the network.  We used the Adam optimizer with weight decay as indicated in the table.  
@@ -136,7 +137,7 @@ Following the work of Smith\cite{Smith:DBLP:journals/corr/abs-1803-09820} we fou
 \end{table}
 
 \subsection{Classification and Regression Fitting}
-Again, following the play-book from Howard and Ruder\cite{HowardRuder:DBLP:journals/corr/abs-1801-06146}, we change the pre-trained network head to a softmax or linear output layer (as appropriate for the transfer task) and then load the LM weights for the layers below.  We train just the new head from random initialization, then unfreeze the entire network and train with differential learning rates.
+Again, following the play-book from Howard and Ruder\cite{HowardRuder:DBLP:journals/corr/abs-1801-06146}, we change the pre-trained network head to a softmax or linear output layer (as appropriate for the transfer task) and then load the LM weights for the layers below.  We train just the new head from random initialization, then unfreeze the entire network and train with differential learning rates.  We layout our training parameters in Table \ref{tab:clas_training}.
 
 With the same learning rate and weight decay we apply a 5-fold cross-validation on the outputs and take the mean across the folds as our ensemble.  We sample 20 random seeds (see more in section \ref{sec:rand_seeds}) to find the best initialization for our gradient descent search.  From these samples, we select the best validation F1 metric or Mean Squared Error (MSE) for use in our test submission.
 \subsubsection{Classifier setup}  For the classifier, we have a hidden layer and softmax head.  We over-sample the minority class to balance the outcomes for better training using Synthetic Minority Oversampling Technique (SMOTE, described in Chawla et al.\cite{Chawla:2002:SSM:1622407.1622416}).  Our loss is label smoothing as described in Pereyra et al.\cite{Labelsmoothing:DBLP:journals/corr/PereyraTCKH17} of the flattened cross-entropy loss.  Gradual unfreezing allows us to avoid catastropic forgetting, focus each stage of training and preventing over-fitting of the parameters to the training cases.  We take an alternative approach to regularization and in our experiments found that we got similar results with label smoothing but without the separate steps and learning rate refinement required of gradual unfreezing.   
@@ -162,7 +163,7 @@ With the same learning rate and weight decay we apply a 5-fold cross-validation 
 \label{sec:rand_seeds}
 For classification and regression, the random seed sets the initial random weights of the head layer. This initialization affects the final F1 metric achievable.  
 
-Across each of the 20 random seeds, we average the 5-folds and obtain a single F1 metric on the validation set. The histogram of 20-seed outcomes is shown in Figure \ref{fig:random_seed_hist} and covers a range  from 0.820 to 0.825 over the validation set. We selected our single best random seed for the test submission. With more exploration, a better seed could likely be found.  Though we only use a single seed for the LM training, one could do a similar search with random seeds for LM pre-training, and further select the best down-stream seed similar to \cite{Poleval:DBLP:journals/corr/abs-1810-10222}
+Across each of the 20 random seeds, we average the 5-folds and obtain a single F1 metric on the validation set. The histogram of 20-seed outcomes is shown in Figure \ref{fig:random_seed_hist} and covers a range  from 0.820 to 0.825 over the validation set. We selected our single best random seed for the test submission. With more exploration, a better seed could likely be found.  Though we only use a single seed for the LM training, one could do a similar search with random seeds for LM pre-training, and further select the best down-stream seed similar to Czapla et al \cite{Poleval:DBLP:journals/corr/abs-1810-10222}.
 
 \begin{figure}[ht]
 	% Use the relevant command to insert your figure file.
@@ -173,7 +174,7 @@ Across each of the 20 random seeds, we average the 5-folds and obtain a single F
 \end{figure}
 
 \subsection{Results}
-Below in Table \ref{tab:tab_results} we give three results from our submissions in the competition. The first is the baseline NBSVM solution, with an F1 of 0.7548.  Second is our first random seed selected for the classifier which produces a 0.8083 result.  While better than the NBSVM solution, we pick the best validation F1 from the 20 seeds we tried. This produced our final submission of 0.8099.
+Table \ref{tab:tab_results} gives three results from our submissions in the competition. The first is the baseline NBSVM solution, with an F1 of 0.7548.  Second is our first random seed selected for the classifier which produces a 0.8083 result.  While better than the NBSVM solution, we pick the best validation F1 from the 20 seeds we tried. This produced our final submission of 0.8099.  Note that our third place entry was 1.1\% worse in F1 score than first place but 1.2\% \textit{better} in F1 than the $4^{th}$ place entry. 
 Note that applying this model over our validation set achieved an F1 of 0.8254 and a test set F1 of 0.8099 - a drop of 0.0155 in F1 for the true out-of-sample data.
 
 \begin{table}[ht]
@@ -196,7 +197,7 @@ Best Seed &  0.8458 & 0.7806 & 0.8416 & \textbf{0.8099} \\
 This paper describes our implementation of a neural net model for classification and regression in the HAHA 2019 challenge.  Our solution placed $3^{rd}$ in Task 1 and $2^{nd}$ in Task 2 in the final competition standings.  We describe the data collection, pre-training, and final model building steps for this contest.  Twitter has slang and abbreviations that are unique to the short-format as well as generous use of emoticons.  To capture these features, we collected our own dataset based on Spanish Tweets that is 16 times larger than the competition data set and allowed us to pre-train a language model.  Humor is subtle and using a label smoothed loss prevented us from becoming overconfident in our predictions and train more quickly without the gradual unfreezing required by ULMFiT. We have open-sourced all  code used in this contest to further enable research on this task in the future.
 
 \section{Acknowledgements}
-The author would like to thank all the participants on the fast.ai forums \footnote{http://forums.fasta.ai} for their ideas and suggestions and Kyle Kastner for his edits, suggestions and recommendations in writing up these results. 
+The author would like to thank all the participants on the fast.ai forums \footnote{http://forums.fasta.ai} for their ideas and suggestions. Also, Kyle Kastner for his edits, suggestions and recommendations in writing up these results. 
 
 \bibliographystyle{splncs04}
 \bibliography{local}   % name your BibTeX data base
