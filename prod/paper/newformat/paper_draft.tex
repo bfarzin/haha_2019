@@ -6,7 +6,7 @@
 
 %\title{Modified ULMFiT for Joke Classification in Spanish}
 \title{Applying a Pre-trained Language Model to Spanish Twitter Humor Prediction}
-\author{Bobak Farzin \inst{1} Piotr Czapla \inst{2} and Jeremy Howard \inst{3} \\June 2019}
+\author{Bobak Farzin \inst{1}$^{*}$ Piotr Czapla \inst{2}\thanks{BF was the primary researcher. PC contributed with suggestions for the random seeds as a hyper-parameters and label smoothing to speed up training. JH contributed with suggestion for higher dropout throughout the network for more generalization.} and Jeremy Howard\inst{3}$^{*}$ \\June 2019}
 %
 \authorrunning{Farzin et al. 2019}
 % First names are abbreviated in the running head.
@@ -77,11 +77,11 @@ Below we will give more detail on each step and the parameters used to generate 
 \subsection{Data, Cleanup \& Tokenization}
 \label{sec:datacleaning}
 \subsection{Additional Data}
-We collected a corpus for our LM based on Spanish Twitter using tweepy~\footnote{http://github.com/tweepy/tweepy, Accessed on 19 June 2019} run for three 4-hour sessions and collecting any tweet with the terms 'el','su','lo','y' or 'en'. We excluded retweets to minimize repeated examples in our language model training.  In total, we collected 475,143 tweets.  This data set is nearly 16 times larger than the text provided by the competition alone.  The frequency of terms, punctuation and vocabulary can be quite different from the standard Wikipedia corpus that is often used to train an LM from scratch.  
+We collected a corpus for our LM based on Spanish Twitter using tweepy~\footnote{http://github.com/tweepy/tweepy, Accessed on 19 June 2019} run for three 4-hour sessions and collecting any tweet with any of the terms 'el','su','lo','y' or 'en'. We excluded retweets to minimize repeated examples in our language model training.  In total, we collected 475,143 tweets - a data set is nearly 16 times larger than the text provided by the competition alone.  The frequency of terms, punctuation and vocabulary used on Twitter can be quite different from the standard Wikipedia corpus that is often used to train an LM from scratch.  
 
 In the fine-tuning step, we combined the train and test text data \textit{without labels} from the contest data.
 \subsection{Cleaning}
-We applied a list of default cleanup functions in sequence.  They are close to the standard cleanup included in the Fast.ai library with the addition of one for this Twitter dataset. Cleanup of data is key to expressing the data in a compact way so that the LM can keep the relevant current data when trying to predict the next work in a sequence.
+We applied a list of default cleanup functions in sequence (see list below).  They are close to the standard clean-up included in the Fast.ai library with the addition of one function for the Twitter dataset. Cleanup of data is key to expressing information in a compact way so that the LM can use the relevant data when trying to predict the next word in a sequence.
 \begin{enumerate}
 	\item Replace more than 3 repetitions of the same character (ie. \verb|grrrreat| becomes \verb|g xxrep r 4 eat|)
 	\item Replace repetition at the word level (similar to above)
@@ -113,7 +113,7 @@ We used sentencepiece~\cite{SentencePiece:DBLP:journals/corr/abs-1808-06226} to 
 \section{Training and Results}
 \label{sec:4}
 \subsection{LM Training and Fine-tuning}
-We train the LM using a 90/10 training/validation split, reporting the validation loss and accuracy of next-word prediction on the validation set. For the LM, we selected a ASGD Weight-Dropped Long Short Term Memory (AWD\_LSTM, described in Merity et al.\cite{Merity:DBLP:journals/corr/abs-1708-02182}) model included in Fast.ai. We replaced the typical Long Short Term Memory (LSTM) units with Quasi Recurrent Neural Network (QRNN, described in Bradbury et al.\cite{Bradbury:DBLP:journals/corr/BradburyMXS16}) units.  Our network has 2304 hidden-states, 3 layers and a softmax layer to predict the next-word.  We tied the embedding weights\cite{WeightTie:DBLP:journals/corr/PressW16} on the encoder and decoder for training.  We performed some simple tests with LSTM units and a Transformer Language model, finding all models were similar in performance during LM training. We thus chose to use QRNN units due to improved training speed compared to the alternatives. This model has about 60 million trainable parameters.  
+We train the LM using a 90/10 training/validation split, reporting the validation loss and accuracy of next-word prediction on the validation set. For the LM, we selected an ASGD Weight-Dropped Long Short Term Memory (AWD\_LSTM, described in Merity et al.\cite{Merity:DBLP:journals/corr/abs-1708-02182}) model included in Fast.ai. We replaced the typical Long Short Term Memory (LSTM) units with Quasi Recurrent Neural Network (QRNN, described in Bradbury et al.\cite{Bradbury:DBLP:journals/corr/BradburyMXS16}) units.  Our network has 2304 hidden-states, 3 layers and a softmax layer to predict the next-word.  We tied the embedding weights\cite{WeightTie:DBLP:journals/corr/PressW16} on the encoder and decoder for training.  We performed some simple tests with LSTM units and a Transformer Language model, finding all models were similar in performance during LM training. We thus chose to use QRNN units due to improved training speed compared to the alternatives. This model has about 60 million trainable parameters.  
 
 Parameters used for training and fine-tuning are shown in Table \ref{tab:tab_training}.
 For all networks we applied a dropout multiplier which scales the dropout used throughout the network.  We used the Adam optimizer with weight decay as indicated in the table.  
@@ -140,7 +140,7 @@ Following the work of Smith\cite{Smith:DBLP:journals/corr/abs-1803-09820} we fou
 Again, following the play-book from Howard and Ruder\cite{HowardRuder:DBLP:journals/corr/abs-1801-06146}, we change the pre-trained network head to a softmax or linear output layer (as appropriate for the transfer task) and then load the LM weights for the layers below.  We train just the new head from random initialization, then unfreeze the entire network and train with differential learning rates.  We layout our training parameters in Table \ref{tab:clas_training}.
 
 With the same learning rate and weight decay we apply a 5-fold cross-validation on the outputs and take the mean across the folds as our ensemble.  We sample 20 random seeds (see more in section \ref{sec:rand_seeds}) to find the best initialization for our gradient descent search.  From these samples, we select the best validation F1 metric or Mean Squared Error (MSE) for use in our test submission.
-\subsubsection{Classifier setup}  For the classifier, we have a hidden layer and softmax head.  We over-sample the minority class to balance the outcomes for better training using Synthetic Minority Oversampling Technique (SMOTE, described in Chawla et al.\cite{Chawla:2002:SSM:1622407.1622416}).  Our loss is label smoothing as described in Pereyra et al.\cite{Labelsmoothing:DBLP:journals/corr/PereyraTCKH17} of the flattened cross-entropy loss.  Gradual unfreezing allows us to avoid catastropic forgetting, focus each stage of training and preventing over-fitting of the parameters to the training cases.  We take an alternative approach to regularization and in our experiments found that we got similar results with label smoothing but without the separate steps and learning rate refinement required of gradual unfreezing.   
+\subsubsection{Classifier setup}  For the classifier, we have a hidden layer and softmax head.  We over-sample the minority class to balance the outcomes for better training using Synthetic Minority Oversampling Technique (SMOTE, described in Chawla et al.\cite{Chawla:2002:SSM:1622407.1622416}).  Our loss is label smoothing as described in Pereyra et al.\cite{Labelsmoothing:DBLP:journals/corr/PereyraTCKH17} of the flattened cross-entropy loss.  In ULMFiT, gradual unfreezing allows us to avoid catastropic forgetting, focus each stage of training and preventing over-fitting of the parameters to the training cases.  We take an alternative approach to regularization and in our experiments found that we got similar results with label smoothing but without the separate steps and learning rate refinement required of gradual unfreezing.   
 \subsubsection{Regression setup}  For the regression task, we fill all \verb|#N/A| labels with scores of 0.  We add a hidden layer and linear output head and MSE loss function. 
 
 \begin{table}[ht]
@@ -174,9 +174,9 @@ Across each of the 20 random seeds, we average the 5-folds and obtain a single F
 \end{figure}
 
 \subsection{Results}
-Table \ref{tab:tab_results} gives three results from our submissions in the competition. The first is the baseline NBSVM solution, with an F1 of 0.7548.  Second is our first random seed selected for the classifier which produces a 0.8083 result.  While better than the NBSVM solution, we pick the best validation F1 from the 20 seeds we tried. This produced our final submission of 0.8099.  Note that our third place entry was 1.1\% worse in F1 score than first place but 1.2\% \textit{better} in F1 than the $4^{th}$ place entry. 
-Note that applying this model over our validation set achieved an F1 of 0.8254 and a test set F1 of 0.8099 - a drop of 0.0155 in F1 for the true out-of-sample data.
+Table \ref{tab:tab_results} gives three results from our submissions in the competition. The first is the baseline NBSVM solution, with an F1 of 0.7548.  Second is our first random seed selected for the classifier which produces a 0.8083 result.  While better than the NBSVM solution, we pick the best validation F1 from the 20 seeds we tried. This produced our final submission of 0.8099.  Our best model achieved an five-fold average F1 of 0.8254 on the validation set shown in Figure \ref{fig:random_seed_hist} but a test set F1 of 0.8099 - a drop of 0.0155 in F1 for the true out-of-sample data.  Also note that our third place entry was 1.1\% worse in F1 score than first place but 1.2\% \textit{better} in F1 than the $4^{th}$ place entry. 
 
+\setlength{\tabcolsep}{8pt}
 \begin{table}[ht]
 	% table caption is above the table
 	\caption{Comparative Results}

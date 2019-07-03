@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.11)  1 JUL 2019 11:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.11)  3 JUL 2019 08:10
 entering extended mode
 **./paper_draft.tex
 (paper_draft.tex
@@ -271,20 +271,21 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 32.
  [1
 
-{C:/Users/Bobak Farzin/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+{C:/Users/Bobak Farzin/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] 
+[3]
 Overfull \hbox (9.87335pt too wide) in paragraph at lines 101--101
 []\OT1/cmtt/m/n/10 Vamos por mas!!! e invitamos a todas aquellas personas que q
 uieran \[] 
  []
 
-[3]
+
 Overfull \hbox (9.87335pt too wide) in paragraph at lines 108--108
 []\OT1/cmtt/m/n/10 xxnl  # alertaesi xxrep 4 ! xxnl vamos por mas ! ! ! e invit
 amos a \[] 
  []
 
 [4] [5]
-<seed_hist_f1.jpg, id=32, 381.67593pt x 274.02374pt>
+<seed_hist_f1.jpg, id=33, 381.67593pt x 274.02374pt>
 File: seed_hist_f1.jpg Graphic file (type jpg)
 <use seed_hist_f1.jpg>
 Package pdftex.def Info: seed_hist_f1.jpg  used on input line 171.
@@ -303,7 +304,7 @@ Here is how much of TeX's memory you used:
  5812 multiletter control sequences out of 15000+200000
  8315 words of font info for 30 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,9n,25p,1085b,297s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,9n,25p,1086b,297s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTe
 X 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Bobak Farzin/AppData/
 Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/B
@@ -319,15 +320,16 @@ c/amsfonts/cm/cmr6.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9
 rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/Bobak Farz
 in/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><
 C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmsy9.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Bobak Farzin/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:/Users/Bobak Farzin
-/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C
-:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmtt9.pfb>
-Output written on paper_draft.pdf (8 pages, 251763 bytes).
+onts/cm/cmsy7.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/Bobak Farzin/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Bobak Farzin
+/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:
+/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmtt10.pfb><C:/Users/Bobak Farzin/AppData/Local/Programs/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on paper_draft.pdf (8 pages, 260629 bytes).
 PDF statistics:
- 94 PDF objects out of 1000 (max. 8388607)
+ 98 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
