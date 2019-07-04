@@ -1,24 +1,27 @@
-\documentclass[runningheads]{llncs}
+%\documentclass[runningheads]{llncs}
+\documentclass{llncs}
 \usepackage{graphicx}
+\pagenumbering{gobble}
 
 \begin{document}
 
+{\let\thefootnote\relax\footnotetext{Copyright \textcopyright\ 2019 for this paper by its authors. Use permitted under Creative Commons License Attribution 4.0 International (CC BY 4.0). IberLEF 2019, 24 September 2019, Bilbao, Spain. }}
 
 %\title{Modified ULMFiT for Joke Classification in Spanish}
 \title{Applying a Pre-trained Language Model to Spanish Twitter Humor Prediction}
-\author{Bobak Farzin \inst{1}$^{*}$ Piotr Czapla \inst{2}\thanks{BF was the primary researcher. PC contributed with suggestions for the random seeds as a hyper-parameters and label smoothing to speed up training. JH contributed with suggestion for higher dropout throughout the network for more generalization.} and Jeremy Howard\inst{3}$^{*}$ \\June 2019}
+\author{Bobak Farzin \inst{1} Piotr Czapla \inst{2} and Jeremy Howard\inst{3} \\June 2019}
 %
 \authorrunning{Farzin et al. 2019}
 % First names are abbreviated in the running head.
 % If there are more than two authors, 'et al.' is used.
 %
-\institute{USF Data Institue, WAMRI Visting Scholar \\
+\institute{USF Data Institue, WAMRI Visting Scholar, USA \\
 		\email{bfarzin@gmail.com} \\
 		\and
-		n-waves\\
+		n-waves, Poland\\
 		\email{Piotr.Czapla@n-waves.com}
 \and  
-University of San Francisco \& Fast.ai\\ \email{j@fast.ai}}
+University of San Francisco \& Fast.ai, USA\\ \email{j@fast.ai}}
 
 %\subtitle{Do you have a subtitle?\\ If so, write it here}
 
@@ -27,7 +30,7 @@ University of San Francisco \& Fast.ai\\ \email{j@fast.ai}}
 \begin{abstract}
 Our entry into the \textit{HAHA 2019 Challenge} placed $3^{rd}$ in the classification task and $2^{nd}$ in the regression task.  We describe our system and innovations, as well as comparing our results to a Naive Bayes baseline.
 A large Twitter based corpus allowed us to train a language model from scratch focused on Spanish and transfer that knowledge to our competition model.  To overcome the inherent errors in some labels we reduce our class confidence with label smoothing in the loss function.
-All the code for our project is included in a GitHub\footnote{https://github.com/bfarzin/haha\_2019\_final, Accessed on 19 June 2019} repository for easy reference and to enable replication by others.
+All the code for our project is included in a GitHub\footnotemark[4] repository for easy reference and to enable replication by others.
 
 \keywords{Natural Language Processing \and Transfer Learning \and Sentiment Analysis \and Humor Classification}
 % \PACS{PACS code1 \and PACS code2 \and more}
@@ -41,7 +44,7 @@ All the code for our project is included in a GitHub\footnote{https://github.com
 \begin{quote}
 - !`Socorro, me ha picado una víbora!\\
 - ?`Cobra?\\
-- No, gratis.\footnote{https://www.fluentin3months.com/spanish-jokes/, Accessed on 19 June 2019}
+- No, gratis.\footnotemark[5]
 \end{quote}
 Google Translation:
 \begin{quote}
@@ -49,7 +52,11 @@ Google Translation:
 - Does it charge?\\
 - Not free.
 \end{quote}
-Humor does not translate well because it often relies on double-meaning or a subtle play on word choice, pronunciation, or context.  These issues are further exacerbated in areas where space is a premium (as frequent on social media platforms), often leading to usage and development of shorthand, in-jokes, and self-reference. Thus, building a system to classify the humor of tweets is a difficult task.  However, with transfer-learning and the Fast.ai library\footnote{https://docs.fast.ai/, Accessed on 19 June 2019}, we can build a high quality classifier in a foreign language. Our system outperforms a Naive Bayes Support Vector Machine (NBSVM) baseline, which is frequently considered a "strong baseline" for many Natural Language Processing (NLP) related tasks (see 
+\pagebreak
+\footnotetext[4]{https://github.com/bfarzin/haha\_2019\_final, Accessed on 19 June 2019}
+\footnotetext[5]{https://www.fluentin3months.com/spanish-jokes/, Accessed on 19 June 2019}
+
+Humor does not translate well because it often relies on double-meaning or a subtle play on word choice, pronunciation, or context.  These issues are further exacerbated in areas where space is a premium (as frequent on social media platforms), often leading to usage and development of shorthand, in-jokes, and self-reference. Thus, building a system to classify the humor of tweets is a difficult task.  However, with transfer-learning and the Fast.ai library\footnote[6]{https://docs.fast.ai/, Accessed on 19 June 2019}, we can build a high quality classifier in a foreign language. Our system outperforms a Naive Bayes Support Vector Machine (NBSVM) baseline, which is frequently considered a "strong baseline" for many Natural Language Processing (NLP) related tasks (see 
 Wang et al \cite{Wang:2012:BBS:2390665.2390688}).
 
 Rather than hand-crafted language features, we have taken an "end to end" approach building from the raw text to a final model that achieves the tasks as presented.  Our paper lays out the details of the system and our code can be found in a GitHub repository for use by other researchers to extend the state of the art in sentiment analysis. 
@@ -63,7 +70,7 @@ The \textit{Humor Analysis based on Human Annotation (HAHA) 2019}\cite{overview_
 \item \textbf{Task1: Humor Detection}:Determine if a tweet is humorous. System ranking is based on F1 score which balances precision and accuracy.
 \item \textbf{Task2: Funniness Score}:If humorous, what is the average humor rating of the tweet? System ranking is based on root mean-squared error (RMSE).
 \end{itemize}
-The HAHA dataset includes labeled data for 24,000 tweets and a test set of 6,000 tweets (80\%/20\% train/test split.)  Each record includes the raw tweet text (including accents and emoticons), a binary humor label, the number of votes for each of five star ratings and a ``Funniness Score'' that is the average of the 1 to 5 star votes cast.  Examples and data can be found on the CodaLab competition webpage\footnote{http://competitions.codalab.org/competitions/22194/ Accessed on 19 June 2019}.
+The HAHA dataset includes labeled data for 24,000 tweets and a test set of 6,000 tweets (80\%/20\% train/test split.)  Each record includes the raw tweet text (including accents and emoticons), a binary humor label, the number of votes for each of five star ratings and a ``Funniness Score'' that is the average of the 1 to 5 star votes cast.  Examples and data can be found on the CodaLab competition webpage\footnote[7]{http://competitions.codalab.org/competitions/22194/ Accessed on 19 June 2019}.
 
 \section{System Description}
 \label{sec:system}
@@ -77,7 +84,7 @@ Below we will give more detail on each step and the parameters used to generate 
 \subsection{Data, Cleanup \& Tokenization}
 \label{sec:datacleaning}
 \subsection{Additional Data}
-We collected a corpus for our LM based on Spanish Twitter using tweepy~\footnote{http://github.com/tweepy/tweepy, Accessed on 19 June 2019} run for three 4-hour sessions and collecting any tweet with any of the terms 'el','su','lo','y' or 'en'. We excluded retweets to minimize repeated examples in our language model training.  In total, we collected 475,143 tweets - a data set is nearly 16 times larger than the text provided by the competition alone.  The frequency of terms, punctuation and vocabulary used on Twitter can be quite different from the standard Wikipedia corpus that is often used to train an LM from scratch.  
+We collected a corpus for our LM based on Spanish Twitter using tweepy\footnote[8]{http://github.com/tweepy/tweepy, Accessed on 19 June 2019} run for three 4-hour sessions and collecting any tweet with any of the terms 'el','su','lo','y' or 'en'. We excluded retweets to minimize repeated examples in our language model training.  In total, we collected 475,143 tweets - a data set is nearly 16 times larger than the text provided by the competition alone.  The frequency of terms, punctuation and vocabulary used on Twitter can be quite different from the standard Wikipedia corpus that is often used to train an LM from scratch.  
 
 In the fine-tuning step, we combined the train and test text data \textit{without labels} from the contest data.
 \subsection{Cleaning}
@@ -196,8 +203,11 @@ Best Seed &  0.8458 & 0.7806 & 0.8416 & \textbf{0.8099} \\
 \label{sec:5}
 This paper describes our implementation of a neural net model for classification and regression in the HAHA 2019 challenge.  Our solution placed $3^{rd}$ in Task 1 and $2^{nd}$ in Task 2 in the final competition standings.  We describe the data collection, pre-training, and final model building steps for this contest.  Twitter has slang and abbreviations that are unique to the short-format as well as generous use of emoticons.  To capture these features, we collected our own dataset based on Spanish Tweets that is 16 times larger than the competition data set and allowed us to pre-train a language model.  Humor is subtle and using a label smoothed loss prevented us from becoming overconfident in our predictions and train more quickly without the gradual unfreezing required by ULMFiT. We have open-sourced all  code used in this contest to further enable research on this task in the future.
 
+\section{Author Contributions}BF was the primary researcher. PC contributed with suggestions for the random seeds as a hyper-parameters and label smoothing to speed up training. JH contributed with suggestion for higher dropout throughout the network for more generalization.
+
 \section{Acknowledgements}
-The author would like to thank all the participants on the fast.ai forums \footnote{http://forums.fasta.ai} for their ideas and suggestions. Also, Kyle Kastner for his edits, suggestions and recommendations in writing up these results. 
+The author would like to thank all the participants on the fast.ai forums \footnote[9]{http://forums.fasta.ai} for their ideas and suggestions. Also, Kyle Kastner for his edits, suggestions and recommendations in writing up these results. 
+
 
 \bibliographystyle{splncs04}
 \bibliography{local}   % name your BibTeX data base
